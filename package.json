@@ -1,0 +1,33 @@
+{
+  "name": "pollidify",
+  "version": "1.0.0",
+  "description": "global polling and mayhem",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikaEleFant/Pollidify.git"
+  },
+  "author": "Chang, Asaf, Pavel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikaEleFant/Pollidify/issues"
+  },
+  "homepage": "https://github.com/MikaEleFant/Pollidify#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^12.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
