@@ -6,7 +6,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  password_digest: {
+  password: {
     type: String,
     required: true
   },

@@ -8,25 +8,22 @@ const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-  // Check to make sure nobody has already registered with a duplicate email
   if (!isValid) {
     return res.status(400).json(errors);
   }
 
   User.findOne({ username: req.body.username }).then(user => {
     if (user) {
-      // Throw a 400 error if the email address already exists
+    
       errors.username = "Username already exists";
       return res.status(400).json(errors);
     } else {
-      // Otherwise create a new user
+    
       const newUser = new User({
         username: req.body.username,
-        // email: req.body.email,
         password: req.body.password
       });
 
