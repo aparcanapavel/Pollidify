@@ -1,24 +1,34 @@
-// Import Mongoose
 const mongoose = require('mongoose');
-
-// Create a new Express server
 const express = require("express");
 const app = express();
-
-// Import key
 const db = require('./config/keys').mongoURI;
+const port = process.env.PORT || 5000;
+const users = require("./routes/api/users");
+const passport = require('passport');
+const bodyParser = require('body-parser');
+require('./config/passport')(passport);
+// const path = require('path');
 
-// Connect to MongoDB via Mongoose
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('frontend/build'));
+//   app.get('/', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+//   })
+// }
+
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-// Basic route to render test info to page
-app.get("/", (req, res) => res.send("Hello World"));
 
-// Heroku requires our server to run on process.env.PORT, and will also run on localhost:5000
-const port = process.env.PORT || 5000;
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-// Express starts a socket and listens for connections, and logs success message
+app.use(passport.initialize());
+
+app.use("/api/users", users);
+
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));
