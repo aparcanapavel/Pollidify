@@ -40,15 +40,13 @@ Pollidify is a minimal application created in one week.
 
 ##Day 1##
 * Discuss structure and basic functions of application - ##All##
-* Create `users` database table - ##Chang##
 * Create `users` model and validations - ##Asaf##
 * Create `users` routes and passports - ##Pavel##
+* Create `root` component - ##Chang##
 
 ##Day 2##
-Connecting Database to App
 Root component
 User frontend
-Poll and Choices Database tables - ##Chang##
 
 ##Day 3##
 Poll Model and Validations
