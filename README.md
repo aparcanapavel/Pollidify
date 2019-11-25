@@ -46,6 +46,9 @@ Pollidify is a minimal application created in one week.
 * Create `session` util and `route` util in frontend - ##Chang##
 * Create `session` actions in frontend - ##Asaf##
 * Create `session` reducer and `session-errors` reducer in frontend - ##Pavel##
+* Create `login-form` component - ##Asaf##
+* Create `signup-form` component - ##Pavel##
+* Create `main` component and `nav` component - ##Chang##
 
 ##Day 2##
 Root component
