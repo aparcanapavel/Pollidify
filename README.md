@@ -42,7 +42,7 @@ Pollidify is a minimal application created in one week.
 * Discuss structure and basic functions of application - ##All##
 * Create `users` model and validations - ##Asaf##
 * Create `users` routes and passports - ##Pavel##
-* Create `root` component - ##Chang##
+* Create `root` component and React skeleton - ##Chang##
 
 ##Day 2##
 Root component
