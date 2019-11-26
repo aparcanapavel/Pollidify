@@ -9,12 +9,7 @@ const fade = require("fade");
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
-    // this.toggleForms = this.toggleForms.bind(this);
   }
-
-  // componentDidMount() {
-  //   this.toggleForms();
-  // }
   
   render() {
     const { formType } = this.props;
