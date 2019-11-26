@@ -6,9 +6,10 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import LandingPage from './landing_page';
+import './app.css';
 
 const App = () => (
-  <div>
+  <div className='app-div'>
     <NavBarContainer />
     <Switch>
         <ProtectedRoute exact path="/polls" component={MainPage} />

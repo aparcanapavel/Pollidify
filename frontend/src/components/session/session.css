@@ -1,6 +1,7 @@
-.session-form.container{
+.session-form-container{
   display: block;
-  position: relative;
+  margin: 0 auto;
+  margin-top: 100px;
 }
 
 .session-form {
