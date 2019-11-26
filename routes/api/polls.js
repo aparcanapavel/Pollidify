@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 const Poll = require('../../models/Poll');
-const validatePollInput = require('../../validation/create-edit-poll');
+const validatePollInput = require('../../validation/create-poll');
 
 
 router.get('/', (req, res) => {
