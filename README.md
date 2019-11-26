@@ -51,12 +51,13 @@ Pollidify is a minimal application created in one week.
 * Create `main` component and `nav` component - **Chang**
 
 **Day 2**
-* Discuss styling of main page and user auth pages - **All**
-* Style login and signup forms - **Pavel**
-* Style navbar - **Asaf**
-* Style main page - **Chang**
-Root component
-User frontend
+* Discuss styling of `landing-page` and `user-auth` pages - **All**
+* Style `login` and `signup` forms - **Pavel**
+* Style `navbar` - **Asaf**
+* Style `landing-page` - **Chang**
+* Style `signup` and `login` animations to incorporate them into the `landing-page` - **Pavel**
+* Create `polls` model, routes, and actions - **Asaf**
+* Create `polls` validations and reducers - **Chang**
 
 **Day 3**
 Poll Model and Validations
