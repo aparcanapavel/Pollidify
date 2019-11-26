@@ -7,6 +7,7 @@ const users = require("./routes/api/users");
 const passport = require('passport');
 const bodyParser = require('body-parser');
 require('./config/passport')(passport);
+
 // const path = require('path');
 
 // if (process.env.NODE_ENV === 'production') {
