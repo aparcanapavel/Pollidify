@@ -18,14 +18,27 @@ class App extends React.Component{
     this.showSignup = this.showSignup.bind(this);
   }
 
+  toggleSlide() {
+    const right = document.getElementById("landing-form");
+    const left = document.getElementById("landing-main");
+    let toggleTimer;
+    toggleTimer = setTimeout(() => {
+      right.classList.toggle("show-form");
+    }, 1000);
+    left.classList.toggle("show-form");
+    // clearTimeout(toggleTimer);
+  }
+
   showSignup() {
     console.log("signup clicked");
     this.setState({ form: "signup" });
+    this.toggleSlide();
   }
 
   showLogin() {
     console.log("login clicked");
     this.setState({ form: "login" });
+    this.toggleSlide();
   }
 
   // hideforms(){

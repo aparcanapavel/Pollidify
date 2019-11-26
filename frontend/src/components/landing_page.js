@@ -3,6 +3,8 @@ import './landing_page.css';
 import { AuthRoute } from "../util/route_util";
 import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
+import FadeIn from "react-fade-in";
+const fade = require("fade");
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -37,8 +39,8 @@ class LandingPage extends React.Component {
           </div>
         </main>
 
-        <div>
-          {form}
+        <div id="landing-form">
+          <FadeIn>{form}</FadeIn>
         </div>
       </div>
     );

@@ -9,12 +9,14 @@ $lightest: #B3FFE0; */
   flex-direction: column;
   min-width: 940px;
   margin-top: 60px;
+  position: relative;
 }
 
 .landing-main {
   background-color: #88C2AB;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  position: relative;
 }
 
 .landing-main-div {
