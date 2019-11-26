@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
 const port = process.env.PORT || 5000;
+const polls = require("./routes/api/polls");
 const users = require("./routes/api/users");
 const passport = require('passport');
 const bodyParser = require('body-parser');
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 app.use("/api/users", users);
+app.use("/api/polls", polls);
 
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
