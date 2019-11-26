@@ -7,7 +7,6 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
     !loggedIn ? (
       <Component {...props} />
     ) : (
-      // We currently don't have a show page, so for now redirect to "/"
       <Redirect to="/" />
     )
   )} />
