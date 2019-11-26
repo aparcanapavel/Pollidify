@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import './navbar.css'
+import './navbar.css'
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -16,31 +16,16 @@ class NavBar extends React.Component {
 
   getLinks() {
       if (this.props.loggedIn) {
-        // if logged in render links
-        //
-        // return (
-        //     <div>
-        //         <Link to={'/tweets'}>All Tweets</Link>
-        //         <Link to={'/profile'}>Profile</Link>
-        //         <Link to={'/new_tweet'}>Write a Tweet</Link>
-        //         <button onClick={this.logoutUser}>Logout</button>
-        //     </div>
-        // );
-
-        // testing for logging in
         return (
-          <nav>
-            <ul>
-              <li>Logo</li>
-              <li>Search</li>
-            </ul>
-          </nav>
-        )
+            <div className="nav-bar-logged-in" >
+                <button className="logout-button" onClick={this.logoutUser}>Logout</button>
+            </div>
+        );
       } else {
-        return (
-            <div>
-                <Link to={'/signup'}>Signup</Link>
-                <Link to={'/login'}>Login</Link>
+        return (  
+            <div className="nav-bar-logged-out">
+              <div className="signup-link"> <Link to={'/signup'}>Signup</Link></div>
+              <div className="login-link"><Link to={'/login'}>Login</Link></div>
             </div>
         );
       }
@@ -48,9 +33,12 @@ class NavBar extends React.Component {
 
   render() {
       return (
-        <div>
-            <h1>Pollidify</h1>
-            { this.getLinks() }
+        <div className="nav-bar-main">
+          <div className="nav-left">
+            <h1 className="nav-logo">Pollidify</h1>
+          </div>
+          <div className="nav-mid"></div>
+          <div className="nav-right">{this.getLinks()} </div> 
         </div>
       );
   }

@@ -1,0 +1,37 @@
+.nav-bar-main {
+  position: fixed;
+  display: flex;
+  background-color: #88C2AB;
+  height: 8%;
+  width: 100vw;
+}
+
+.nav-bar-logged-out {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10%;
+  margin-top: 5%;
+}
+
+.nav-left {
+  width: 25%;
+}
+
+.nav-mid {
+  width: 50%;
+}
+
+.nav-right {
+  width: 25%;
+  font-size: 23px;
+}
+
+.nav-logo {
+  font-size: 35px;
+  margin-left: 4%;
+}
+
+.signup-link {
+  margin-right: 7%;
+}
+
