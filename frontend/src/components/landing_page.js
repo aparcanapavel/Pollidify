@@ -1,10 +1,7 @@
 import React from 'react';
+import './landing_page.css';
 
 class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='landing-page'>
