@@ -43,9 +43,9 @@ class LoginForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul className="login-form-errors">
+      <ul className="session-form-errors">
         {Object.keys(this.state.errors).map((error, i) => (
-          <li className="login-errors" key={`error-${i}`}>
+          <li className="session-errors" key={`error-${i}`}>
             {this.state.errors[error]}
           </li>
         ))}
@@ -55,39 +55,33 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="login-form">
-          
-          <label className="login-form-username-label">
-            <input 
-              className="login-username-input"
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              placeholder="Username"
-            />
-          </label>
+      <section className="session-form-container">
+        <form onSubmit={this.handleSubmit} className="session-form">
+          <h3 className="session-title">Log in</h3>
+          <br/>
+          <input
+            className="login-username-input"
+            type="text"
+            value={this.state.username}
+            onChange={this.update("username")}
+            placeholder="Username"
+          />
 
-            <br />
+          <br />
+          <input
+            className="login-password-input"
+            type="password"
+            value={this.state.password}
+            onChange={this.update("password")}
+            placeholder="Password"
+          />
 
-          <label className="login-form-password-label">
-            <input 
-              className="login-password-input"
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              placeholder="Password"
-            />
-            </label>
+          <br />
 
-            <br />
-
-            <input className="login-form-submit" type="submit" value="Submit" />
-            {this.renderErrors()}
-          </div>
+          <input className="login-form-submit" type="submit" value="Log in" />
+          {this.renderErrors()}
         </form>
-      </div>
+      </section>
     );
   }
 }

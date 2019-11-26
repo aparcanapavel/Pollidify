@@ -16,7 +16,7 @@ Pollidify is a minimal application created in one week.
 * automated closure of polls past expiration date
 * production README
 
-##Bonus features##
+**Bonus features**
 * notifications
 * private poll vs. public poll results
 * categories/tags
@@ -24,50 +24,54 @@ Pollidify is a minimal application created in one week.
 * subscriptions via notifications
 
 # Technologies & Technical Challenges
-##MERN stack##
+**MERN stack**
 * MondoDB
 * React/Redux
 * Javascript
 * Express 
 * Node
 
-##Technical Challenges:##
+**Technical Challenges:**
 * Displaying statistical data in a graphical and intuitive way
 * Ensuring all polls are anonymous and one-time answer only
 
 # Group Members and Work Breakdown
-##Chang Ho Lee, Asaf Mohammad, Pavel Aparcana##
+**Chang Ho Lee, Asaf Mohammad, Pavel Aparcana**
 
-##Day 1##
-* Discuss structure and basic functions of application - ##All##
-* Create `users` model and validations - ##Asaf##
-* Create `users` routes and passports - ##Pavel##
-* Create `root` component and React skeleton - ##Chang##
-* Create `session` util and `route` util in frontend - ##Chang##
-* Create `session` actions in frontend - ##Asaf##
-* Create `session` reducer and `session-errors` reducer in frontend - ##Pavel##
-* Create `login-form` component - ##Asaf##
-* Create `signup-form` component - ##Pavel##
-* Create `main` component and `nav` component - ##Chang##
+**Day 1**
+* Discuss structure and basic functions of application - **All**
+* Create `users` model and validations - **Asaf**
+* Create `users` routes and passports - **Pavel**
+* Create `root` component and React skeleton - **Chang**
+* Create `session` util and `route` util in frontend - **Chang**
+* Create `session` actions in frontend - **Asaf**
+* Create `session` reducer and `session-errors` reducer in frontend - **Pavel**
+* Create `login-form` component - **Asaf**
+* Create `signup-form` component - **Pavel**
+* Create `main` component and `nav` component - **Chang**
 
-##Day 2##
+**Day 2**
+* Discuss styling of main page and user auth pages - **All**
+* Style login and signup forms - **Pavel**
+* Style navbar - **Asaf**
+* Style main page - **Chang**
 Root component
 User frontend
 
-##Day 3##
+**Day 3**
 Poll Model and Validations
 Poll Routes
 Begin Poll frontend
 
-##Day 4##
+**Day 4**
 Finish Poll frontend 
 Choices Model and Validations
 Choices Routes
 
-##Day 5##
+**Day 5**
 Choice Frontend
 Planning and implementing wireframes
-Styling - ##All##
+Styling - **All**
 
 # Scripts
 
