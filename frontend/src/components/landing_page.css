@@ -5,13 +5,10 @@ $lighter: #9ADBC1;
 $lightest: #B3FFE0; */
 
 .landing-page {
-  /* display: flex; */
-  /* flex-direction: column; */
   display: block;
   min-width: 940px;
   margin-top: 60px;
   position: relative;
-  /* overflow-x: hidden; */
 }
 
 
@@ -23,7 +20,6 @@ $lightest: #B3FFE0; */
   color: #fff;
   transition: width 1s;
   z-index: 0;
-  /* background-color: #88C2AB; */
 }
 
 .landing-main-div h1 {
@@ -37,7 +33,6 @@ $lightest: #B3FFE0; */
 #landing-main{
   width: 100%;
   display: inline-block;
-  /* background-color: red; */
   transition: width 1s;
   z-index: 0;
   background-color: #88C2AB;
@@ -63,5 +58,4 @@ $lightest: #B3FFE0; */
 #landing-form.show-form{
   display: inline-block;
   opacity: 1;
-  /* transform: translateX(0%); */
 }

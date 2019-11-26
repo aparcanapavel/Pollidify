@@ -31,7 +31,6 @@ class App extends React.Component{
     }, 100);
 
     this.toggleTimer = setTimeout(() => {
-      // left.classList.toggle("show-form");
       right.classList.toggle("show-form");
     }, 1000);
   }
@@ -43,7 +42,6 @@ class App extends React.Component{
   
 
   showSignup() {
-
     this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
     console.log("signup clicked");
   }
@@ -66,10 +64,6 @@ class App extends React.Component{
         />
         <Switch>
           <ProtectedRoute exact path="/polls" component={MainPage} />
-          {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-          <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
-          {/* <AuthRoute exact path="/" component={LandingPage} /> */}
-
           <AuthRoute
             path="/"
             component={() => <LandingPage formType={this.state.form} />}
