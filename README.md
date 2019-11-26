@@ -52,6 +52,9 @@ Pollidify is a minimal application created in one week.
 
 **Day 2**
 * Discuss styling of main page and user auth pages - **All**
+* Style login and signup forms - **Asaf**
+* Style navbar - **Pavel**
+* Style main page - **Chang**
 Root component
 User frontend
 
