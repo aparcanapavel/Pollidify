@@ -5,24 +5,25 @@ $lighter: #9ADBC1;
 $lightest: #B3FFE0; */
 
 .landing-page {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+  display: block;
   min-width: 940px;
   margin-top: 60px;
+  position: relative;
+  /* overflow-x: hidden; */
 }
 
-.landing-main {
-  background-color: #88C2AB;
-  display: flex;
-  flex-direction: column;
-}
 
-.landing-main-div {
+#landing-main-div {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 214px;
+  min-height: 250px;
   color: #fff;
+  transition: width 1s;
+  z-index: 0;
+  /* background-color: #88C2AB; */
 }
 
 .landing-main-div h1 {
@@ -30,4 +31,37 @@ $lightest: #B3FFE0; */
   font-size: 42px;
   font-weight: 400;
   text-align: center;
+}
+
+/* Landing page shift */
+#landing-main{
+  width: 100%;
+  display: inline-block;
+  /* background-color: red; */
+  transition: width 1s;
+  z-index: 0;
+  background-color: #88C2AB;
+}
+
+#landing-form{
+  position: absolute;
+  display: inline-block;
+  background-color: white;
+  transition:opacity 1s;
+  opacity: 0;
+  width: 40%;
+  margin-left: 0px;
+  z-index: 10;
+  height: 100%;
+}
+
+#landing-main-div.show-form{
+  width: 60%;
+  display: inline-block;
+}
+
+#landing-form.show-form{
+  display: inline-block;
+  opacity: 1;
+  /* transform: translateX(0%); */
 }
