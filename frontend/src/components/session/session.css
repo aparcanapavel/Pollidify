@@ -1,0 +1,42 @@
+.session-form.container{
+  display: block;
+  position: relative;
+}
+
+.session-form {
+  width: 260px;
+  text-align: center;
+  /* border: 1px solid rgb(235, 235, 235);
+  padding: 25px; */
+}
+
+.session-title{
+  padding: 0px;
+  margin: 0px;
+  font-family: sans-serif;
+}
+
+.session-form input {
+  width: 100%;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid  rgb(235, 235, 235);
+  -webkit-appearance: searchfield; 
+  margin: 3px 0px;
+  padding: 10px 0px;
+  padding-left: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.session-form input[type="submit"]{
+  background-color: #88C2AB;
+  color: white;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
