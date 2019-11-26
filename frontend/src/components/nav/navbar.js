@@ -29,9 +29,12 @@ class NavBar extends React.Component {
 
         // testing for logging in
         return (
-          <div>
-            <h1>Log In SUCCESSFUL</h1>
-          </div>
+          <nav>
+            <ul>
+              <li>Logo</li>
+              <li>Search</li>
+            </ul>
+          </nav>
         )
       } else {
         return (
