@@ -2,34 +2,3 @@
   display: flex;
   flex-direction: column;
 }
-
-/* Landing page shift */
-#landing-main{
-  width: 100%;
-  display: inline-block;
-  /* background-color: red; */
-  transition: width 1s;
-  z-index: 1;
-}
-
-#landing-form{
-  position: absolute;
-  display: inline-block;
-  background-color: blue;
-  transition:opacity 1s;
-  opacity: 0.3;
-  width: 40%;
-  margin-left: -4px;
-  z-index: 10;
-}
-
-#landing-main.show-form{
-  width: 60%;
-  display: inline-block;
-}
-
-#landing-form.show-form{
-  display: inline-block;
-  opacity: 1;
-  /* transform: translateX(0%); */
-}

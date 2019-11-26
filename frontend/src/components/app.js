@@ -7,6 +7,7 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import LandingPage from './landing_page';
 import './app.css';
+import { throws } from 'assert';
 
 class App extends React.Component{
   constructor(props) {
@@ -16,29 +17,40 @@ class App extends React.Component{
     }
     this.showLogin = this.showLogin.bind(this);
     this.showSignup = this.showSignup.bind(this);
+    this.toggleSlide = this.toggleSlide.bind(this);
+    this.toggleTimer = null;
   }
 
   toggleSlide() {
     const right = document.getElementById("landing-form");
-    const left = document.getElementById("landing-main");
-    let toggleTimer;
-    toggleTimer = setTimeout(() => {
+    const left = document.getElementById("landing-main-div");
+    // debugger
+    
+    this.toggleTimer = setTimeout(() => {
+      left.classList.toggle("show-form");
+    }, 100);
+
+    this.toggleTimer = setTimeout(() => {
+      // left.classList.toggle("show-form");
       right.classList.toggle("show-form");
     }, 1000);
-    left.classList.toggle("show-form");
-    // clearTimeout(toggleTimer);
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.toggleTimer);
+  }
+
+  
+
   showSignup() {
+
+    this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
     console.log("signup clicked");
-    this.setState({ form: "signup" });
-    this.toggleSlide();
   }
 
   showLogin() {
+    this.setState({ ...this.state, form: "login" }, this.toggleSlide);
     console.log("login clicked");
-    this.setState({ form: "login" });
-    this.toggleSlide();
   }
 
   // hideforms(){

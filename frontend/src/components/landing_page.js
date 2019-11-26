@@ -15,10 +15,6 @@ class LandingPage extends React.Component {
   // componentDidMount() {
   //   this.toggleForms();
   // }
-
-  // toggleForms() {
-  //   console.log("hello from the landing page");
-  // }
   
   render() {
     const { formType } = this.props;
@@ -33,15 +29,13 @@ class LandingPage extends React.Component {
     
     return (
       <div className="landing-page">
-        <main className="landing-main" id="landing-main">
-          <div className="landing-main-div">
+        <main id="landing-main">
+          <div className="landing-main-div" id="landing-main-div">
             <h1>This is where we'd have our about page and stuff.</h1>
           </div>
+          <div id="landing-form">{form}</div>
         </main>
 
-        <div id="landing-form">
-          <FadeIn>{form}</FadeIn>
-        </div>
       </div>
     );
   }
