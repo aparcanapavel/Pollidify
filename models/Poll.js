@@ -11,8 +11,8 @@ const PollSchema = new Schema({
     required: true
   },
   poller_id: {
-    type: Number,
-    required: true
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   date: {
     type: Date,
