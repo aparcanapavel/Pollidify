@@ -15,10 +15,13 @@ export const receiveUserPolls = polls => ({
   polls
 });
 
-export const receivePoll = poll => ({
-  type: RECEIVE_POLL,
-  poll
-});
+export const receivePoll = poll => {
+  debugger
+  return {
+    type: RECEIVE_POLL,
+    poll
+  }
+};
 
 
 export const fetchPolls = () => dispatch => (
@@ -39,8 +42,9 @@ export const createPoll = data => dispatch => (
     .catch(err => console.log(err))
 );
 
-export const fetchPoll = (id) => dispatch => (
-  getPoll(id)
+export const fetchPoll = (id) => dispatch => {
+  // debugger;
+  return getPoll(id)
     .then(poll => dispatch(receivePoll(poll)))
     .catch(err => console.log(err))
-)
+}
