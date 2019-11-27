@@ -5,7 +5,8 @@ import NavBarContainer from './nav/navbar_container';
 import PollIndex from './polls/poll_index_container';
 import LandingPage from './landing_page';
 import './app.css';
-
+import PollShowContainer from './polls/poll_show_container';
+import UserPollsContainer from './polls/user_polls_container';
 
 class App extends React.Component {
   constructor(props) {
@@ -82,8 +83,21 @@ class App extends React.Component {
           showLogin={this.showLogin}
         />
         <Switch>
+          <ProtectedRoute
+            exact
+            path="/polls/user/:id"
+            component={UserPollsContainer}
+          />
+
+          <ProtectedRoute
+            exact
+            path="/polls/:id"
+            component={PollShowContainer}
+          />
           <ProtectedRoute exact path="/polls" component={PollIndex} />
-          <AuthRoute path="/" component={() => <LandingPage formType={this.state.form} />}
+          <AuthRoute
+            path="/"
+            component={() => <LandingPage formType={this.state.form} />}
           />
         </Switch>
       </div>
