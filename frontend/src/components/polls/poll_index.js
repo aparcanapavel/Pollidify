@@ -13,7 +13,6 @@ class PollIndex extends React.Component {
   }
 
   render() {
-    debugger
     if (!this.props.polls) {
       return null
     } 

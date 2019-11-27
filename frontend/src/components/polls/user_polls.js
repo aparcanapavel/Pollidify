@@ -11,6 +11,7 @@ class UserPolls extends React.Component {
     }
     
     componentWillMount() {
+      debugger
         console.log(this.props.currentUser.id)
         this.props.fetchUserPolls(this.props.currentUser.id);
     }

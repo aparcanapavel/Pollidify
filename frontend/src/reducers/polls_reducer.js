@@ -6,12 +6,14 @@ import {
 
 const PollsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
   Object.freeze(state);
+  // debugger;
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_POLLS:
       newState.all = action.polls.data;
       return newState;
     case RECEIVE_USER_POLLS:
+      // debugger
       newState.user = action.polls.data;
       return newState;
     case RECEIVE_POLL:
