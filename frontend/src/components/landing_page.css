@@ -42,7 +42,7 @@ $lightest: #B3FFE0; */
   position: absolute;
   display: inline-block;
   background-color: white;
-  transition:opacity 1s;
+  transition:opacity 0.5s;
   opacity: 0;
   width: 40%;
   margin-left: 0px;

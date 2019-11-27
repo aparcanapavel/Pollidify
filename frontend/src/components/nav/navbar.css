@@ -10,11 +10,15 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 10%;
-  margin-top: 5%;
+  /* margin-top: 5%; */
 }
 
 .nav-left {
   width: 25%;
+}
+
+.nav-left h1 {
+  padding: 10px;
 }
 
 .nav-mid {
@@ -31,7 +35,26 @@
   margin-left: 4%;
 }
 
+.signup-link,
+.login-link {
+  padding: 20px 10px;
+  /* background-color: red; */
+  cursor: pointer;
+}
+
+/* .signup-link:active,
+.login-link:active{
+  background-color: #405C51;
+} */
+
+.signup-link:hover,
+.login-link:hover{
+  /* background:linear-gradient(to bottom, #dbe6c4 5%, #405C51 100%); */
+  background-color:rgb(124, 172, 154);
+  transition: 0.3s;
+}
+
 .signup-link {
-  margin-right: 7%;
+  border-right: 1px solid white;
 }
 

@@ -24,22 +24,30 @@ class App extends React.Component{
   toggleSlide() {
     const right = document.getElementById("landing-form");
     const left = document.getElementById("landing-main-div");
-    // debugger
-    
-    this.toggleTimer = setTimeout(() => {
-      left.classList.toggle("show-form");
-    }, 100);
 
-    this.toggleTimer = setTimeout(() => {
-      right.classList.toggle("show-form");
-    }, 1000);
+    if(right.classList[0] === "show-form"){
+      this.toggleTimer = setTimeout(() => {
+        left.classList.remove("show-form");
+      }, 100);
+
+      this.toggleTimer = setTimeout(() => {
+        right.classList.remove("show-form");
+      }, 500);
+    } else {
+      
+      this.toggleTimer = setTimeout(() => {
+        left.classList.toggle("show-form");
+      }, 100);
+
+      this.toggleTimer = setTimeout(() => {
+        right.classList.toggle("show-form");
+      }, 500);
+    }
   }
 
   componentWillUnmount() {
     clearTimeout(this.toggleTimer);
   }
-
-  
 
   showSignup() {
     this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
