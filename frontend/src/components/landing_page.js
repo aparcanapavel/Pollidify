@@ -9,6 +9,10 @@ const fade = require("fade");
 class LandingPage extends React.Component {
   constructor(props) {
     super(props);
+    this.toggleTimer = null;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
   }
   
   render() {
@@ -28,9 +32,11 @@ class LandingPage extends React.Component {
           <div className="landing-main-div" id="landing-main-div">
             <h1>This is where we'd have our about page and stuff.</h1>
           </div>
-          <div id="landing-form">{form}</div>
+          <div id="landing-form">
+            {form}
+            <i className="fas fa-angle-right" id="removeForm" onClick={this.props.hideForms}></i>
+          </div>
         </main>
-
       </div>
     );
   }

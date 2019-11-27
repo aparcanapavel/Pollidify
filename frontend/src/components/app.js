@@ -9,12 +9,12 @@ import LandingPage from './landing_page';
 import './app.css';
 import { throws } from 'assert';
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       form: ""
-    }
+    };
     this.showLogin = this.showLogin.bind(this);
     this.showSignup = this.showSignup.bind(this);
     this.toggleSlide = this.toggleSlide.bind(this);
@@ -25,37 +25,57 @@ class App extends React.Component{
     const right = document.getElementById("landing-form");
     const left = document.getElementById("landing-main-div");
 
-    if(right.classList[0] === "show-form"){
-      this.toggleTimer = setTimeout(() => {
-        left.classList.remove("show-form");
-      }, 100);
+    this.toggleTimer = setTimeout(() => {
+      left.classList.add("show-form");
+    }, 100);
 
-      this.toggleTimer = setTimeout(() => {
-        right.classList.remove("show-form");
-      }, 500);
-    } else {
-      
-      this.toggleTimer = setTimeout(() => {
-        left.classList.toggle("show-form");
-      }, 100);
+    this.toggleTimer = setTimeout(() => {
+      right.classList.add("show-form");
+    }, 500);
+  }
 
-      this.toggleTimer = setTimeout(() => {
-        right.classList.toggle("show-form");
-      }, 500);
-    }
+  removeSlide() {
+    const right = document.getElementById("landing-form");
+    const left = document.getElementById("landing-main-div");
+
+    this.toggleTimer = setTimeout(() => {
+      left.classList.remove("show-form");
+    }, 0);
+
+    this.toggleTimer = setTimeout(() => {
+      right.classList.remove("show-form");
+    }, 0);
   }
 
   componentWillUnmount() {
     clearTimeout(this.toggleTimer);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextState.form === this.state.form){
+      debugger
+      return false;
+    }
+    this.removeSlide();
+    return true;
+  }
+
   showSignup() {
-    this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
+    // this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
+
+    setTimeout(() => {
+      this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
+    }, 100);
+    this.removeSlide();
     console.log("signup clicked");
   }
 
   showLogin() {
-    this.setState({ ...this.state, form: "login" }, this.toggleSlide);
+    // this.setState({ ...this.state, form: "login" }, this.toggleSlide);
+    setTimeout(() => {
+      this.setState({ ...this.state, form: "login" }, this.toggleSlide);
+    }, 100);
+    this.removeSlide();
     console.log("login clicked");
   }
 
@@ -80,7 +100,6 @@ class App extends React.Component{
       </div>
     );
   }
-
 }
 
 export default App;
