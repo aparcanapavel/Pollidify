@@ -9,6 +9,8 @@ $lightest: #B3FFE0; */
   min-width: 940px;
   margin-top: 60px;
   position: relative;
+
+  overflow: hidden;
 }
 
 
@@ -33,29 +35,34 @@ $lightest: #B3FFE0; */
 #landing-main{
   width: 100%;
   display: inline-block;
-  transition: width 1s;
+  transition: width 0.35s;
   z-index: 0;
   background-color: #88C2AB;
 }
 
 #landing-form{
   position: absolute;
-  display: inline-block;
+  display: block;
   background-color: white;
-  transition:opacity 1s;
+  transition: 0.35s;
   opacity: 0;
   width: 40%;
   margin-left: 0px;
   z-index: 10;
   height: 100%;
+  top: 0px;
+  right: -40%;
 }
 
 #landing-main-div.show-form{
   width: 60%;
   display: inline-block;
+  transition: width 0.7s;
 }
 
 #landing-form.show-form{
-  display: inline-block;
+  display: block;
   opacity: 1;
+  transform: translateX(-100%);
+  transition: 0.7s;
 }
