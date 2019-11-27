@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const ChoiceSchema = new Schema({
   response: {
     type: String,
     required: true
@@ -12,4 +12,4 @@ const UserSchema = new Schema({
   }
 })
 
-module.exports = User = mongoose.model('choices', UserSchema);
+module.exports = Choice = mongoose.model('choices', ChoiceSchema);
