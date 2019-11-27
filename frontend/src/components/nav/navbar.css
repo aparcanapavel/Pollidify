@@ -22,14 +22,15 @@
 }
 
 .nav-mid {
-  width: 30%;
+  /* width: 10%; */
+  /* float: right; */
 }
 
 .nav-right {
   /* width: 25%; */
   font-size: 23px;
-  position: relative;
-  right: -32px;
+  position: absolute;
+  right: 0px;
 }
 
 .nav-logo {
@@ -62,15 +63,18 @@
 }
 
 .nav-right-options li {
-  padding: 20px 10px;
+  margin-top: 3px;
+  padding: 18px 20px;
   box-sizing: border-box;
-  font-size: 18px;
+  font-size: 17px;
   font-family: sans-serif;
   border-right: 1px solid white;
   cursor: pointer;
+  color: white;
 }
 
 .nav-right-options li:hover{
-  background-color:rgb(124, 172, 154);
+  background: rgb(136,194,160);
+background: linear-gradient(180deg, rgba(136,194,160,0.7175245098039216) 0%, rgba(124,172,154,1) 51%, rgba(136,194,160,0.7063200280112045) 99%);
   transition: 0.3s;
 }

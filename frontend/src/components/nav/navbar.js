@@ -22,7 +22,7 @@ class NavBar extends React.Component {
   }
 
   toHome(){
-    this.props.history.push("/");
+    this.props.history.push("/polls");
   }
 
   getLinks() {
@@ -33,11 +33,9 @@ class NavBar extends React.Component {
               <li>Create Poll</li>
               <li>All Polls</li>
               <li>Voted Polls</li>
-              <li>Home</li>
-              <li>
-                <button className="logout-button" onClick={this.logoutUser}>
-                  Logout
-                </button>
+              <li>My Polls</li>
+              <li className="logout-button" onClick={this.logoutUser}>
+                Logout
               </li>
             </ul>
           </div>
