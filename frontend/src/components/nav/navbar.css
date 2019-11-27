@@ -22,17 +22,20 @@
 }
 
 .nav-mid {
-  width: 50%;
+  width: 30%;
 }
 
 .nav-right {
-  width: 25%;
+  /* width: 25%; */
   font-size: 23px;
+  position: relative;
+  right: -32px;
 }
 
 .nav-logo {
   font-size: 35px;
   margin-left: 4%;
+  cursor: pointer;
 }
 
 .signup-link,
@@ -41,11 +44,6 @@
   /* background-color: red; */
   cursor: pointer;
 }
-
-/* .signup-link:active,
-.login-link:active{
-  background-color: #405C51;
-} */
 
 .signup-link:hover,
 .login-link:hover{
@@ -58,3 +56,21 @@
   border-right: 1px solid white;
 }
 
+.nav-right-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-right-options li {
+  padding: 20px 10px;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: sans-serif;
+  border-right: 1px solid white;
+  cursor: pointer;
+}
+
+.nav-right-options li:hover{
+  background-color:rgb(124, 172, 154);
+  transition: 0.3s;
+}
