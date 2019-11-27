@@ -58,11 +58,13 @@ Pollidify is a minimal application created in one week.
 * Style `signup` and `login` animations to incorporate them into the `landing-page` - **Pavel**
 * Create `polls` model, routes, and actions - **Asaf**
 * Create `polls` validations and reducers - **Chang**
+* Create `choices` routes - **Asaf**
+* Create `choices` model and validations - **Chang**
 
 **Day 3**
-Poll Model and Validations
-Poll Routes
-Begin Poll frontend
+* Create `choice` reducer - **Chang**
+* Create `choice` util - **Asaf**
+* Create `choice` actions - **Pavel**
 
 **Day 4**
 Finish Poll frontend 
