@@ -28,7 +28,6 @@ export const fetchPolls = () => dispatch => (
 );
 
 export const fetchUserPolls = id => dispatch => {
-  debugger
   return getUserPolls(id)
     .then(polls => dispatch(receiveUserPolls(polls)))
     .catch(err => console.log(err))
