@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
-import MainPage from './main/main_page';
+import PollIndex from './polls/poll_index_container';
 import LandingPage from './landing_page';
 import './app.css';
 
@@ -51,7 +51,6 @@ class App extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if(nextState.form === this.state.form){
-      // debugger
       return false;
     }
     this.removeSlide();
@@ -59,8 +58,6 @@ class App extends React.Component {
   }
 
   showSignup() {
-    // this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
-
     setTimeout(() => {
       this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
     }, 100);
@@ -69,7 +66,6 @@ class App extends React.Component {
   }
 
   showLogin() {
-    // this.setState({ ...this.state, form: "login" }, this.toggleSlide);
     setTimeout(() => {
       this.setState({ ...this.state, form: "login" }, this.toggleSlide);
     }, 100);
@@ -77,9 +73,6 @@ class App extends React.Component {
     console.log("login clicked");
   }
 
-  // hideforms(){
-  //   this.setState({ form: "" });
-  // }
 
   render() {
     return (
@@ -89,10 +82,8 @@ class App extends React.Component {
           showLogin={this.showLogin}
         />
         <Switch>
-          <ProtectedRoute exact path="/polls" component={MainPage} />
-          <AuthRoute
-            path="/"
-            component={() => <LandingPage formType={this.state.form} />}
+          <ProtectedRoute exact path="/polls" component={PollIndex} />
+          <AuthRoute path="/" component={() => <LandingPage formType={this.state.form} />}
           />
         </Switch>
       </div>
