@@ -16,20 +16,17 @@ export default class PollShow extends React.Component{
   // }
 
   componentDidMount() {
-    // debugger
     this.props.fetchPoll(this.props.pollId);
   }
   
-
-  render() {
-    // debugger    
-    if (!this.props.state.entities.polls.new){
+  render() {   
+    if (!this.props.poll){
       return <h1>loading</h1>
     }
 
       return (
         <section className="poll-show-container">
-          <h3>{this.props.state.entities.polls.new.question}</h3>
+          <h3>{this.props.poll.question}</h3>
           <ul className="poll-choices">
             <li></li>
             <li></li>
