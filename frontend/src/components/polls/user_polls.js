@@ -31,9 +31,11 @@ class UserPolls extends React.Component {
           return (
             <div className="user-polls">
               <h2>All of Your Polls</h2>
-              {this.state.polls.map(poll => (
-                <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
-              ))}
+              <div className="user-poll">
+                {this.state.polls.map(poll => (
+                  <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
+                ))}
+              </div>
             </div>
           );
         }
