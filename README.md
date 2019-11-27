@@ -65,6 +65,9 @@ Pollidify is a minimal application created in one week.
 * Create `choice` reducer - **Chang**
 * Create `choice` util - **Asaf**
 * Create `choice` actions - **Pavel**
+* Create and style `poll-index` components - **Asaf**
+* Create and style `poll-show` components - **Pavel**
+* Create and style `user-polls` components - **Chang**
 
 **Day 4**
 Finish Poll frontend 
