@@ -22,11 +22,15 @@ class UserPolls extends React.Component {
     
     render() {
         if (this.state.polls.length === 0) {
-          return (<div>This user has no Polls</div>)
+          return (
+            <div classname="no-user-polls">
+              <h2>You have no Polls</h2>
+            </div>
+          )
         } else {
           return (
             <div className="user-polls">
-              <h2>All of This User's Polls</h2>
+              <h2>All of Your Polls</h2>
               {this.state.polls.map(poll => (
                 <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
               ))}

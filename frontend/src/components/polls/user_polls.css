@@ -1,0 +1,17 @@
+.user-polls h2, .no-user-polls h2 {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 100px;
+  color: white;
+  font-size: 45px;
+}
+
+.user-polls, .no-user-polls {
+  margin: 0 auto;
+  display: block;
+  margin-top: 100px;
+  width: 70%;
+  background: #9ADBC1;
+  border-radius: 20px;
+}
