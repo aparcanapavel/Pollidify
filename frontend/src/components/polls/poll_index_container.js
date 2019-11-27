@@ -4,7 +4,7 @@ import PollIndex from './poll_index';
 
 const msp = (state) => {
   return {
-    polls: Object.values(state.entities.polls)
+    polls: Object.values(state.entities.polls.all)
   };
 };
 
