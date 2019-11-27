@@ -4,7 +4,8 @@ import { fetchPoll } from '../../actions/poll_actions';
 
 const mstp = (state, ownProps) => {
   return {
-    poll: state.polls[ownProps.match.params.id],
+    poll: state.entities.polls[ownProps.match.params.id],
+    pollId: ownProps.match.params.id,
     loggedIn: state.session.isAuthenticated
   }
 }
