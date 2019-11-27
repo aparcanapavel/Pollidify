@@ -1,5 +1,5 @@
 import React from 'react';
-import PollShow from './poll_show.jsx';
+import PollShowContainer from './poll_show_container.js';
 
 class UserPolls extends React.Component {
     constructor(props) {
@@ -11,7 +11,6 @@ class UserPolls extends React.Component {
     }
     
     componentWillMount() {
-      // debugger
         console.log(this.props.currentUser.id)
         this.props.fetchUserPolls(this.props.currentUser.id);
     }
@@ -28,7 +27,7 @@ class UserPolls extends React.Component {
             <div>
               <h2>All of This User's Polls</h2>
               {this.state.polls.map(poll => (
-                <PollShow key={poll._id} question={poll.question} />
+                <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
               ))}
             </div>
           );

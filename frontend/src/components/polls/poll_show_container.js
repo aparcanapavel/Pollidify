@@ -3,12 +3,16 @@ import PollShow from './poll_show';
 import { fetchPoll } from '../../actions/poll_actions';
 
 const mstp = (state, ownProps) => {
-  // debugger;
-  return {
-    // poll: state.entities.polls.new[ownProps.match.params.id],
-    state,
-    pollId: ownProps.match.params.id,
-    loggedIn: state.session.isAuthenticated
+  if (ownProps.match) {
+    return {
+      poll: state.entities.polls.new[ownProps.match.params.id],
+      pollId: ownProps.match.params.id,
+      loggedIn: state.session.isAuthenticated
+    }
+  } else {
+    return {
+      loggedIn: state.session.isAuthenticated
+    }
   }
 }
 
