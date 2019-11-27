@@ -1,5 +1,6 @@
 import React from 'react';
 import PollShowContainer from './poll_show_container.js';
+import './user_polls.css';
 
 class UserPolls extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class UserPolls extends React.Component {
           return (<div>This user has no Polls</div>)
         } else {
           return (
-            <div>
+            <div className="user-polls">
               <h2>All of This User's Polls</h2>
               {this.state.polls.map(poll => (
                 <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
