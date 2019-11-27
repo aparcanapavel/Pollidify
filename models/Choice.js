@@ -12,4 +12,4 @@ const ChoiceSchema = new Schema({
   }
 })
 
-module.exports = User = mongoose.model('choices', ChoiceSchema);
+module.exports = Choice = mongoose.model('choices', ChoiceSchema);
