@@ -2,7 +2,7 @@ import { getPolls, getPoll, getUserPolls, writePoll } from '../util/poll_api_uti
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const RECEIVE_USER_POLLS = "RECEIVE_USER_POLL";
-export const RECEIVE_POLL = "RECEIVE_NEW_POLL";
+export const RECEIVE_POLL = "RECEIVE_POLL";
 
 
 export const receivePolls = polls => ({
@@ -28,7 +28,6 @@ export const fetchPolls = () => dispatch => (
 );
 
 export const fetchUserPolls = id => dispatch => {
-  debugger
   return getUserPolls(id)
     .then(polls => dispatch(receiveUserPolls(polls)))
     .catch(err => console.log(err))
