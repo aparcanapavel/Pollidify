@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./poll_index.css"
 
 
 class PollIndex extends React.Component {
@@ -17,10 +18,12 @@ class PollIndex extends React.Component {
       return null
     } 
       return (
-        <div>
-          <h2>All Polls</h2>
+        <div className="poll-index-main">
+          <h2 className="poll-index-h2">World Polls</h2>
           {this.props.polls.map(poll => (
-            <div> <Link to={`/polls/${poll._id}`}>{poll.question}</Link> </div>
+            <div className="poll-index-link"> 
+           <div className="poll-index-link-link"> <Link to={`/polls/${poll._id}`}>{poll.question}</Link> </div>
+            </div>
           ))}
         </div>
       );
