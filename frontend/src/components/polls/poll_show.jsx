@@ -1,4 +1,5 @@
 import React from 'react';
+import './poll_show.css';
 
 export default class PollShow extends React.Component{
   constructor(props){
@@ -21,11 +22,11 @@ export default class PollShow extends React.Component{
   
 
   render() {
-    debugger    
+    // debugger    
     if (!this.props.state.entities.polls.new){
       return <h1>loading</h1>
     }
-    
+
       return (
         <section className="poll-show-container">
           <h3>{this.props.state.entities.polls.new.question}</h3>

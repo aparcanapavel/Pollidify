@@ -15,7 +15,6 @@ const PollsReducer = (state = { all: {}, user: {}, new: undefined }, action) => 
       newState.user = action.polls.data;
       return newState;
     case RECEIVE_POLL:
-      debugger
       newState.new = action.poll.data;
       return newState;
     default:
