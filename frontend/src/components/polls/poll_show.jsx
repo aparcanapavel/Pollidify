@@ -9,6 +9,7 @@ export default class PollShow extends React.Component{
   }
 
   componentDidMount() {
+    console.log(this.props)
     if(!this.props.poll){
       this.props.fetchPoll(this.props.pollId);
     } else {
