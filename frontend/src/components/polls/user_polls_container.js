@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUserPolls } from '../../actions/poll_actions';
-import UserPolls from './user_polls';
+import UserPolls from './user_polls.js';
 
 const mapStateToProps = (state) => {
   return {
