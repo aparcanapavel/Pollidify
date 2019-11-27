@@ -15,3 +15,11 @@
   background: #9ADBC1;
   border-radius: 20px;
 }
+
+.user-poll {
+  display: block;
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 24px;
+  font-weight: bold;
+}
