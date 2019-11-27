@@ -51,7 +51,7 @@ class App extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if(nextState.form === this.state.form){
-      debugger
+      // debugger
       return false;
     }
     this.removeSlide();
