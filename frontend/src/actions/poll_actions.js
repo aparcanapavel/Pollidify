@@ -35,12 +35,13 @@ export const fetchUserPolls = id => dispatch => {
     .catch(err => console.log(err))
 };
 
-export const createPoll = data => dispatch => (
-  writePoll(data)
+export const createPoll = data => dispatch => {
+  debugger;
+  return writePoll(data)
     .then(payload => {
       dispatch(receivePoll(payload));
     }).catch(err => console.log(err))
-);
+  };
 
 export const fetchPoll = (id) => dispatch => {
   return getPoll(id)
