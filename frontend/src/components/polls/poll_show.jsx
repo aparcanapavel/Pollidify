@@ -4,7 +4,7 @@ import ChoicesContainer from "../choices/choices_container";
 
 export default class PollShow extends React.Component{
   componentDidMount() {
-    this.props.fetchPoll(this.props.pollId);
+    if (!this.props.inherited) this.props.fetchPoll(this.props.pollId);
   }
   
   render() {   
