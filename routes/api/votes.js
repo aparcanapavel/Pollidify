@@ -14,9 +14,9 @@ router.post('/:choice_id',
       voter_id: req.user.id,
       choice_id: req.params.choice_id
     });
-    newVote.save().then(vote => {
-      res.json('Vote cast successfully');
-    });
+    newVote.save().then(
+      res.json('Vote cast successfully')
+    );
   })
 
 module.exports = router;
