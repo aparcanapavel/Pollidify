@@ -1,7 +1,5 @@
-import {
-  RECEIVE_CHOICES,
-  RECEIVE_CHOICE
-} from '../actions/choice_actions';
+import { RECEIVE_CHOICES } from '../actions/choice_actions';
+import { RECEIVE_PAYLOAD } from '../actions/poll_actions';
 
 const ChoicesReducer = (state = { all: {}, new: undefined }, action) => {
   Object.freeze(state);
@@ -10,8 +8,8 @@ const ChoicesReducer = (state = { all: {}, new: undefined }, action) => {
     case RECEIVE_CHOICES:
       newState.all = action.polls.data;
       return newState;
-    case RECEIVE_CHOICE:
-      newState.new = action.poll.data;
+    case RECEIVE_PAYLOAD:
+      newState.new = action.payload.choices;
       return newState;
     default:
       return state;
