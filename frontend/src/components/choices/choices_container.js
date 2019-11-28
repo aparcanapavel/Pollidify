@@ -6,7 +6,8 @@ import { createVote } from '../../actions/votes_actions';
 const msp = (state, ownProps) => {
   return {
     pollId: state.entities.polls.new._id,
-    choices: Object.values(state.entities.choices.all)
+    choices: Object.values(state.entities.choices.all),
+    ownProps
   };
 };
 

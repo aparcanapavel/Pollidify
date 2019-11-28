@@ -13,7 +13,8 @@ class Choices extends React.Component {
   }
 
   castVote(){
-    this.props.createVote(this.state.choiceId);
+    this.props.createVote(this.state.choiceId).then(() => this.props.history.push('/polls'));
+    
   }
 
   updateVote(e, choiceId) {
