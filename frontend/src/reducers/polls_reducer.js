@@ -15,7 +15,7 @@ const PollsReducer = (state = { all: {}, user: {}, new: undefined }, action) => 
       newState.user = action.polls.data;
       return newState;
     case RECEIVE_PAYLOAD:
-      newState.new = action.payload.poll;
+      newState.new = action.payload.data;
       return newState;
     default:
       return state;

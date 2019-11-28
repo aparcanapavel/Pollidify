@@ -6,7 +6,7 @@ const ChoicesReducer = (state = { all: {}, new: undefined }, action) => {
   let newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_CHOICES:
-      newState.all = action.polls.data;
+      newState.all = action.choices.data;
       return newState;
     case RECEIVE_PAYLOAD:
       newState.new = action.payload.choices;
