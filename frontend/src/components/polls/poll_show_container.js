@@ -7,8 +7,7 @@ const mstp = (state, ownProps) => {
     return {
       poll: state.entities.polls.new,
       pollId: ownProps.match.params.id,
-      loggedIn: state.session.isAuthenticated,
-      inherited: false
+      loggedIn: state.session.isAuthenticated
     }
   } else {
     return {

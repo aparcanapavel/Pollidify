@@ -22,7 +22,7 @@ class VotedPolls extends React.Component {
   render() {
     if (this.state.polls.length === 0) {
       return (
-        <div classname="no-user-polls">
+        <div className="no-user-polls">
           <h2>You have no voted Polls</h2>
         </div>
       )
