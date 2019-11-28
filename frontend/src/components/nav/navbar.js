@@ -1,10 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import './navbar.css'
-import { AuthRoute } from '../../util/route_util';
-import SignupFormContainer from '../session/signup_form_container';
-import LoginFormContainer from '../session/login_form_container';
-import LandingPage from '../landing_page';
 import { withRouter } from "react-router-dom";
 
 
