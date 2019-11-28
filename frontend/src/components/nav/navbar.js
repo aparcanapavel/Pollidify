@@ -25,7 +25,7 @@ class NavBar extends React.Component {
           <div className="nav-bar-logged-in">
             <ul className="nav-right-options">
               <li>
-                <Link to="">Create Poll</Link>
+                <Link to="/polls/new">Create Poll</Link>
               </li>
               <li>
                 <Link to="/polls">All Polls</Link>
