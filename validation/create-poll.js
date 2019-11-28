@@ -6,7 +6,7 @@ module.exports = function validatePollInput(data) {
   let errors = {};
 
   data.question = validText(data.question) ? data.question : '';
-  data.question = validQuestion(data.question) ? data.question : 422;
+  debugger;
 
   if (!Validator.isLength(data.question, { min: 8, max: 100 })) {
     errors.question = 'Question must be between 8 and 100 characters';
@@ -14,10 +14,6 @@ module.exports = function validatePollInput(data) {
 
   if (Validator.isEmpty(data.question)) {
     errors.question = 'Question field cannot be empty';
-  }
-
-  if (Validator.isInt(data.question)) {
-    errors.question = 'Question field must contain a question mark at the end';
   }
 
   return {
