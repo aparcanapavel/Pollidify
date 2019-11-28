@@ -1,5 +1,3 @@
-// getVotes(choiceId)
-// createVote(choiceId)
 import * as VoteAPI from '../util/vote_api_util';
 
 export const RECEIVE_VOTES = "RECEIVE_VOTES";

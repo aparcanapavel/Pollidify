@@ -4,7 +4,6 @@ import { fetchChoices } from "../../actions/choice_actions";
 import { createVote } from '../../actions/votes_actions';
 
 const msp = (state, ownProps) => {
-
   return {
     pollId: state.entities.polls.new._id,
     choices: Object.values(state.entities.choices.all)

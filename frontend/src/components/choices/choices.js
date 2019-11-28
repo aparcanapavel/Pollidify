@@ -47,12 +47,12 @@ class Choices extends React.Component {
       return <h1>loading</h1>
     }
     const pollChoices = this.props.choices.map(choice => {
-      return <li 
+      return <button
         key={choice._id} 
         className="choice-response"
         onClick={(e) => this.updateVote(e, choice._id)}>
           {choice.response}
-      </li>
+      </button>
     });
 
 
