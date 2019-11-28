@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     );
 });
 
-router.post('/',
+router.post('/new',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validatePollInput(req.body);
@@ -48,7 +48,7 @@ router.post('/',
     newPoll.save().then(
       poll => {
         const choicesObj = {};
-        const choices = Array.from(JSON.parse(req.body.choices));
+        const choices = req.body.choices;
         for (let i = 0; i < choices.length; i++) {
           let choice = choices[i];
           let newChoice = new Choice({

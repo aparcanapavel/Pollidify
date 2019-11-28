@@ -13,6 +13,5 @@ export const getPoll = id => {
 }
 
 export const writePoll = data => {
-  debugger;
-  return axios.post('/api/polls', data)
+  return axios.post('/api/polls/new', data)
 }
