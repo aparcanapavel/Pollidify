@@ -31,20 +31,27 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/voted/:user_id', (req, res) => {
+  let polls = [];
+
   Vote.find({ voter_id: req.params.user_id })
-    .then(votes => {
-      let polls = [];
+    .then(votes => {    
       for (let i = 0; i < votes.length; i++) {
         let vote = votes[i];
-        Choice.find({ _id: vote.choice_id }).then(choice => {
-          Poll.find({ _id: choice.poll_id }).then(poll => {
-            polls.push(poll);
-          })
-        })
-      }
 
-      res.json(polls);
-      
+        Choice.find({ _id: vote.choice_id }).then(choices => {
+          for (let j = 0; j < choices.length; j++) {
+            let choice = choices[j];
+
+            Poll.findById(choice.poll_id).then(poll => {
+              polls.push(poll);
+
+              if (i === votes.length - 1 && j === choices.length - 1) {
+                res.json(polls);
+              }
+            });
+          }
+        });
+      }     
     })
     .catch(err => res.status(404).json({ noPolls: 'No polls found for that user' }));
 })

@@ -8,6 +8,7 @@ import './app.css';
 import PollShowContainer from './polls/poll_show_container';
 import UserPollsContainer from './polls/user_polls_container';
 import CreatePollContainer from './polls/poll_form_container';
+import VotedPollsContainer from './polls/voted_polls_container';
 
 class App extends React.Component {
   constructor(props) {
@@ -88,6 +89,12 @@ class App extends React.Component {
             exact
             path="/polls/user/:id"
             component={UserPollsContainer}
+          />
+
+          <ProtectedRoute 
+            exact
+            path="/polls/voted/:id"
+            component={VotedPollsContainer}
           />
 
           <ProtectedRoute

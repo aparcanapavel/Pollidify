@@ -10,8 +10,8 @@ class VotedPolls extends React.Component {
     }
   }
 
-  componentWillMount() {
-    console.log(this.props.currentUser.id)
+  componentDidMount() {
+    // console.log(this.props.currentUser.id)
     this.props.fetchVotedPolls(this.props.currentUser.id);
   }
 

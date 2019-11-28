@@ -17,5 +17,5 @@ export const writePoll = data => {
 }
 
 export const getVotedPolls = userId => {
-  return console.log("need to fetch voted polls");
+  return axios.get(`/api/polls/voted/${userId}`);
 }

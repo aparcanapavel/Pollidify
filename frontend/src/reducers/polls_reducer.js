@@ -22,9 +22,10 @@ const PollsReducer = (
       return newState;
 
     case RECEIVE_VOTED_POLLS:
-      newState.voted = action.votedPolls
+      // debugger
+      newState.voted = action.votedPolls.data;
       return newState
-      
+
     default:
       return state;
   }
