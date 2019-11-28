@@ -6,7 +6,6 @@ module.exports = function validatePollInput(data) {
   let errors = {};
 
   data.question = validText(data.question) ? data.question : '';
-  debugger;
 
   if (!Validator.isLength(data.question, { min: 8, max: 100 })) {
     errors.question = 'Question must be between 8 and 100 characters';
