@@ -1,3 +1,6 @@
+# ASK MARTIN ON:
+* `poll_show.jsx` has a `choices_container` that errors out when we first compile, it errors out. But when we then refresh, it then works.
+
 # Pollidify
 Pollidify is a global web application that allows users to create and respond to polls.
 
