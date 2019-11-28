@@ -24,7 +24,6 @@ class PollForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // debugger;
     e.preventDefault();
     let days = Date.now();
     days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
