@@ -20,7 +20,6 @@ class Choices extends React.Component {
     const choices = document.getElementsByClassName("choice-response");
 
     this.timer = setTimeout(() => {
-      console.log("changing state..")
       this.setState({ choiceId: choiceId });
     }, 300);
 
