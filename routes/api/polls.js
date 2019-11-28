@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const passport = require('passport');
 const Poll = require('../../models/Poll');
+const Choice = require('../../models/Choice');
 const validatePollInput = require('../../validation/create-poll');
-
 
 router.get('/', (req, res) => {
   Poll.find()
@@ -44,7 +44,26 @@ router.post('/',
       poller_id: req.user.id
     });
 
-    newPoll.save().then(poll => res.json(poll));
+    newPoll.save().then(
+      poll => {
+        const choicesObj = {};
+        const choices = Array.from(JSON.parse(req.body.choices));
+        for (let i = 0; i < choices.length; i++) {
+          let choice = choices[i];
+          let newChoice = new Choice({
+            response: choice,
+            poll_id: poll.id
+          });
+          newChoice.save().then(choice => {
+            choicesObj[choice._id] = choice;
+            if (i === choices.length - 1) {
+              res.send({poll: poll, choices: choicesObj});
+            }
+          });
+        };
+        
+      }
+    );
   }
 );
 

@@ -33,7 +33,7 @@ class UserPolls extends React.Component {
               <h2>All of Your Polls</h2>
               <div className="user-poll">
                 {this.state.polls.map(poll => (
-                  <PollShowContainer key={poll._id} question={poll.question} poll={poll} />
+                  <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} />
                 ))}
               </div>
             </div>
