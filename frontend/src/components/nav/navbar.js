@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import './navbar.css'
-import { AuthRoute } from '../../util/route_util';
-import SignupFormContainer from '../session/signup_form_container';
-import LoginFormContainer from '../session/login_form_container';
-import LandingPage from '../landing_page';
 import { withRouter } from "react-router-dom";
 
 
@@ -30,10 +26,18 @@ class NavBar extends React.Component {
         return (
           <div className="nav-bar-logged-in">
             <ul className="nav-right-options">
-              <li>Create Poll</li>
-              <li>All Polls</li>
-              <li>Voted Polls</li>
-              <li>My Polls</li>
+              <li>
+                <Link to="">Create Poll</Link>
+              </li>
+              <li>
+                <Link to="/polls">All Polls</Link>
+              </li>
+              <li>
+                <Link to="">Voted Polls</Link>
+              </li>
+              <li>
+                <Link to={`/polls/user/${this.props.currentUser.id}`}>My Polls</Link>
+              </li>
               <li className="logout-button" onClick={this.logoutUser}>
                 Logout
               </li>

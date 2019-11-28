@@ -73,8 +73,12 @@
   color: white;
 }
 
+.nav-right-options li:last-child{
+  border-right: 0px;
+}
+
 .nav-right-options li:hover{
-  background: rgb(136,194,160);
-background: linear-gradient(180deg, rgba(136,194,160,0.7175245098039216) 0%, rgba(124,172,154,1) 51%, rgba(136,194,160,0.7063200280112045) 99%);
+  /* background: rgb(136,194,160); */
+  background: linear-gradient(180deg, rgba(136,194,160,0.7175245098039216) 0%, rgba(124,172,154,1) 51%, rgba(136,194,160,0.7063200280112045) 99%);
   transition: 0.3s;
 }

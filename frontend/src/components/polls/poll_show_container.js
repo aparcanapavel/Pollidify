@@ -8,6 +8,7 @@ const mstp = (state, ownProps) => {
       poll: state.entities.polls.new,
       pollId: ownProps.match.params.id,
       loggedIn: state.session.isAuthenticated,
+      inherited: false
     }
   } else {
     return {
