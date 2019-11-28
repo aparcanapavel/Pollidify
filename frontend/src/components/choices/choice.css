@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+.choice-response:focus{
+  outline: none;
+}
+
 .selected {
   border: 1px solid #6D9C89;
   background-color: rgb(250, 250, 250);
