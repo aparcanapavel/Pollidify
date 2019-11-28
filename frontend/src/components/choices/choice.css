@@ -3,15 +3,15 @@
   font-family: sans-serif;
 }
 .choice-response {
-  padding: 10px;
   transition: 0.3s;
   width: 100%;
   border: 1px solid transparent; 
   margin: 3px 0px;
   padding: 10px 0px;
-  padding-left: 8px;
+  /* padding-left: 8px; */
   border-radius: 3px;
   box-sizing: border-box;
+  font-size: 15px;
 }
 
 .choice-response:focus{

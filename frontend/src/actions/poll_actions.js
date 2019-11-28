@@ -1,8 +1,15 @@
-import { getPolls, getPoll, getUserPolls, writePoll } from '../util/poll_api_util';
+import {
+  getPolls,
+  getPoll,
+  getUserPolls,
+  writePoll,
+  getVotedPolls
+} from "../util/poll_api_util";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const RECEIVE_USER_POLLS = "RECEIVE_USER_POLL";
 export const RECEIVE_PAYLOAD = "RECEIVE_PAYLOAD";
+export const RECEIVE_VOTED_POLLS = "RECEIVE_VOTED_POLLS";
 
 
 export const receivePolls = polls => ({
@@ -22,6 +29,12 @@ export const receivePoll = payload => {
   }
 };
 
+export const receiveVotedPolls = votedPolls => {
+  return {
+    type: RECEIVE_VOTED_POLLS,
+    votedPolls
+  }
+}
 
 export const fetchPolls = () => dispatch => (
   getPolls()
@@ -47,4 +60,10 @@ export const fetchPoll = (id) => dispatch => {
   return getPoll(id)
     .then(poll => dispatch(receivePoll(poll)))
     .catch(err => console.log(err))
+}
+
+export const fetchVotedPolls = userId => dispatch => {
+  return getVotedPolls(userId)
+    .then(votedPolls => dispatch(receiveVotedPolls(votedPolls)))
+    .catch(err => console.log(err));
 }

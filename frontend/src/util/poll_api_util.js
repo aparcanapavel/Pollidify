@@ -15,3 +15,7 @@ export const getPoll = id => {
 export const writePoll = data => {
   return axios.post('/api/polls/new', data)
 }
+
+export const getVotedPolls = userId => {
+  return console.log("need to fetch voted polls");
+}

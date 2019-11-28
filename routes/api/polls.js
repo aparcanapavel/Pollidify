@@ -4,6 +4,7 @@ const passport = require('passport');
 const Poll = require('../../models/Poll');
 const Choice = require('../../models/Choice');
 const validatePollInput = require('../../validation/create-poll');
+const Vote = require('../../models/Vote');
 
 router.get('/', (req, res) => {
   Poll.find()
@@ -28,6 +29,25 @@ router.get('/:id', (req, res) => {
       res.status(404).json({ notPolls: 'No poll found with that ID' })
     );
 });
+
+router.get('/voted/:user_id', (req, res) => {
+  Vote.find({ voter_id: req.params.user_id })
+    .then(votes => {
+      let polls = [];
+      for (let i = 0; i < votes.length; i++) {
+        let vote = votes[i];
+        Choice.find({ _id: vote.choice_id }).then(choice => {
+          Poll.find({ _id: choice.poll_id }).then(poll => {
+            polls.push(poll);
+          })
+        })
+      }
+
+      res.json(polls);
+      
+    })
+    .catch(err => res.status(404).json({ noPolls: 'No polls found for that user' }));
+})
 
 router.post('/new',
   passport.authenticate('jwt', { session: false }),
