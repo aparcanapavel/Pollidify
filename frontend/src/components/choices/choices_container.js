@@ -3,8 +3,9 @@ import Choices from './choices';
 import { fetchChoices } from "../../actions/choice_actions";
 
 const msp = (state, ownProps) => {
+  debugger
   return {
-    pollId: ownProps.match.params.id,
+    pollId: state.entities.polls.new._id,
     choices: Object.values(state.entities.choices.all)
   };
 };
