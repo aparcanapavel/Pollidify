@@ -76,31 +76,108 @@ class PollForm extends React.Component {
   render() {
     return (
       <div className="create-poll-form-div">
+        <h3>New Poll</h3>
+        
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
               Question:
-              <input type="text" value={this.state.question} onChange={this.update("question")} placeholder="Your question here" />
+              <br />
+              <input
+                type="text"
+                value={this.state.question}
+                onChange={this.update("question")}
+                placeholder="Your question here"
+              />
             </label>
+
+            <br />
+            <br />
 
             <label>
               Duration (in days):
-              <input type="number" min="1" max="90" value={this.state.expiration_date} onChange={this.update("expiration_date")} />
+              <input
+                type="number"
+                min="1"
+                max="90"
+                value={this.state.expiration_date}
+                onChange={this.update("expiration_date")}
+              />
             </label>
-
+            <br />
+            <br />
             <div className="choices-form-div">
               <label>
                 Choices:
-                <input type="text" value={this.state.choice1} onChange={this.update("choice1")} placeholder="Choice 1" />
-                <input type="text" value={this.state.choice2} onChange={this.update("choice2")} placeholder="Choice 2" />
-                <input type="text" value={this.state.choice3} onChange={this.update("choice3")} placeholder="Choice 3" />
-                <input type="text" value={this.state.choice4} onChange={this.update("choice4")} placeholder="Choice 4" />
-                <input type="text" value={this.state.choice5} onChange={this.update("choice5")} placeholder="Choice 5" />
-                <input type="text" value={this.state.choice6} onChange={this.update("choice6")} placeholder="Choice 6" />
-                <input type="text" value={this.state.choice7} onChange={this.update("choice7")} placeholder="Choice 7" />
-                <input type="text" value={this.state.choice8} onChange={this.update("choice8")} placeholder="Choice 8" />
-                <input type="text" value={this.state.choice9} onChange={this.update("choice9")} placeholder="Choice 9" />
-                <input type="text" value={this.state.choice10} onChange={this.update("choice10")} placeholder="Choice 10" />
+                <input
+                  type="text"
+                  value={this.state.choice1}
+                  onChange={this.update("choice1")}
+                  placeholder="Choice 1"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice2}
+                  onChange={this.update("choice2")}
+                  placeholder="Choice 2"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice3}
+                  onChange={this.update("choice3")}
+                  placeholder="Choice 3"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice4}
+                  onChange={this.update("choice4")}
+                  placeholder="Choice 4"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice5}
+                  onChange={this.update("choice5")}
+                  placeholder="Choice 5"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice6}
+                  onChange={this.update("choice6")}
+                  placeholder="Choice 6"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice7}
+                  onChange={this.update("choice7")}
+                  placeholder="Choice 7"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice8}
+                  onChange={this.update("choice8")}
+                  placeholder="Choice 8"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice9}
+                  onChange={this.update("choice9")}
+                  placeholder="Choice 9"
+                />
+                <br/>
+                <input
+                  type="text"
+                  value={this.state.choice10}
+                  onChange={this.update("choice10")}
+                  placeholder="Choice 10"
+                />
               </label>
             </div>
 
@@ -109,7 +186,7 @@ class PollForm extends React.Component {
         </form>
         <br />
       </div>
-    )
+    );
   }
 }
 

@@ -1,5 +1,64 @@
 .create-poll-form-div {
   display: block;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 105px;
+  position: relative;
+  width: 70%;
+  font-family: sans-serif;
+}
+
+.create-poll-form-div h3{
+  text-align: center;
+  font-size: 25px;
+  color: #6D9C89;
+  margin-bottom: 25px;
+}
+
+.create-poll-form-div form{
+  border: 1px solid #405C51;
+  padding: 50px;
+  border-radius: 7px;
+}
+
+.create-poll-form-div form input[type="number"]{
+  width: 50px;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid  rgb(235, 235, 235);
+  -webkit-appearance: searchfield; 
+  margin: 3px 0px;
+  padding: 10px 0px;
+  padding-left: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+.create-poll-form-div  input {
+  width: 100%;
+  background-color: rgb(250, 250, 250);
+  border: 1px solid  rgb(235, 235, 235);
+  -webkit-appearance: searchfield; 
+  margin: 3px 0px;
+  padding: 10px 0px;
+  padding-left: 8px;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.create-poll-form-div form input[type="submit"]{
+  background-color: #88C2AB;
+  color: white;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  transition: background-color 0.2s;
+}
+
+.create-poll-form-div form input[type="submit"]:hover{
+  background-color: #6D9C89;
 }
