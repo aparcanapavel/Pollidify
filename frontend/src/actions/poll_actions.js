@@ -36,7 +36,7 @@ export const fetchUserPolls = id => dispatch => {
 };
 
 export const createPoll = data => dispatch => {
-  debugger;
+
   return writePoll(data)
     .then(payload => {
       dispatch(receivePoll(payload));
