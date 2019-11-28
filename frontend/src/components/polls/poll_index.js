@@ -4,11 +4,6 @@ import "./poll_index.css"
 
 
 class PollIndex extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   componentDidMount() {
     this.props.fetchPolls();
   }

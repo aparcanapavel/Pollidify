@@ -3,10 +3,6 @@ import './poll_show.css';
 import ChoicesContainer from "../choices/choices_container";
 
 export default class PollShow extends React.Component{
-  constructor(props){
-    super(props); 
-  }
-
   componentDidMount() {
     this.props.fetchPoll(this.props.pollId);
   }
