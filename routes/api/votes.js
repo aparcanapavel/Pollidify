@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Vote = require('../../models/Vote');
+const passport = require('passport');
 
 router.get('/:choice_id', (req, res) => {
   Vote.find({choice_id: req.params.choice_id})
@@ -9,6 +10,7 @@ router.get('/:choice_id', (req, res) => {
 });
 
 router.post('/:choice_id',
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const newVote = new Vote({
       voter_id: req.user.id,
