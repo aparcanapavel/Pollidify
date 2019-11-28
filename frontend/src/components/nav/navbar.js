@@ -31,10 +31,14 @@ class NavBar extends React.Component {
                 <Link to="/polls">All Polls</Link>
               </li>
               <li>
-                <Link to="">Voted Polls</Link>
+                <Link to={`/polls/voted/${this.props.currentUser.id}`}>
+                  Voted Polls
+                </Link>
               </li>
               <li>
-                <Link to={`/polls/user/${this.props.currentUser.id}`}>My Polls</Link>
+                <Link to={`/polls/user/${this.props.currentUser.id}`}>
+                  My Polls
+                </Link>
               </li>
               <li className="logout-button" onClick={this.logoutUser}>
                 Logout
