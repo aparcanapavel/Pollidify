@@ -12,7 +12,8 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => {
   return {
-    fetchChoices: (pollId) => dispatch(fetchChoices(pollId))
+    fetchChoices: (pollId) => dispatch(fetchChoices(pollId)),
+    createVote: choiceId => dispatch(createVote(choiceId))
   };
 };
 
