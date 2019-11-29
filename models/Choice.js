@@ -17,9 +17,9 @@ ChoiceSchema.index({
   poll_id: 1
 })
 
-ChoiceSchema.pre('deleteOne', function (next) {
+ChoiceSchema.pre('deleteMany', function (next) {
   const choiceId = this.getQuery()["_id"];
-  VoteSchema.deleteMany({'choice_id': choiceId}, function (err, result) {
+  VoteSchema.deleteMany({'choice_id': choiceId}, function (err) {
     if (err) {
       console.log(`[error] ${err}`);
       next(err);

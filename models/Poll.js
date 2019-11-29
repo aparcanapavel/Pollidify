@@ -25,9 +25,9 @@ PollSchema.index({
   poller_id: 1
 });
 
-PollSchema.pre('deleteOne', function (next) {
+PollSchema.pre('destroy', function (next) {
   let pollId = this.getQuery()["_id"];
-  ChoiceSchema.deleteMany({'poll_id': pollId}, function (err, result) {
+  ChoiceSchema.deleteMany({'poll_id': pollId}, function (err) {
     if (err) {
       console.log(`[error] ${err}`);
       next(err);
