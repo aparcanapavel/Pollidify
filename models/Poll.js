@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ChoiceSchema = require('./Choice.js');
 
 const PollSchema = new Schema({
   question: {

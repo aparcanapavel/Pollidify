@@ -1,5 +1,4 @@
 # ASK MARTIN ON:
-* `poll_show.jsx` has a `choices_container` that errors out when we first compile, it errors out. But when we then refresh, it then works.
 * `voted_polls.js` when first loaded in shows all voted polls correctly, but when you refresh the page, one of the polls disappears.
 
 # Pollidify
@@ -78,9 +77,15 @@ Pollidify is a minimal application created in one week.
 * Create `poll-show-choices` container - **Pavel**
 
 **Day 4**
-Finish Poll frontend 
-Choices Model and Validations
-Choices Routes
+* Style `new-poll-form` - **Pavel**
+* Create `votes` model and utils - **Asaf**
+* Create `votes` actions and reducers - **Pavel**
+* Create `voted-polls` components - **Chang**
+* Add redirect functionality to `votes` - **Asaf**
+* Create `choice-list` animations - **Pavel**
+* Begin `stats-show-page` skeleton components - **Chang**
+* Add functionality to `navbar` and styling - **Pavel**
+* Debugging - **ALL**
 
 **Day 5**
 Choice Frontend

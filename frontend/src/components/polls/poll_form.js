@@ -7,7 +7,7 @@ class PollForm extends React.Component {
 
     this.state = {
       question: "",
-      expiration_date: Date.now,
+      expiration_date: null,
       choice1: "",
       choice2: "",
       choice3: "",
@@ -25,9 +25,12 @@ class PollForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let days = Date.now();
-    days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
-    days = new Date(days);
+    let days;
+    if (this.state.expiration_date) {
+      days = Date.now();
+      days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
+      days = new Date(days);
+    } 
 
     let state = {
       question: this.state.question, 
@@ -52,7 +55,7 @@ class PollForm extends React.Component {
     this.props.createPoll(state); 
     this.setState({
       question: "",
-      expiration_date: Date.now,
+      expiration_date: null,
       choice1: "",
       choice2: "",
       choice3: "",
@@ -72,11 +75,32 @@ class PollForm extends React.Component {
     });
   }
 
+
+  renderFormErrors() {
+    return (
+      <ul>
+        {(this.props.formErrors).map((error, i) => (
+          <li key={`error-f-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  renderChoiceErrors() {
+    return (
+      <ul>
+        {(this.props.choiceErrors).map((error, i) => (
+          <li key={`error-c-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div className="create-poll-form-div">
         <h3>New Poll</h3>
-        
+        {this.renderFormErrors()}
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
@@ -106,6 +130,7 @@ class PollForm extends React.Component {
             <br />
             <br />
             <div className="choices-form-div">
+              {this.renderChoiceErrors()}
               <label>
                 Choices:
                 <input
