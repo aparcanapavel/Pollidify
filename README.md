@@ -1,5 +1,4 @@
 # ASK MARTIN ON:
-* `poll_show.jsx` has a `choices_container` that errors out when we first compile, it errors out. But when we then refresh, it then works.
 * `voted_polls.js` when first loaded in shows all voted polls correctly, but when you refresh the page, one of the polls disappears.
 
 # Pollidify
