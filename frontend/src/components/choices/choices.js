@@ -33,7 +33,7 @@ class Choices extends React.Component {
 
   componentDidMount () {
     this.props.fetchChoices(this.props.pollId).then(() => {
-      this.forceUpdate(); // for martin
+      this.forceUpdate();
     });
   }
 
@@ -41,6 +41,7 @@ class Choices extends React.Component {
     clearTimeout(this.timer);
   }
 
+ 
   render () {
     if (!this.props.choices) {
       this.forceUpdate();

@@ -7,21 +7,17 @@ class LoginForm extends React.Component {
 
     this.state = {
       username: '',
-      password: '',
-      errors: {}
+      password: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.currentUser === true) {
-  //     this.props.history.push('/');
-  //   }
+  componentDidMount() {
+    this.props.clearErrors();
+  }
 
-  //   this.setState({ errors: nextProps.errors })
-  // }
 
   update(field) {
     return e => this.setState({
@@ -40,14 +36,11 @@ class LoginForm extends React.Component {
     this.props.login(user);
   }
 
-
   renderErrors() {
     return (
-      <ul className="session-form-errors">
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li className="session-errors" key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
+      <ul>
+        {(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
