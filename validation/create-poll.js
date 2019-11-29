@@ -15,6 +15,10 @@ module.exports = function validatePollInput(data) {
     errors.question = 'Question field cannot be empty';
   }
 
+  if (data.expiration_date === undefined) {
+    errors.expiration_date = "Duration must be between 1 and 90"
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0

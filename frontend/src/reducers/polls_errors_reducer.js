@@ -13,7 +13,7 @@ const PollsErrorsReducer = (state = _nullErrors, action) => {
       return _nullErrors;
 
     case RECEIVE_POLL_ERRORS:
-      return Object.assign({}, state, action.error);
+      return Object.assign([], state, action.errors);
   
     default:
       return state;
