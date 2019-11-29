@@ -1,5 +1,6 @@
 import React from 'react';
 import './poll_form.css';
+import { withRouter } from 'react-router-dom';
 
 class PollForm extends React.Component {
   constructor(props) {
@@ -48,9 +49,11 @@ class PollForm extends React.Component {
     }
 
     state.choices = Object.values(state.choices).filter(Boolean);
-    console.log(state);
 
-    this.props.createPoll(state); 
+    this.props.createPoll(state).then(() => {
+      this.props.history.push(`/polls/user/${this.props.currentUser.id}`);
+    }); 
+    
     this.setState({
       question: "",
       expiration_date: 1,
@@ -108,6 +111,7 @@ class PollForm extends React.Component {
                 type="text"
                 value={this.state.question}
                 onChange={this.update("question")}
+                maxLength="100"
                 placeholder="Your question here"
               />
             </label>
@@ -135,6 +139,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice1}
                   onChange={this.update("choice1")}
+                  maxLength="60"
                   placeholder="Choice 1"
                 />
                 <br/>
@@ -142,6 +147,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice2}
                   onChange={this.update("choice2")}
+                  maxLength="60"
                   placeholder="Choice 2"
                 />
                 <br/>
@@ -149,6 +155,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice3}
                   onChange={this.update("choice3")}
+                  maxLength="60"
                   placeholder="Choice 3"
                 />
                 <br/>
@@ -156,6 +163,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice4}
                   onChange={this.update("choice4")}
+                  maxLength="60"
                   placeholder="Choice 4"
                 />
                 <br/>
@@ -163,6 +171,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice5}
                   onChange={this.update("choice5")}
+                  maxLength="60"
                   placeholder="Choice 5"
                 />
                 <br/>
@@ -170,6 +179,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice6}
                   onChange={this.update("choice6")}
+                  maxLength="60"
                   placeholder="Choice 6"
                 />
                 <br/>
@@ -177,6 +187,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice7}
                   onChange={this.update("choice7")}
+                  maxLength="60"
                   placeholder="Choice 7"
                 />
                 <br/>
@@ -184,6 +195,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice8}
                   onChange={this.update("choice8")}
+                  maxLength="60"
                   placeholder="Choice 8"
                 />
                 <br/>
@@ -191,6 +203,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice9}
                   onChange={this.update("choice9")}
+                  maxLength="60"
                   placeholder="Choice 9"
                 />
                 <br/>
@@ -198,6 +211,7 @@ class PollForm extends React.Component {
                   type="text"
                   value={this.state.choice10}
                   onChange={this.update("choice10")}
+                  maxLength="60"
                   placeholder="Choice 10"
                 />
               </label>
@@ -212,4 +226,4 @@ class PollForm extends React.Component {
   }
 }
 
-export default PollForm;
+export default withRouter(PollForm);
