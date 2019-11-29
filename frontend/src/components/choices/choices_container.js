@@ -5,7 +5,7 @@ import { createVote } from '../../actions/votes_actions';
 
 const msp = (state, ownProps) => {
   return {
-    pollId: state.entities.polls.new._id,
+    pollId: ownProps.pollId,
     choices: Object.values(state.entities.choices.all),
     ownProps
   };
