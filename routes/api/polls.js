@@ -4,6 +4,7 @@ const passport = require('passport');
 const Poll = require('../../models/Poll');
 const Choice = require('../../models/Choice');
 const validatePollInput = require('../../validation/create-poll');
+const validateChoiceInput = require('../../validation/create-choice');
 const Vote = require('../../models/Vote');
 
 router.get('/', (req, res) => {
@@ -61,7 +62,6 @@ router.post('/new',
   (req, res) => {
     const { errors, isValid } = validatePollInput(req.body);
 
-
     if (!isValid) {
       return res.status(400).json(errors);
     }
@@ -72,26 +72,35 @@ router.post('/new',
       poller_id: req.user.id
     });
 
-    newPoll.save().then(
-      poll => {
-        const choicesObj = {};
-        const choices = req.body.choices;
-        for (let i = 0; i < choices.length; i++) {
-          let choice = choices[i];
-          let newChoice = new Choice({
-            response: choice,
-            poll_id: poll.id
-          });
-          newChoice.save().then(choice => {
-            choicesObj[choice._id] = choice;
-            if (i === choices.length - 1) {
-              res.send({poll: poll, choices: choicesObj});
+    if (req.body.choices.length >= 2) {
+      newPoll.save().then(
+        poll => {
+          const choicesObj = {};
+          const choices = req.body.choices;
+          for (let i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            const { choiceErrors, isChoiceValid } = validateChoiceInput(choice);
+
+            if (!isChoiceValid) {
+              res.status(400).json(choiceErrors);
             }
-          });
-        };
-        
-      }
-    );
+            
+            let newChoice = new Choice({
+              response: choice,
+              poll_id: poll.id
+            });
+            newChoice.save().then(choice => {
+              choicesObj[choice._id] = choice;
+              if (i === choices.length - 1) {
+                res.send({poll: poll, choices: choicesObj});
+              }
+            });
+          };
+        }
+      );
+    } else {
+      res.status(423).send({ choices: "Poll must contain at least two choices"})
+    }
   }
 );
 
