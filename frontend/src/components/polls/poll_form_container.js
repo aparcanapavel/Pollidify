@@ -5,7 +5,9 @@ import PollForm from './poll_form';
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.user,
-    payload: state.entities.polls.new
+    payload: state.entities.polls.new,
+    formErrors: state.errors.poll,
+    choiceErrors: state.errors.choices
   }
 }
 
