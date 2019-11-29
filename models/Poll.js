@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ChoiceSchema = require('./Choice.js');
 
 const PollSchema = new Schema({
   question: {
@@ -23,19 +22,6 @@ const PollSchema = new Schema({
 
 PollSchema.index({
   poller_id: 1
-});
-
-PollSchema.pre('deleteOne', function (next) {
-  let pollId = this.getQuery()["_id"];
-  ChoiceSchema.deleteMany({'poll_id': pollId}, function (err, result) {
-    if (err) {
-      console.log(`[error] ${err}`);
-      next(err);
-    } else {
-      console.log('success');
-      next();
-    }
-  });
-});
+})
 
 module.exports = Poll = mongoose.model('polls', PollSchema);
