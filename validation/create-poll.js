@@ -1,5 +1,4 @@
 const Validator = require('validator');
-const validQuestion = require('./valid-question');
 const validText = require('./valid-text');
 
 module.exports = function validatePollInput(data) {
@@ -15,8 +14,11 @@ module.exports = function validatePollInput(data) {
     errors.question = 'Question field cannot be empty';
   }
 
-  if (data.expiration_date === undefined) {
-    errors.expiration_date = "Duration must be between 1 and 90"
+  let dateObj = new Date(data.expiration_date);
+  let today = new Date();
+
+  if (dateObj.getTime() - today.getTime() > 1000*60*60*24*90) {
+    errors.expiration_date = 'Duration cannot be longer than 90 days';
   }
 
   return {

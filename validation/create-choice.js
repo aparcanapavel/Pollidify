@@ -2,20 +2,20 @@ const Validator = require('validator');
 const validText = require('./valid-text');
 
 module.exports = function validateChoiceInput(data) {
-  let errors = {};
+  let choiceErrors = {};
 
-  data.response = validText(data.response) ? data.response : '';
+  data = validText(data) ? data : '';
 
-  if (!Validator.isLength(data.response, { min: 1, max: 60 })) {
-    errors.response = 'Response must be between 1 and 60 characters';
+  if (!Validator.isLength(data, { min: 1, max: 60 })) {
+    choiceErrors.response = 'Response must be between 1 and 60 characters';
   }
 
-  if (Validator.isEmpty(data.response)) {
-    errors.response = 'Response field cannot be empty';
+  if (Validator.isEmpty(data)) {
+    choiceErrors.response = 'Invalid response input';
   }
 
   return {
-    errors,
-    isValid: Object.keys(errors).length === 0
+    choiceErrors,
+    isChoiceValid: Object.keys(choiceErrors).length === 0
   };
 };
