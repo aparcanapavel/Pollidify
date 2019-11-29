@@ -73,11 +73,21 @@ class PollForm extends React.Component {
   }
 
 
-  renderErrors() {
+  renderFormErrors() {
     return (
       <ul>
-        {(this.props.errors).map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+        {(this.props.formErrors).map((error, i) => (
+          <li key={`error-f-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  renderChoiceErrors() {
+    return (
+      <ul>
+        {(this.props.choiceErrors).map((error, i) => (
+          <li key={`error-c-${i}`}>{error}</li>
         ))}
       </ul>
     );
@@ -87,7 +97,7 @@ class PollForm extends React.Component {
     return (
       <div className="create-poll-form-div">
         <h3>New Poll</h3>
-        {this.renderErrors()}
+        {this.renderFormErrors()}
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
@@ -117,6 +127,7 @@ class PollForm extends React.Component {
             <br />
             <br />
             <div className="choices-form-div">
+              {this.renderChoiceErrors()}
               <label>
                 Choices:
                 <input

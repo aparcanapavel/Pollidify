@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.session.user,
     payload: state.entities.polls.new,
-    errors: Object.values(state.errors.pollForm)
+    formErrors: state.errors.poll,
+    choiceErrors: state.errors.choices
   }
 }
 
