@@ -7,7 +7,7 @@ class PollForm extends React.Component {
 
     this.state = {
       question: "",
-      expiration_date: Date.now,
+      expiration_date: null,
       choice1: "",
       choice2: "",
       choice3: "",
@@ -25,9 +25,12 @@ class PollForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let days = Date.now();
-    days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
-    days = new Date(days);
+    let days;
+    if (this.state.expiration_date) {
+      days = Date.now();
+      days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
+      days = new Date(days);
+    } 
 
     let state = {
       question: this.state.question, 
@@ -52,7 +55,7 @@ class PollForm extends React.Component {
     this.props.createPoll(state); 
     this.setState({
       question: "",
-      expiration_date: Date.now,
+      expiration_date: null,
       choice1: "",
       choice2: "",
       choice3: "",
