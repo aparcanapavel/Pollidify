@@ -6,21 +6,21 @@ class VotedPolls extends React.Component {
     super(props);
 
     this.state = {
-      polls: []
+     loading: true
     }
   }
 
   componentDidMount() {
-    // console.log(this.props.currentUser.id)
-    this.props.fetchVotedPolls(this.props.currentUser.id);
+    this.props.fetchVotedPolls(this.props.currentUser.id).then(() => this.setState({loading: false}));
   }
 
-  componentWillReceiveProps(newState) {
-    this.setState({ polls: newState.polls });
-  }
 
   render() {
-    if (this.state.polls.length === 0) {
+    if (this.state.loading) {
+      return <h1>Loading</h1>
+    }
+
+    if (this.props.polls.length === 0) {
       return (
         <div className="no-user-polls">
           <h2>You have no voted Polls</h2>
@@ -31,7 +31,7 @@ class VotedPolls extends React.Component {
         <div className="voted-polls">
           <h2>All of Your Voted Polls</h2>
           <div className="voted-poll">
-            {this.state.polls.map(poll => (
+            {this.props.polls.map(poll => (
               <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} />
             ))}
           </div>
