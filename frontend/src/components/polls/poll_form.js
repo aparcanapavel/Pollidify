@@ -72,11 +72,22 @@ class PollForm extends React.Component {
     });
   }
 
+
+  renderErrors() {
+    return (
+      <ul>
+        {(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div className="create-poll-form-div">
         <h3>New Poll</h3>
-        
+        {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
