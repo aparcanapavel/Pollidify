@@ -10,7 +10,7 @@ export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const RECEIVE_USER_POLLS = "RECEIVE_USER_POLL";
 export const RECEIVE_PAYLOAD = "RECEIVE_PAYLOAD";
 export const RECEIVE_VOTED_POLLS = "RECEIVE_VOTED_POLLS";
-
+export const RECEIVE_POLL_ERRORS = 'RECEIVE_POLL_ERRORS';
 
 export const receivePolls = polls => ({
   type: RECEIVE_POLLS,
@@ -36,16 +36,23 @@ export const receiveVotedPolls = votedPolls => {
   }
 }
 
+export const receivePollErrors = errors => {
+  return {
+    type: RECEIVE_POLL_ERRORS,
+    errors
+  }
+}
+
 export const fetchPolls = () => dispatch => (
   getPolls()
     .then(polls => dispatch(receivePolls(polls)))
-    .catch(err => console.log(err))
+    .catch(err => dispatch(receivePollErrors(err.response.data))) //may need to be err.responseJSON
 );
 
 export const fetchUserPolls = id => dispatch => {
   return getUserPolls(id)
     .then(polls => dispatch(receiveUserPolls(polls)))
-    .catch(err => console.log(err))
+    .catch(err => dispatch(receivePollErrors(err.response.data)))
 };
 
 export const createPoll = data => dispatch => {
@@ -53,13 +60,13 @@ export const createPoll = data => dispatch => {
   return writePoll(data)
     .then(payload => {
       dispatch(receivePoll(payload));
-    }).catch(err => console.log(err))
+    }).catch(err => dispatch(receivePollErrors(err.response.data)))
   };
 
 export const fetchPoll = (id) => dispatch => {
   return getPoll(id)
     .then(poll => dispatch(receivePoll(poll)))
-    .catch(err => console.log(err))
+    .catch(err => dispatch(receivePollErrors(err.response.data)))
 }
 
 export const fetchVotedPolls = userId => dispatch => {
