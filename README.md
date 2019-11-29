@@ -77,9 +77,15 @@ Pollidify is a minimal application created in one week.
 * Create `poll-show-choices` container - **Pavel**
 
 **Day 4**
-Finish Poll frontend 
-Choices Model and Validations
-Choices Routes
+* Style `new-poll-form` - **Pavel**
+* Create `votes` model and utils - **Asaf**
+* Create `votes` actions and reducers - **Pavel**
+* Create `voted-polls` components - **Chang**
+* Add redirect functionality to `votes` - **Asaf**
+* Create `choice-list` animations - **Pavel**
+* Begin `stats-show-page` skeleton components - **Chang**
+* Add functionality to `navbar` and styling - **Pavel**
+* Debugging - **ALL**
 
 **Day 5**
 Choice Frontend
