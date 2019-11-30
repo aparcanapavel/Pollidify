@@ -18,10 +18,36 @@ class PollForm extends React.Component {
       choice7: "",
       choice8: "",
       choice9: "",
-      choice10: ""
+      choice10: "",
+      canCreate: true,
+      loading: true
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchUserPolls(this.props.currentUser.id).then(userPolls => {
+      let activePolls = Object.values(userPolls.polls.data);
+      activePolls.map(poll => {
+        let exp_date = new Date(poll.expiration_date);
+        let today = new Date();
+        if (exp_date >= today) {
+          return poll;
+        }
+      })
+      if (activePolls.length >= 2) {
+        this.setState({
+          canCreate: false,
+          loading: false
+        })
+      } else {
+        this.setState({
+          loading: false
+        })
+      }
+    });
+    
   }
 
   handleSubmit(e) {
@@ -66,7 +92,9 @@ class PollForm extends React.Component {
       choice7: "",
       choice8: "",
       choice9: "",
-      choice10: ""
+      choice10: "",
+      canCreate: true,
+      loading: true
     })
   }
 
@@ -98,131 +126,145 @@ class PollForm extends React.Component {
   }
 
   render() {
-    return (
-      <div className="create-poll-form-div">
-        <h3>New Poll</h3>
-        {this.renderFormErrors()}
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>
-              Question:
-              <br />
-              <input
-                type="text"
-                value={this.state.question}
-                onChange={this.update("question")}
-                maxLength="100"
-                placeholder="Your question here"
-              />
-            </label>
-
-            <br />
-            <br />
-
-            <label>
-              Duration (in days):
-              <input
-                type="number"
-                min="1"
-                max="90"
-                value={this.state.expiration_date}
-                onChange={this.update("expiration_date")}
-              />
-            </label>
-            <br />
-            <br />
-            <div className="choices-form-div">
-              {this.renderChoiceErrors()}
+    if (this.state.loading) {
+      return (
+        <div className="create-poll-form-div">
+          <h1>Loading...</h1>
+        </div>
+      )
+    } else if (!this.state.canCreate) {
+      return (
+        <div className="create-poll-form-div">
+          <h1>Sorry! You can't have more than two active polls at the same time!</h1>
+        </div>
+      )
+    } else {
+      return (
+        <div className="create-poll-form-div">
+          <h3>New Poll</h3>
+          {this.renderFormErrors()}
+          <form onSubmit={this.handleSubmit}>
+            <div>
               <label>
-                Choices:
+                Question:
+                <br />
                 <input
                   type="text"
-                  value={this.state.choice1}
-                  onChange={this.update("choice1")}
-                  maxLength="60"
-                  placeholder="Choice 1"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice2}
-                  onChange={this.update("choice2")}
-                  maxLength="60"
-                  placeholder="Choice 2"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice3}
-                  onChange={this.update("choice3")}
-                  maxLength="60"
-                  placeholder="Choice 3"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice4}
-                  onChange={this.update("choice4")}
-                  maxLength="60"
-                  placeholder="Choice 4"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice5}
-                  onChange={this.update("choice5")}
-                  maxLength="60"
-                  placeholder="Choice 5"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice6}
-                  onChange={this.update("choice6")}
-                  maxLength="60"
-                  placeholder="Choice 6"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice7}
-                  onChange={this.update("choice7")}
-                  maxLength="60"
-                  placeholder="Choice 7"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice8}
-                  onChange={this.update("choice8")}
-                  maxLength="60"
-                  placeholder="Choice 8"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice9}
-                  onChange={this.update("choice9")}
-                  maxLength="60"
-                  placeholder="Choice 9"
-                />
-                <br/>
-                <input
-                  type="text"
-                  value={this.state.choice10}
-                  onChange={this.update("choice10")}
-                  maxLength="60"
-                  placeholder="Choice 10"
+                  value={this.state.question}
+                  onChange={this.update("question")}
+                  maxLength="100"
+                  placeholder="Your question here"
                 />
               </label>
-            </div>
 
-            <input type="submit" value="Submit" />
-          </div>
-        </form>
-        <br />
-      </div>
-    );
+              <br />
+              <br />
+
+              <label>
+                Duration (in days):
+                <input
+                  type="number"
+                  min="1"
+                  max="90"
+                  value={this.state.expiration_date}
+                  onChange={this.update("expiration_date")}
+                />
+              </label>
+              <br />
+              <br />
+              <div className="choices-form-div">
+                {this.renderChoiceErrors()}
+                <label>
+                  Choices:
+                  <input
+                    type="text"
+                    value={this.state.choice1}
+                    onChange={this.update("choice1")}
+                    maxLength="60"
+                    placeholder="Choice 1"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice2}
+                    onChange={this.update("choice2")}
+                    maxLength="60"
+                    placeholder="Choice 2"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice3}
+                    onChange={this.update("choice3")}
+                    maxLength="60"
+                    placeholder="Choice 3"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice4}
+                    onChange={this.update("choice4")}
+                    maxLength="60"
+                    placeholder="Choice 4"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice5}
+                    onChange={this.update("choice5")}
+                    maxLength="60"
+                    placeholder="Choice 5"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice6}
+                    onChange={this.update("choice6")}
+                    maxLength="60"
+                    placeholder="Choice 6"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice7}
+                    onChange={this.update("choice7")}
+                    maxLength="60"
+                    placeholder="Choice 7"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice8}
+                    onChange={this.update("choice8")}
+                    maxLength="60"
+                    placeholder="Choice 8"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice9}
+                    onChange={this.update("choice9")}
+                    maxLength="60"
+                    placeholder="Choice 9"
+                  />
+                  <br/>
+                  <input
+                    type="text"
+                    value={this.state.choice10}
+                    onChange={this.update("choice10")}
+                    maxLength="60"
+                    placeholder="Choice 10"
+                  />
+                </label>
+              </div>
+
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+          <br />
+        </div>
+      );
+    }
   }
 }
 
