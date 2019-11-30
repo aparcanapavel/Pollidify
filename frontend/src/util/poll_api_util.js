@@ -19,3 +19,7 @@ export const writePoll = data => {
 export const getVotedPolls = userId => {
   return axios.get(`/api/polls/voted/${userId}`);
 }
+
+export const deletePoll = pollId => {
+  return axios.delete(`/api/polls/${pollId}`);
+}
