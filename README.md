@@ -88,6 +88,8 @@ Pollidify is a minimal application created in one week.
 * Debugging - **ALL**
 
 **Day 5**
-Choice Frontend
-Planning and implementing wireframes
-Styling - **All**
+* Add `polls` limitations and debugging - **All**
+* Create delete routes for `poll` and associated cascade deletes and debugging - **All**
+
+**Day 6**
+
