@@ -7,6 +7,7 @@ const msp = (state, ownProps) => {
   return {
     pollId: ownProps.pollId,
     choices: Object.values(state.entities.choices.all),
+    currentUserId: state.session.user.id,
     ownProps
   };
 };
@@ -14,7 +15,8 @@ const msp = (state, ownProps) => {
 const mdp = dispatch => {
   return {
     fetchChoices: (pollId) => dispatch(fetchChoices(pollId)),
-    createVote: choiceId => dispatch(createVote(choiceId))
+    createVote: choiceId => dispatch(createVote(choiceId)),
+    fetchVotedPolls: currentUserId => dispatch(fetchVotedPolls(currentUserId))
   };
 };
 
