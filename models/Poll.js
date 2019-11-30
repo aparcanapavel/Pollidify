@@ -22,6 +22,6 @@ const PollSchema = new Schema({
 
 PollSchema.index({
   poller_id: 1
-})
+});
 
 module.exports = Poll = mongoose.model('polls', PollSchema);

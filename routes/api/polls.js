@@ -104,4 +104,28 @@ router.post('/new',
   }
 );
 
+router.delete('/:poll_id', (req, res) => {
+  Choice.find({ poll_id: req.params.poll_id }).then(choices => {
+    for (let i = 0; i < choices.length; i++) {
+      let choice = choices[i];
+      Choice.deleteOne({ _id: choice.id }, function (err) {
+        if (err) {
+          console.log(`[error] ${err}`);
+        } else {
+          console.log('success delete choice');
+        }
+      })
+    }
+  }).then(() => {
+    Poll.deleteOne({ _id: req.params.poll_id }, function (err) {
+      if (err) {
+        console.log(`[error] ${err}`);
+      } else {
+        console.log('success delete poll');
+        res.status(200).send({ delete: "Deletion successful"});
+      }
+    })
+  })
+  })
+
 module.exports = router;
