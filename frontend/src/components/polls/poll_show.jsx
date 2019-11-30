@@ -11,7 +11,7 @@ export default class PollShow extends React.Component{
     if (!this.props.poll){
       return <h1>loading</h1>
     }
-    let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} />;
+    let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
 
     return (
       <section className="poll-show-container">

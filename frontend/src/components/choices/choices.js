@@ -59,7 +59,9 @@ class Choices extends React.Component {
     });
 
     const button = this.state.votedPolls.map(votedPoll => {
-      if (votedPoll._id === this.props.pollId) {
+      let exp_date = new Date(this.props.poll.expiration_date);
+      console.log(exp_date <= new Date());
+      if (votedPoll._id === this.props.pollId || exp_date <= new Date() ) {
         return null;
       } else {
         return <button onClick={this.castVote} >Cast Vote</button>
@@ -76,6 +78,5 @@ class Choices extends React.Component {
     )
   }
 }
-
 
 export default Choices;
