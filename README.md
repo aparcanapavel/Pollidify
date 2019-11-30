@@ -1,6 +1,9 @@
 # ASK MARTIN ON:
 * `voted_polls.js` when first loaded in shows all voted polls correctly, but when you refresh the page, one of the polls disappears.
 
+# NOTE TO PAVEL:
+* run `npm install react-plotly.js plotly.js`
+
 # Pollidify
 Pollidify is a global web application that allows users to create and respond to polls.
 
