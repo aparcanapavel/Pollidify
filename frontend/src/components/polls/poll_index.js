@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./poll_index.css"
+import "./poll_index.css";
 
 
 class PollIndex extends React.Component {
