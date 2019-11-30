@@ -5,7 +5,8 @@ class Choices extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      choiceId: null
+      choiceId: null,
+      votedPolls: []
     }
     this.timer = null; 
     this.castVote = this.castVote.bind(this);
@@ -33,7 +34,9 @@ class Choices extends React.Component {
 
   componentDidMount () {
     this.props.fetchChoices(this.props.pollId).then(() => {
-      this.forceUpdate();
+      this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
+        this.setState({votedPolls: votedPolls.votedPolls.data});
+      })
     });
   }
 
@@ -44,7 +47,6 @@ class Choices extends React.Component {
  
   render () {
     if (!this.props.choices) {
-      this.forceUpdate();
       return <h1>loading</h1>
     }
     const pollChoices = this.props.choices.map(choice => {
@@ -56,13 +58,20 @@ class Choices extends React.Component {
       </button>
     });
 
+    const button = this.state.votedPolls.map(votedPoll => {
+      if (votedPoll._id === this.props.pollId) {
+        return null;
+      } else {
+        return <button onClick={this.castVote} >Cast Vote</button>
+      }
+    })
 
     return (
       <div className="poll-choices">
         <ul className="choice-responses">
           {pollChoices}
         </ul>
-        <button onClick={this.castVote} >Cast Vote</button>
+        {button}
       </div>
     )
   }
