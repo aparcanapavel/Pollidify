@@ -4,7 +4,7 @@ import './user_polls.css';
 
 class UserPolls extends React.Component {
   componentDidMount() {
-      this.props.fetchUserPolls(this.props.currentUser.id);
+    this.props.fetchUserPolls(this.props.currentUser.id);
   }
   
   render() {
