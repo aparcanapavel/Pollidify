@@ -14,7 +14,7 @@ class Choices extends React.Component {
   }
 
   castVote(){
-    this.props.createVote(this.state.choiceId).then(() => this.props.history.push('/polls'));
+    this.props.createVote(this.state.choiceId).then(() => this.props.history.push('/polls')).then(() => this.setState({ choiceId: null, votedPolls: [] }));
     
   }
 
@@ -33,11 +33,12 @@ class Choices extends React.Component {
   }
 
   componentDidMount () {
-    this.props.fetchChoices(this.props.pollId).then(() => {
+
+    // this.props.fetchChoices(this.props.pollId).then(() => {
       this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
         this.setState({votedPolls: votedPolls.votedPolls.data});
       })
-    });
+    // });
   }
 
   componentWillUnmount(){
@@ -46,6 +47,7 @@ class Choices extends React.Component {
 
  
   render () {
+   
     if (!this.props.choices) {
       return <h1>loading</h1>
     }
@@ -58,23 +60,24 @@ class Choices extends React.Component {
       </button>
     });
     let exp_date = new Date(this.props.poll.expiration_date);
-    let button;
+    let button = <button onClick={this.castVote} >Cast Vote</button>;
     if (this.state.votedPolls.length > 0 || exp_date <= new Date()) {
-      button = this.state.votedPolls.forEach(votedPoll => {
+      this.state.votedPolls.forEach(votedPoll => {
         if (votedPoll._id === this.props.pollId) {
-          return null;
+          button = null;
         }
       })
-    } else {
-      button = <button onClick={this.castVote} >Cast Vote</button>;
-    }
+    } 
+    // else {
+    //   button = <button onClick={this.castVote} >Cast Vote</button>;
+    // }
 
     return (
       <div className="poll-choices">
         <ul className="choice-responses">
           {pollChoices}
         </ul>
-        {button}
+        <div>{button}</div>
       </div>
     )
   }
