@@ -10,7 +10,7 @@ $lightest: #B3FFE0; */
   margin-top: 60px;
   position: relative;
 
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 
