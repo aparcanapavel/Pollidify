@@ -2,7 +2,8 @@ import {
   RECEIVE_POLLS,
   RECEIVE_PAYLOAD,
   RECEIVE_USER_POLLS,
-  RECEIVE_VOTED_POLLS
+  RECEIVE_VOTED_POLLS,
+  REMOVE_POLL,
 } from '../actions/poll_actions';
 
 const PollsReducer = (
@@ -20,12 +21,13 @@ const PollsReducer = (
     case RECEIVE_PAYLOAD:
       newState.new = action.payload.data;
       return newState;
-
     case RECEIVE_VOTED_POLLS:
-      // debugger
       newState.voted = action.votedPolls.data;
-      return newState
-
+      return newState;
+    case REMOVE_POLL:
+      let newerState = Object.assign({}, state);
+      delete newerState.user[action.pollId];
+      return newerState;
     default:
       return state;
   }

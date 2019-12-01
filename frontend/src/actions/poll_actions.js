@@ -3,7 +3,8 @@ import {
   getPoll,
   getUserPolls,
   writePoll,
-  getVotedPolls
+  getVotedPolls,
+  deletePoll
 } from "../util/poll_api_util";
 
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
@@ -11,6 +12,7 @@ export const RECEIVE_USER_POLLS = "RECEIVE_USER_POLL";
 export const RECEIVE_PAYLOAD = "RECEIVE_PAYLOAD";
 export const RECEIVE_VOTED_POLLS = "RECEIVE_VOTED_POLLS";
 export const RECEIVE_POLL_ERRORS = 'RECEIVE_POLL_ERRORS';
+export const REMOVE_POLL = 'REMOVE_POLL';
 
 export const receivePolls = polls => ({
   type: RECEIVE_POLLS,
@@ -43,6 +45,13 @@ export const receivePollErrors = errors => {
   }
 }
 
+export const destroyPoll = pollId => {
+  return {
+    type: REMOVE_POLL,
+    pollId
+  }
+}
+
 export const fetchPolls = () => dispatch => (
   getPolls()
     .then(polls => dispatch(receivePolls(polls)))
@@ -72,5 +81,11 @@ export const fetchPoll = (id) => dispatch => {
 export const fetchVotedPolls = userId => dispatch => {
   return getVotedPolls(userId)
     .then(votedPolls => dispatch(receiveVotedPolls(votedPolls)))
+    .catch(err => console.log(err));
+}
+
+export const removePoll = pollId => dispatch => {
+  return deletePoll(pollId)
+    .then(() => dispatch(destroyPoll(pollId)))
     .catch(err => console.log(err));
 }

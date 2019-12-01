@@ -6,15 +6,16 @@ const VotesReducer = (state = { all: {}, new: undefined }, action) => {
 
   switch (action.type) {
     case RECEIVE_VOTES:
-      newState.all = action.votes
+      newState.all = action.votes.data;
       return newState;
 
     case RECEIVE_VOTE:
-      newState.all = action.vote
+      newState.new = action.vote.data
       return newState;
       
     default:
       return state;
   }
-  
 }
+
+export default VotesReducer;
