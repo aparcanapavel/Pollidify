@@ -57,16 +57,17 @@ class Choices extends React.Component {
           {choice.response}
       </button>
     });
-
-    const button = this.state.votedPolls.map(votedPoll => {
-      let exp_date = new Date(this.props.poll.expiration_date);
-      console.log(exp_date <= new Date());
-      if (votedPoll._id === this.props.pollId || exp_date <= new Date() ) {
-        return null;
-      } else {
-        return <button onClick={this.castVote} >Cast Vote</button>
-      }
-    })
+    let exp_date = new Date(this.props.poll.expiration_date);
+    let button;
+    if (this.state.votedPolls.length > 0 || exp_date <= new Date()) {
+      button = this.state.votedPolls.forEach(votedPoll => {
+        if (votedPoll._id === this.props.pollId) {
+          return null;
+        }
+      })
+    } else {
+      button = <button onClick={this.castVote} >Cast Vote</button>;
+    }
 
     return (
       <div className="poll-choices">

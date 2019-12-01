@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import PollShow from './poll_show';
 import { fetchPoll } from '../../actions/poll_actions';
+import { fetchChoices } from '../../actions/choice_actions';
+import { fetchVotes } from '../../actions/votes_actions';
 
 const mstp = (state, ownProps) => {
   if (ownProps.match) {
@@ -11,7 +13,6 @@ const mstp = (state, ownProps) => {
     }
   } else {
     return {
-      state,
       loggedIn: state.session.isAuthenticated
     }
   }
@@ -19,7 +20,9 @@ const mstp = (state, ownProps) => {
 
 const mdtp = dispatch => {
   return {
-    fetchPoll: pollId => dispatch(fetchPoll(pollId))
+    fetchPoll: pollId => dispatch(fetchPoll(pollId)),
+    fetchVotes: choiceId => dispatch(fetchVotes(choiceId)),
+    fetchChoices: pollId => dispatch(fetchChoices(pollId))
   }
 }
 
