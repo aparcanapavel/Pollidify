@@ -3,6 +3,14 @@ import PollShowContainer from './poll_show_container.js';
 import './user_polls.css';
 
 class UserPolls extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      choices: [],
+      votes: []
+    }
+  }
+  
   componentDidMount() {
     this.props.fetchUserPolls(this.props.currentUser.id).then(userPolls => {
       let allUserPolls = userPolls.polls.data;
@@ -21,28 +29,42 @@ class UserPolls extends React.Component {
           <h2>You have no Polls</h2>
         </div>
       )
-    } else {
+    } else {  
+      let expiredPolls = [];
+      let activePolls = [];
+      this.props.polls.reverse().forEach(poll => {
+        let expDate = new Date(poll.expiration_date);
+        let newDate = new Date();
+
+        if (expDate >= newDate) {
+          activePolls.push(
+            <PollShowContainer
+              key={poll._id}
+              question={poll.question}
+              poll={poll}
+              inherited={true}
+            />
+          );
+        } else if (expDate < newDate) {
+          expiredPolls.push(<PollShowContainer 
+            key={poll._id} 
+            question={poll.question} 
+            poll={poll} 
+            inherited={true} 
+            />  
+            );    
+        }
+      });
+      
       return (
         <div className="user-polls">
           <h2>All of Your Polls</h2>
           <div className="user-poll">
             <div className="active-polls">
-              {this.props.polls.reverse().map(poll => {
-                let expDate = new Date(poll.expiration_date);
-                let newDate = new Date();
-                if (expDate >= newDate) {
-                  return <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} />
-                }
-              })}
+              {activePolls}
             </div>
             <div className="expired-polls">
-              {this.props.polls.reverse().map(poll => {
-                let expDate = new Date(poll.expiration_date);
-                let newDate = new Date();
-                if (expDate < newDate) {
-                  return <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} />      
-                }})
-              }
+              {expiredPolls}
             </div>
           </div>
         </div>

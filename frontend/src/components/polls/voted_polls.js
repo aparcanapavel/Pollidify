@@ -32,7 +32,7 @@ class VotedPolls extends React.Component {
           <h2>All of Your Voted Polls</h2>
           <div className="voted-poll">
             {this.props.polls.map(poll => (
-              <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} />
+              <PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} noGraph={true} />
             ))}
           </div>
         </div>
