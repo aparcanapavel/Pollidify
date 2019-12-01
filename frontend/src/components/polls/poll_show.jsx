@@ -34,11 +34,14 @@ export default class PollShow extends React.Component{
       })
     };
   }
+
   
   render() {
     if (!this.props.poll && this.state.loading) {
       return <h1>loading</h1>
     }
+
+    // this.setState({ loading: false }); 
     let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
     let pollQuestion = this.props.poll.question;
     let responsesArr = [];
@@ -46,15 +49,18 @@ export default class PollShow extends React.Component{
       responsesArr.push("-" + choice.response + "-");
     });
 
+    let graph = this.props.noGraph ? null : (
+      <Plot
+        data={[{ type: "bar", x: responsesArr, y: this.state.votes }]}
+        layout={{ width: 320, height: 240, title: pollQuestion }}
+      />
+    );
+
     return (
       <section className="poll-show-container">
         <h3>{pollQuestion}</h3>
         {choices}
-        <Plot data={[
-          {type: 'bar', x: responsesArr, y: this.state.votes},
-        ]}
-        layout={ {width: 320, height: 240, title: pollQuestion} }
-        />
+        {graph}
       </section>
     );
   }
