@@ -14,12 +14,14 @@ class PollIndex extends React.Component {
     } 
       return (
         <div className="poll-index-main">
-          <h2 className="poll-index-h2">World Polls</h2>
-          {this.props.polls.map(poll => (
-            <div className="poll-index-link"> 
-           <div className="poll-index-link-link"> <Link to={`/polls/${poll._id}`}>{poll.question}</Link> </div>
-            </div>
-          ))}
+          <h2 className="poll-index-title">World Polls</h2>
+          <div className="poll-index-cont"> 
+            <ul className="poll-index-links"> 
+            {this.props.polls.map(poll => (
+              <li key={poll._id}><Link to={`/polls/${poll._id}`}>{poll.question}</Link></li>
+            ))}
+            </ul>
+          </div>
         </div>
       );
     }
