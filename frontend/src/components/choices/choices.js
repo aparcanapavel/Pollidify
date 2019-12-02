@@ -33,12 +33,7 @@ class Choices extends React.Component {
   }
 
   componentDidMount () {
-
-    // this.props.fetchChoices(this.props.pollId).then(() => {
-      // this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
-      //   this.setState({votedPolls: votedPolls.votedPolls.data});
-      // })
-    // });
+    this.setState({ votedPolls: this.props.votedPolls });
   }
 
   componentWillUnmount(){
