@@ -61,7 +61,9 @@ class Choices extends React.Component {
     });
     let exp_date = new Date(this.props.poll.expiration_date);
     let button = <button onClick={this.castVote} >Cast Vote</button>;
-    if (this.state.votedPolls.length > 0 || exp_date <= new Date()) {
+    if (exp_date < new Date()) {
+      button = null;
+    } else if (this.state.votedPolls.length > 0) {
       this.state.votedPolls.forEach(votedPoll => {
         if (votedPoll._id === this.props.pollId) {
           button = null;

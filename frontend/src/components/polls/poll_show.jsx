@@ -52,7 +52,7 @@ export default class PollShow extends React.Component{
     
     
 
-    let graph = this.props.noGraph ? null : (
+    let graph = (this.props.noGraph || new Date(this.props.poll.expiration_date) > new Date()) ? null : (
       <Plot
         data={[{ type: "bar", x: responsesArr, y: votesArr }]}
         className="poll-graph"
