@@ -6,9 +6,7 @@ import {
   REMOVE_POLL,
 } from '../actions/poll_actions';
 
-const PollsReducer = (
-  state = {}, 
-  action) => {
+const PollsReducer = ( state = {}, action) => {
   Object.freeze(state);
   let newState = Object.assign({}, state);
   switch(action.type) {
@@ -19,9 +17,9 @@ const PollsReducer = (
       newState = action.polls.data;
       return newState;
     case RECEIVE_PAYLOAD:
-      newState = action.payload.data;
-      debugger;
-      return newState;
+     let newPoll = action.payload.data.poll;
+     newState[newPoll._id] = newPoll
+     return newState;
     case RECEIVE_VOTED_POLLS:
       newState = action.votedPolls.data;
       return newState;
