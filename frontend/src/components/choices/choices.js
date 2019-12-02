@@ -52,12 +52,12 @@ class Choices extends React.Component {
       return <h1>loading</h1>
     }
     const pollChoices = this.props.choices.map(choice => {
-      return <button
+      return <li
         key={choice._id} 
         className="choice-response"
         onClick={(e) => this.updateVote(e, choice._id)}>
           {choice.response}
-      </button>
+      </li>
     });
     let exp_date = new Date(this.props.poll.expiration_date);
     let button = <button onClick={this.castVote} >Cast Vote</button>;

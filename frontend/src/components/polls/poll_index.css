@@ -1,5 +1,5 @@
 .poll-index-main {
-  padding-top: 100px;
+  padding-top: 60px;
   display: block;
   width: 100%;
   position: absolute;
@@ -12,8 +12,7 @@
   min-width: 926px;
 }
 
-.poll-index-title{
-  font-size: 30px;
+.poll-index-left{
   position: sticky;
   display: inline-block;
   height: 100%;
@@ -22,14 +21,67 @@
   min-height: 100%;
   top: 0px;
   box-sizing: border-box;
+  width: 25%;
+  background: rgb(154,219,193);
+  background: linear-gradient(90deg, rgba(154,219,193,1) 0%, rgba(0,212,255,0) 100%);
+}
+
+.poll-index-title{
+  font-size: 36px;
+  font-weight: 1000;
+  position: sticky;
+  display: inline-block;
+  vertical-align: top;
+  padding:20px 20px;
+  height: 150px;
+  top: 0px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.poll-count{
+  font-size: 30px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  padding:0 20px;
+  height: 150px;
+  top: 0px;
+  box-sizing: border-box;
+}
+
+.did-you-know{
+  font-size: 30px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  height: 75px;
+  padding:0 20px;
+  top: 0px;
+  box-sizing: border-box;
+}
+
+.random-poll-fact{
+  font-size: 20px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  height: 75px;
+  padding:0 20px;
+  top: 0px;
+  box-sizing: border-box;
 }
 
 .poll-index-cont{
   position: relative;
   display: inline-block;
-  width: 79%;
+  width: 75%;
   padding-left: 20px;
   min-height: 100%;
+  margin-top: 40px;
   border-left: 1px solid gray;
   box-sizing: border-box;
 }

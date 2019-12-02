@@ -65,9 +65,9 @@ class UserPolls extends React.Component {
       });
       
       return (
-        <div className="user-polls">
-          <h2>All of Your Polls</h2>
-          <div className="user-poll">
+        <div className="user-poll-main">
+          <h2 className="user-poll-title">All of Your Polls</h2>
+          <div className="user-poll-cont">
             <div className="active-polls">
               {activePolls}
             </div>
