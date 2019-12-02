@@ -8,7 +8,7 @@ import { fetchVotes } from "../../actions/votes_actions";
 
 const mapStateToProps = state => {
   return {
-    polls: Object.values(state.entities.polls.user),
+    polls: Object.values(state.entities.polls),
     currentUser: state.session.user
   };
 };

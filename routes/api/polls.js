@@ -10,13 +10,25 @@ const Vote = require('../../models/Vote');
 router.get('/', (req, res) => {
   Poll.find()
     .sort({ date: -1 })
-    .then(polls => res.json(polls))
+    .then(polls => {
+      let pollsObj = {};
+      polls.forEach(poll => {
+        pollsObj[poll._id] = poll;
+      });
+      res.json(pollsObj);
+    })
     .catch(err => res.status(404).json({ noPolls: 'No polls found' }));
 });
 
 router.get('/user/:user_id', (req, res) => {
   Poll.find({ poller_id: req.params.user_id })
-    .then(polls => res.json(polls))
+    .then(polls => {
+      let pollsObj = {};
+      polls.forEach(poll => {
+        pollsObj[poll._id] = poll;
+      });
+      res.json(pollsObj);
+    })
     .catch(err =>
       res.status(404).json({ noPolls: 'No polls found for that user' }
       )
