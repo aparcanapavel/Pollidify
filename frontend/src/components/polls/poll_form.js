@@ -36,7 +36,7 @@ class PollForm extends React.Component {
           return poll;
         }
       })
-      if (activePolls.length >= 2) { //RETURN TO 2 WHEN DONE
+      if (activePolls.length >= 2) { 
         this.setState({
           canCreate: false,
           loading: false
