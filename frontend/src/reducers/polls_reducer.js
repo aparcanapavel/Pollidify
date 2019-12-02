@@ -20,7 +20,6 @@ const PollsReducer = (
       return newState;
     case RECEIVE_PAYLOAD:
       newState = action.payload.data;
-      debugger;
       return newState;
     case RECEIVE_VOTED_POLLS:
       newState = action.votedPolls.data;
