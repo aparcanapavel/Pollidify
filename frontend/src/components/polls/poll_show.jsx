@@ -44,7 +44,7 @@ export default class PollShow extends React.Component{
       return <h1>loading</h1>
     }
 
-    // debugger;
+  
     let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
     let pollQuestion = this.props.poll.question;
     let responsesArr = [];
