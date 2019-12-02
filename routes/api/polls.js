@@ -90,27 +90,32 @@ router.post('/new',
     if (req.body.choices.length >= 2) {
       newPoll.save().then(
         poll => {
-          const choicesObj = {};
-          const choices = req.body.choices;
-          for (let i = 0; i < choices.length; i++) {
-            let choice = choices[i];
-            const { choiceErrors, isChoiceValid } = validateChoiceInput(choice);
+          User.find({ _id: req.user.id }).then(user => {
+            user.created.push(poll);
+            user.save().then(user => {
+              const choicesObj = {};
+              const choices = req.body.choices;
+              for (let i = 0; i < choices.length; i++) {
+                let choice = choices[i];
+                const { choiceErrors, isChoiceValid } = validateChoiceInput(choice);
 
-            if (!isChoiceValid) {
-              res.status(400).json(choiceErrors);
-            }
-            
-            let newChoice = new Choice({
-              response: choice,
-              poll_id: poll.id
-            });
-            newChoice.save().then(choice => {
-              choicesObj[choice._id] = choice;
-              if (i === choices.length - 1) {
-                res.send({poll: poll, choices: choicesObj});
-              }
-            });
-          };
+                if (!isChoiceValid) {
+                  res.status(400).json(choiceErrors);
+                }
+                
+                let newChoice = new Choice({
+                  response: choice,
+                  poll_id: poll.id
+                });
+                newChoice.save().then(choice => {
+                  choicesObj[choice._id] = choice;
+                  if (i === choices.length - 1) {
+                    res.send({poll: poll, choices: choicesObj, user: user});
+                  }
+                });
+              };
+            })
+          })
         }
       );
     } else {

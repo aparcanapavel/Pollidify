@@ -7,6 +7,7 @@ import { fetchVotes } from '../../actions/votes_actions';
 const mstp = (state, ownProps) => {
   if (ownProps.match) {
     let pollId = ownProps.match.params.id;
+    // debugger;
     return {
       poll: state.entities.polls[pollId],
       pollId,

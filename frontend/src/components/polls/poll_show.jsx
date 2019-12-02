@@ -21,7 +21,7 @@ export default class PollShow extends React.Component{
         this.props.fetchChoices(this.props.pollId).then(choices => {
           this.setState({
             ...this.state,
-            choices: choices.choices.data
+            choices: Object.values(choices.choices.data)
           }, () => {
             this.state.choices.forEach(choice => {
               this.props.fetchVotes(choice._id).then(votes => {
@@ -43,7 +43,7 @@ export default class PollShow extends React.Component{
       return <h1>loading</h1>
     }
 
-
+    // debugger;
     let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
     let pollQuestion = this.props.poll.question;
     let responsesArr = [];
