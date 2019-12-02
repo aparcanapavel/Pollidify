@@ -36,9 +36,9 @@ class Choices extends React.Component {
 
     // this.props.fetchChoices(this.props.pollId).then(() => {
       // debugger;
-      this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
-        this.setState({votedPolls: votedPolls.votedPolls.data});
-      })
+      // this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
+      //   this.setState({votedPolls: votedPolls.votedPolls.data});
+      // })
     // });
   }
 

@@ -3,6 +3,8 @@ import {
   RECEIVE_USER_LOGOUT,
   RECEIVE_USER_SIGN_IN
 } from "../actions/session_actions";
+import { RECEIVE_PAYLOAD } from '../actions/poll_actions';
+import { RECEIVE_VOTE } from '../actions/votes_actions';
 
 const initialState = {
   isAuthenticated: false,
@@ -22,6 +24,27 @@ export default function(state = initialState, action) {
         isAuthenticated: false,
         user: undefined
       };
+
+    case RECEIVE_PAYLOAD:
+      // debugger
+      if(action.payload.user){
+        return {
+          ...state,
+          isAuthenticated: !!action.payload.user,
+          user: action.payload.user
+        };
+      } else{
+        return state;
+      }
+
+    case RECEIVE_VOTE:
+      // debugger
+      return {
+        ...state,
+        isAuthenticated: !!action.vote.data.user,
+        user: action.vote.data.user
+      };
+    
     case RECEIVE_USER_SIGN_IN:
       return {
         ...state,

@@ -20,7 +20,8 @@ const PollsReducer = ( state = {}, action) => {
     //   newState = Object.assign({}, action.votedPolls.data);
     //   return newState;
     case RECEIVE_PAYLOAD:
-      let newPoll = action.payload.data;
+      debugger
+      let newPoll = action.payload.data.poll;
       newState = Object.assign({}, state, {[newPoll._id]: newPoll});
      return newState;
     case REMOVE_POLL:

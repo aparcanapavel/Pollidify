@@ -90,8 +90,8 @@ router.post('/new',
     if (req.body.choices.length >= 2) {
       newPoll.save().then(
         poll => {
-          User.find({ _id: req.user.id }).then(user => {
-            user.created.push(poll);
+          User.findOne({ _id: req.user.id }).then(user => {
+            user.created.push(poll._id);
             user.save().then(user => {
               const choicesObj = {};
               const choices = req.body.choices;

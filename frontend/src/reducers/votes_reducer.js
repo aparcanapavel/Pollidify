@@ -8,11 +8,12 @@ const VotesReducer = (state = {}, action) => {
       newState = Object.assign({}, state);
       newState = action.votes.data;
       return newState;
-    case RECEIVE_VOTE:
-      newState = Object.assign({}, state);
-      let newVote = action.vote.data;
-      newState[newVote._id] = newVote;
-      return newState;
+
+    // case RECEIVE_VOTE:
+    //   newState = Object.assign({}, state);
+    //   let newVote = action.vote.data;
+    //   newState[newVote._id] = newVote;
+    //   return newState;
     default:
       return state;
   }

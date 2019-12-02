@@ -26,7 +26,7 @@ router.post('/:choice_id',
       User.findOne({ _id: req.user.id }).then(user => {
         Choice.findOne({ _id: req.params.choice_id }).then(choice => {
           Poll.findOne({ _id: choice.poll_id }).then(poll => {
-            user.voted.push(poll);
+            user.voted.push(poll._id);
             user.save().then(user => {
               res.json({ user: user });
             })

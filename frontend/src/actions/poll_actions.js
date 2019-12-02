@@ -25,6 +25,7 @@ export const receiveUserPolls = polls => ({
 });
 
 export const receivePoll = payload => {
+  // debugger
   return {
     type: RECEIVE_PAYLOAD,
     payload
@@ -68,11 +69,13 @@ export const createPoll = data => dispatch => {
 
   return writePoll(data)
     .then(payload => {
+      
       dispatch(receivePoll(payload));
     }).catch(err => dispatch(receivePollErrors(err.response.data)))
   };
 
 export const fetchPoll = (id) => dispatch => {
+  // debugger;
   return getPoll(id)
     .then(poll => dispatch(receivePoll(poll)))
     .catch(err => dispatch(receivePollErrors(err.response.data)))

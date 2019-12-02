@@ -13,14 +13,14 @@ class UserPolls extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchUserPolls(this.props.currentUser.id).then(userPolls => {
-      let allUserPolls = userPolls.polls.data;
-      if (allUserPolls.length > 7) {
-        let poll = allUserPolls[0];
-        this.props.removePoll(poll._id);
-        this.forceUpdate();
-      }
-    });
+    // this.props.fetchUserPolls(this.props.currentUser.id).then(userPolls => {
+    //   let allUserPolls = userPolls.polls.data;
+    //   if (allUserPolls.length > 7) {
+    //     let poll = allUserPolls[0];
+    //     this.props.removePoll(poll._id);
+    //     this.forceUpdate();
+    //   }
+    // });
   }
   
   render() {
