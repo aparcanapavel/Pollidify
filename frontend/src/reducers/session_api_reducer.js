@@ -26,7 +26,6 @@ export default function(state = initialState, action) {
       };
 
     case RECEIVE_PAYLOAD:
-      // debugger
       if(action.payload.user){
         return {
           ...state,
@@ -38,7 +37,6 @@ export default function(state = initialState, action) {
       }
 
     case RECEIVE_VOTE:
-      // debugger
       return {
         ...state,
         isAuthenticated: !!action.vote.data.user,
