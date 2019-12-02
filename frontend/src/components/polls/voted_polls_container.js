@@ -10,10 +10,5 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchVotedPolls: id => dispatch(fetchVotedPolls(id))
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(VotedPolls)
+export default connect(mapStateToProps, null)(VotedPolls);
