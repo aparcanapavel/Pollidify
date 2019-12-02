@@ -5,7 +5,13 @@ const passport = require('passport');
 
 router.get('/:choice_id', (req, res) => {
   Vote.find({choice_id: req.params.choice_id})
-    .then(votes => res.json(votes))
+  .then(votes => {
+    let votesObj = {};
+    votes.forEach(vote => {
+      votesObj[vote._id] = vote;
+    });
+    res.json(votesObj);
+  })
     .catch(err => res.status(404).json({ noVotes: 'No votes found' }));
 });
 
