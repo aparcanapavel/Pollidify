@@ -6,9 +6,10 @@ import { fetchVotes } from '../../actions/votes_actions';
 
 const mstp = (state, ownProps) => {
   if (ownProps.match) {
+    let pollId = ownProps.match.params.id;
     return {
-      poll: state.entities.polls.new,
-      pollId: ownProps.match.params.id,
+      poll: state.entities.polls[pollId],
+      pollId,
       loggedIn: state.session.isAuthenticated
     }
   } else {
