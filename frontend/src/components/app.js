@@ -52,13 +52,13 @@ class App extends React.Component {
     clearTimeout(this.toggleTimer);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if(nextState.form === this.state.form){
-      return false;
-    }
-    this.removeSlide();
-    return true;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if(nextState.form === this.state.form){
+  //     return false;
+  //   }
+  //   this.removeSlide();
+  //   return true;
+  // }
 
   showSignup() {
     setTimeout(() => {
