@@ -32,27 +32,30 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/voted/:user_id', (req, res) => {
-  let polls = [];
+  let choiceIds = [];
+  let pollIds = [];
 
   Vote.find({ voter_id: req.params.user_id })
     .then(votes => {    
       for (let i = 0; i < votes.length; i++) {
         let vote = votes[i];
+        choiceIds.push(vote.choice_id);
+      }
 
-        Choice.find({ _id: vote.choice_id }).then(choices => {
-          for (let j = 0; j < choices.length; j++) {
-            let choice = choices[j];
+      Choice.find({ _id: {$in: choiceIds} }).then(choices => {
+        for (let j = 0; j < choices.length; j++) {
+          let choice = choices[j];
+          pollIds.push(choice.poll_id);
+        }
 
-            Poll.findById(choice.poll_id).then(poll => {
-              polls.push(poll);
-
-              if (i === votes.length - 1 && j === choices.length - 1) {
-                res.json(polls);
-              }
-            });
-          }
-        });
-      }     
+        Poll.find({ _id: {$in: pollIds}}).then(polls => {
+          let pollsObj = {};
+          polls.forEach(poll => {
+            pollsObj[poll._id] = poll;
+          })
+          res.json(pollsObj);
+        })
+      })
     })
     .catch(err => res.status(404).json({ noPolls: 'No polls found for that user' }));
 })
