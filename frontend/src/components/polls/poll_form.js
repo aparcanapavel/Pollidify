@@ -50,6 +50,14 @@ class PollForm extends React.Component {
     
   }
 
+  titleCase(string){
+    let str;
+    str = string.toLowerCase().split(" ");
+    str[0] = str[0].charAt(0).toUpperCase() + str[0].slice(1);
+    return str.join(" ");
+  }
+  
+
   handleSubmit(e) {
     e.preventDefault();
     let days;
@@ -57,22 +65,24 @@ class PollForm extends React.Component {
     days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
     days = new Date(days);
 
+    const capQuestion = this.titleCase(this.state.question);
+
     let state = {
-      question: this.state.question, 
+      question: this.titleCase(this.state.question),
       expiration_date: days,
       choices: {
-        choice1: this.state.choice1,
-        choice2: this.state.choice2,
-        choice3: this.state.choice3,
-        choice4: this.state.choice4,
-        choice5: this.state.choice5,
-        choice6: this.state.choice6,
-        choice7: this.state.choice7,
-        choice8: this.state.choice8,
-        choice9: this.state.choice9,
-        choice10: this.state.choice10
+        choice1: this.titleCase(this.state.choice1),
+        choice2: this.titleCase(this.state.choice2),
+        choice3: this.titleCase(this.state.choice3),
+        choice4: this.titleCase(this.state.choice4),
+        choice5: this.titleCase(this.state.choice5),
+        choice6: this.titleCase(this.state.choice6),
+        choice7: this.titleCase(this.state.choice7),
+        choice8: this.titleCase(this.state.choice8),
+        choice9: this.titleCase(this.state.choice9),
+        choice10: this.titleCase(this.state.choice10)
       }
-    }
+    };
 
     state.choices = Object.values(state.choices).filter(Boolean);
 

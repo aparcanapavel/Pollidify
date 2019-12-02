@@ -3,5 +3,36 @@
   position: relative;
   margin: 0 auto;
   margin-top: 100px;
+  /* background-color: red; */
+  /* width: 100%; */
+  padding: 30px;
+  border-radius: 5px;
+  border: 1px solid rgba(71, 104, 91, 0.582);
+  font-family: sans-serif;
 }
 
+.poll-show-container > h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.438);
+} 
+
+.poll-choices div button{
+  background-color: #88C2AB;
+  color: white;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  transition: background-color 0.2s;
+}
+
+.choice-responses li{
+  text-align: center;
+  cursor: pointer;
+}

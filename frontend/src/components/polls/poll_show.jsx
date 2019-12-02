@@ -55,6 +55,8 @@ export default class PollShow extends React.Component{
     let graph = this.props.noGraph ? null : (
       <Plot
         data={[{ type: "bar", x: responsesArr, y: votesArr }]}
+        className="poll-graph"
+
         layout={{ width: 320, height: 240, title: pollQuestion }}
       />
     );

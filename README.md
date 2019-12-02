@@ -40,6 +40,8 @@ Pollidify is a minimal application created in one week.
 **Technical Challenges:**
 * Displaying statistical data in a graphical and intuitive way
 * Ensuring all polls are anonymous and one-time answer only
+* Calculating all votes for a specific poll
+* Automatic deletion of expired polls
 
 # Group Members and Work Breakdown
 **Chang Ho Lee, Asaf Mohammad, Pavel Aparcana**
