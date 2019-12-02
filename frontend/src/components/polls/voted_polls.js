@@ -13,7 +13,9 @@ class VotedPolls extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVotedPolls(this.props.currentUser.id).then(() => this.setState({loading: false}));
+    if(this.props.polls){
+      this.setState({ loading: false });
+    }
   }
 
 
