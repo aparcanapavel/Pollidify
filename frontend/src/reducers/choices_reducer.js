@@ -1,16 +1,16 @@
 import { RECEIVE_CHOICES } from '../actions/choice_actions';
 import { RECEIVE_PAYLOAD } from '../actions/poll_actions';
 
-const ChoicesReducer = (state = { all: {}, new: undefined }, action) => {
+const ChoicesReducer = (state = { }, action) => {
   Object.freeze(state);
-  let newState = Object.assign({}, state);
+  
   switch(action.type) {
     case RECEIVE_CHOICES:
-      newState.all = action.choices.data;
-      return newState;
+      return Object.assign({}, state, action.choices.data);
+      
     case RECEIVE_PAYLOAD:
-      newState.new = action.payload.choices;
-      return newState;
+      return Object.assign({}, state, action.payload.data.choices);
+
     default:
       return state;
   }

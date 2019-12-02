@@ -4,7 +4,7 @@ import VotedPolls from './voted_polls';
 
 const mapStateToProps = (state) => {
   return {
-    polls: Object.values(state.entities.polls.voted),
+    polls: Object.values(state.entities.polls),
     currentUser: state.session.user
   }
 }

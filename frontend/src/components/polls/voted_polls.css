@@ -18,16 +18,19 @@
   display: inline-block;
   height: 100%;
   vertical-align: top;
-  padding:0 20px;
+  padding:0 10px;
   min-height: 100%;
   top: 0px;
+  width: 20%;
+  text-align: center;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .voted-poll-cont{
   position: relative;
   display: inline-block;
-  width: 79%;
+  width: 75%;
   padding-left: 20px;
   min-height: 100%;
   border-left: 1px solid gray;
