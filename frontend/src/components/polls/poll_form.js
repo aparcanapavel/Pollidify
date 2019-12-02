@@ -27,31 +27,28 @@ class PollForm extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchUserPolls(this.props.currentUser.id).then(userPolls => {
-    //   let activePolls = Object.values(userPolls.polls.data);
+      let activePolls = this.props.userPolls;
+      activePolls.map(poll => {
+        let exp_date = new Date(poll.expiration_date);
+        let today = new Date();
+        if (exp_date >= today) {
+          return poll;
+        }
+      })
+      if (activePolls.length >= 2) { 
+        this.setState({
+          canCreate: false,
+          loading: false
+        })
+      } else {
+        this.setState({
+          loading: false
+        })
+      }
+    };
+  
 
-    //   activePolls.map(poll => {
-    //     let exp_date = new Date(poll.expiration_date);
-    //     let today = new Date();
-    //     if (exp_date >= today) {
-    //       return poll;
-    //     }
-    //   })
-    //   if (activePolls.length >= 2) { 
-    //     this.setState({
-    //       canCreate: false,
-    //       loading: false
-    //     })
-    //   } else {
-    //     this.setState({
-    //       loading: false
-    //     })
-    //   }
-    // });
-    
-  }
-
-  titleCase(string){
+  titleCase(string) {
     let str;
     str = string.toLowerCase().split(" ");
     str[0] = str[0].charAt(0).toUpperCase() + str[0].slice(1);
@@ -66,7 +63,6 @@ class PollForm extends React.Component {
     days += 1000 * 60 * 60 * 24 * this.state.expiration_date;
     days = new Date(days);
 
-    const capQuestion = this.titleCase(this.state.question);
 
     let state = {
       question: this.titleCase(this.state.question),
