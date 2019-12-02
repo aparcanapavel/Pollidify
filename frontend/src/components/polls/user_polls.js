@@ -1,5 +1,6 @@
 import React from 'react';
 import PollShowContainer from './poll_show_container.js';
+import { Link } from 'react-router-dom';
 import './user_polls.css';
 
 class UserPolls extends React.Component {
@@ -38,23 +39,28 @@ class UserPolls extends React.Component {
 
         if (expDate >= newDate) {
           activePolls.push(
-            <PollShowContainer
+            <Link to={`/polls/${poll._id}`}>
+              <PollShowContainer
               key={poll._id}
               question={poll.question}
               poll={poll}
               inherited={true}
               noGraph={true}
-            />
+            /> 
+            </Link>  
           );
         } else if (expDate < newDate) {
-          expiredPolls.push(<PollShowContainer 
-            key={poll._id} 
-            question={poll.question} 
-            poll={poll} 
-            inherited={true}
-            noGraph={true}
-            />  
-          );    
+          expiredPolls.push(
+            <Link to={`/polls/${poll._id}`}>
+              <PollShowContainer
+                key={poll._id}
+                question={poll.question}
+                poll={poll}
+                inherited={true}
+                noGraph={true}
+              />
+            </Link>
+            );    
         }
       });
       

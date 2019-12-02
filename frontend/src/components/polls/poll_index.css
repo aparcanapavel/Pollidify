@@ -99,7 +99,6 @@
   border-top: 1px solid gray;
   box-sizing: border-box;
   font-size: 16px;
-  /* background-color: burlywood; */
 }
 
 .poll-index-links li:nth-child(2n+0){
