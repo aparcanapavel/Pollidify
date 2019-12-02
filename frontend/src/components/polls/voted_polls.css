@@ -1,4 +1,4 @@
-.poll-index-main {
+.voted-polls {
   padding-top: 100px;
   display: block;
   width: 100%;
@@ -12,7 +12,7 @@
   min-width: 926px;
 }
 
-.poll-index-title{
+.voted-poll-h2 {
   font-size: 30px;
   position: sticky;
   display: inline-block;
@@ -24,7 +24,7 @@
   box-sizing: border-box;
 }
 
-.poll-index-cont{
+.voted-poll-cont{
   position: relative;
   display: inline-block;
   width: 79%;
@@ -34,26 +34,31 @@
   box-sizing: border-box;
 }
 
-.poll-index-links{
+.voted-poll {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.poll-index-links a {
+.voted-poll a .poll-show-container {
   display: block;
   padding: 15px 0px;
   padding-left: 10px;
   border-top: 1px solid gray;
   box-sizing: border-box;
   font-size: 16px;
+  height: 80px;
+  margin-top: 0;
 }
 
-.poll-index-links li:nth-child(2n+0){
+
+.voted-poll li:nth-child(2n+0){
   background: rgb(154,219,193);
   background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.1) 10%, rgba(154,219,193,0.02) 100%);
 }
 
-.poll-index-links li:hover{
+.voted-poll li:hover{
   background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.3) 10%, rgba(154,219,193,0.02) 100%);
 }
+
+
