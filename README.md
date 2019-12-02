@@ -97,4 +97,9 @@ Pollidify is a minimal application created in one week.
 * Create delete routes for `poll` and associated cascade deletes and debugging - **All**
 
 **Day 6**
+* Create `stats` graph for polls - **Asaf, Chang**
+* Edit limitations on `polls` - **Asaf, Chang**
 
+**Day 7**
+* Styling - **All**
+* Debugging - **All**
