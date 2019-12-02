@@ -15,7 +15,7 @@ export default class PollShow extends React.Component{
   }
 
   componentDidMount() {
-    let votesArr = [];
+    let votesHash = {};
     if (!this.props.inherited) {
       this.props.fetchPoll(this.props.pollId).then(() => {
         this.props.fetchChoices(this.props.pollId).then(choices => {
@@ -23,10 +23,10 @@ export default class PollShow extends React.Component{
         }).then(() => {
           this.state.choices.forEach(choice => {
             this.props.fetchVotes(choice._id).then(votes => {
-              votesArr.push(votes.votes.data.length);
-              this.setState({votes: votesArr});
-              if (this.state.votes.length === this.state.choices.length) {
-                this.setState({ loading: false});
+              votesHash[choice.response] = votes.votes.data.length;
+              if (Object.values(votesHash).length === this.state.choices.length) {
+                this.setState({votes: votesHash});
+                this.setState({ loading: false });
               }
             })
           });
@@ -34,7 +34,6 @@ export default class PollShow extends React.Component{
       })
     };
   }
-
   
   render() {
     if (!this.props.poll && this.state.loading) {
@@ -45,14 +44,19 @@ export default class PollShow extends React.Component{
     let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
     let pollQuestion = this.props.poll.question;
     let responsesArr = [];
+    let votesArr = [];
     this.state.choices.forEach(choice => {
       responsesArr.push("-" + choice.response + "-");
+      votesArr.push(this.state.votes[choice.response]);
     });
+    
+    
 
     let graph = this.props.noGraph ? null : (
       <Plot
-      className="poll-graph"
-        data={[{ type: "bar", x: responsesArr, y: this.state.votes }]}
+        data={[{ type: "bar", x: responsesArr, y: votesArr }]}
+        className="poll-graph"
+
         layout={{ width: 320, height: 240, title: pollQuestion }}
       />
     );

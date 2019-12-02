@@ -43,6 +43,7 @@ class UserPolls extends React.Component {
               question={poll.question}
               poll={poll}
               inherited={true}
+              noGraph={true}
             />
           );
         } else if (expDate < newDate) {
@@ -50,9 +51,10 @@ class UserPolls extends React.Component {
             key={poll._id} 
             question={poll.question} 
             poll={poll} 
-            inherited={true} 
+            inherited={true}
+            noGraph={true}
             />  
-            );    
+          );    
         }
       });
       
