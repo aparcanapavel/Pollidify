@@ -7,7 +7,7 @@ import {fetchVotedPolls} from '../../actions/poll_actions';
 const msp = (state, ownProps) => {
   return {
     pollId: ownProps.pollId,
-    choices: Object.values(state.entities.choices.all),
+    choices: Object.values(state.entities.choices),
     currentUserId: state.session.user.id,
     ownProps
   };
