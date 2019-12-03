@@ -8,9 +8,22 @@ import { selectPolls } from '../../reducers/selectors';
 
 
 const mapStateToProps = state => {
+  let newCreated;
+  let num;
+  let num1 = 1;
+  if (state.session.user.created.length > 7) {
+    num = (state.session.user.created.length - 7)
+    newCreated = state.session.user.created.slice(num)
+  } else {
+    newCreated = state.session.user.created;
+  }
+  if (Object.values(state.entities.polls).length <= 7) {
+    num1 = 2
+  } 
   return {
-    polls: selectPolls(state, state.session.user.created),
+    polls: selectPolls(state, newCreated),
     currentUser: state.session.user,
+    pollsDelete: selectPolls(state, state.session.user.created.slice(num1 - 1))
   };
 };
 

@@ -157,6 +157,8 @@ router.delete('/:poll_id', passport.authenticate('jwt', { session: false }),
     let votedIndex;
     votedIndex = user.voted.indexOf(req.params.poll_id);
     user.voted.splice(votedIndex, 1);
+
+    console.log("USER=" + user)
     
     user.save().then(user => {
       Choice.find({ poll_id: req.params.poll_id })

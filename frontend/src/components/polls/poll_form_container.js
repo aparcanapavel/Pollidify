@@ -4,11 +4,20 @@ import PollForm from './poll_form';
 import { selectPolls } from "../../reducers/selectors";
 
 const mapStateToProps = (state) => {
+  let newCreated;
+  if (state.session.user.created.length > 7) {
+    let num;
+    num = (state.session.user.created.length - 7)
+    newCreated = state.session.user.created.slice(num)
+  } else {
+    newCreated = state.session.user.created
+  }
+
   return {
     currentUser: state.session.user,
     formErrors: Object.values(state.errors.poll),
     choiceErrors: Object.values(state.errors.choices),
-    userPolls: selectPolls(state, state.session.user.created)
+    userPolls: selectPolls(state, newCreated)
   }
 }
 

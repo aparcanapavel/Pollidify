@@ -15,24 +15,16 @@ class UserPolls extends React.Component {
   
   componentDidMount() {
     this.props.fetchPolls().then(() => {
-      let allUserPolls = this.props.polls;
+      let allUserPolls = this.props.pollsDelete;
       if (allUserPolls.length > 7) {
         let poll = allUserPolls[0];
         
         this.props.removePoll(poll._id);
       }
-      // myVar = setTimeout(() => {
-        
-      // }), milliseconds);
       this.setState({ loading: false });
     }) 
   }
 
-  // componentWillUpdate() {
-  //   this.props.fetchPolls().then(() => {
-  //     this.setState({ loading: false });
-  //   })
-  // }
   
   render() {
     if (this.state.loading) {

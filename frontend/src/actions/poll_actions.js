@@ -56,7 +56,7 @@ export const destroyPoll = pollId => {
 export const fetchPolls = () => dispatch => (
   getPolls()
     .then(polls => dispatch(receivePolls(polls)))
-    .catch(err => dispatch(receivePollErrors(err.response.data))) //may need to be err.responseJSON
+    .catch(err => dispatch(receivePollErrors(err.response.data))) 
 );
 
 export const fetchUserPolls = id => dispatch => {
