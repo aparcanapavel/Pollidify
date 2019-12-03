@@ -8,7 +8,6 @@ const msp = (state, ownProps) => {
   return {
     pollId: ownProps.pollId,
     choices: Object.values(state.entities.choices),
-    // votedPolls: selectPolls(state, state.session.user.voted),
     votedPollsIds: state.session.user.voted,
     currentUserId: state.session.user.id,
     ownProps

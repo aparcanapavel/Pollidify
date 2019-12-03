@@ -2,7 +2,6 @@ import React from 'react';
 import './poll_show.css';
 import Plot from 'react-plotly.js';
 import ChoicesContainer from "../choices/choices_container";
-import ImageBackground from 'react';
 
 export default class PollShow extends React.Component{
   constructor(props) {
