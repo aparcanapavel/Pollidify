@@ -2,6 +2,7 @@ import React from 'react';
 import './poll_show.css';
 import Plot from 'react-plotly.js';
 import ChoicesContainer from "../choices/choices_container";
+import ImageBackground from 'react';
 
 export default class PollShow extends React.Component{
   constructor(props) {
@@ -27,7 +28,6 @@ export default class PollShow extends React.Component{
             this.state.choices.forEach(choice => {
               this.props.fetchVotes(choice._id).then(votes => {
                 votesHash[choice.response] = Object.values(votes.votes.data).length;
-                // debugger
 
                 if (Object.values(votesHash).length === this.state.choices.length) {
                   this.setState({votes: votesHash});
@@ -56,8 +56,7 @@ export default class PollShow extends React.Component{
       votesArr.push(this.state.votes[choice.response]);
     });
 
-    // console.log(this.state.votes);
-    
+
     
 
     let graph = (this.props.noGraph || new Date(this.props.poll.expiration_date) > new Date()) ? null : (
@@ -70,11 +69,15 @@ export default class PollShow extends React.Component{
     );
 
     return (
+      <div>
+        <img className="poll-show-image" src={"/bps.png"}/>
+
       <section className="poll-show-container">
         <h3>{pollQuestion}</h3>
         {choices}
         {graph}
       </section>
+      </div>
     );
   }
 }

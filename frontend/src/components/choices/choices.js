@@ -65,9 +65,6 @@ class Choices extends React.Component {
         }
       })
     } 
-    // else {
-    //   button = <button onClick={this.castVote} >Cast Vote</button>;
-    // }
 
     return (
       <div className="poll-choices">
