@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { createPoll, fetchUserPolls } from '../../actions/poll_actions';
+import { createPoll, fetchPolls } from '../../actions/poll_actions';
 import PollForm from './poll_form';
 import { selectPolls } from "../../reducers/selectors";
 
@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPoll: payload => dispatch(createPoll(payload))
+    createPoll: payload => dispatch(createPoll(payload)),
+    fetchPolls: () => dispatch(fetchPolls())
   }
 }
 

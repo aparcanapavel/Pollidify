@@ -27,25 +27,27 @@ class PollForm extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchPolls().then(() => {
       let activePolls = this.props.userPolls;
-      activePolls.map(poll => {
+      activePolls = activePolls.filter(poll => {
         let exp_date = new Date(poll.expiration_date);
         let today = new Date();
-        if (exp_date >= today) {
-          return poll;
-        }
-      })
-      if (activePolls.length >= 2) { 
+
+        return exp_date > today;
+      });
+
+      if (activePolls.length >= 2) {
         this.setState({
           canCreate: false,
           loading: false
-        })
+        });
       } else {
         this.setState({
           loading: false
-        })
+        });
       }
-    };
+    })
+  };
   
 
   titleCase(string) {

@@ -36,7 +36,7 @@ router.post("/register", (req, res) => {
             .then(user => {
               const payload = { 
                 id: user.id, 
-                name: user.name, 
+                username: user.username, 
                 voted: user.voted,
                 created: user.created
               };
@@ -108,6 +108,8 @@ router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+
+    
     res.json({
       id: req.user.id,
       username: req.user.username,

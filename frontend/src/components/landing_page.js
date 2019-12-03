@@ -9,9 +9,6 @@ class LandingPage extends React.Component {
     super(props);
     this.toggleTimer = null;
   }
-
-  shouldComponentUpdate(nextProps, nextState) {
-  }
   
   render() {
     const { formType } = this.props;

@@ -26,13 +26,20 @@ export default function(state = initialState, action) {
       };
 
     case RECEIVE_PAYLOAD:
+
       if(action.payload.user){
         return {
           ...state,
           isAuthenticated: !!action.payload.user,
           user: action.payload.user
         };
-      } else{
+      } else if (action.payload.data.user){
+        return {
+          ...state,
+          isAuthenticated: !!action.payload.data.user,
+          user: action.payload.data.user
+        };
+      } else {
         return state;
       }
 

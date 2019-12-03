@@ -11,7 +11,7 @@ const PollsReducer = ( state = {}, action) => {
   let newState = {};
   switch(action.type) {
     case RECEIVE_POLLS:
-      newState = Object.assign({}, state, action.polls.data);
+      newState = Object.assign({}, action.polls.data);
       return newState;
     // case RECEIVE_USER_POLLS:
     //   newState = Object.assign({}, action.polls.data);
@@ -20,10 +20,14 @@ const PollsReducer = ( state = {}, action) => {
     //   newState = Object.assign({}, action.votedPolls.data);
     //   return newState;
     case RECEIVE_PAYLOAD:
-      let newPoll = action.payload.data.poll;
+      let newPoll = action.payload.data.poll
+        ? action.payload.data.poll
+        : action.payload.data;
+
       newState = Object.assign({}, state, {[newPoll._id]: newPoll});
-     return newState;
+      return newState;
     case REMOVE_POLL:
+      debugger
       newState = Object.assign({}, state);
       delete newState[action.pollId];
       return newState;

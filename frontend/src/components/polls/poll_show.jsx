@@ -26,7 +26,9 @@ export default class PollShow extends React.Component{
           }, () => {
             this.state.choices.forEach(choice => {
               this.props.fetchVotes(choice._id).then(votes => {
-                votesHash[choice.response] = votes.votes.data.length;
+                votesHash[choice.response] = Object.values(votes.votes.data).length;
+                // debugger
+
                 if (Object.values(votesHash).length === this.state.choices.length) {
                   this.setState({votes: votesHash});
                   this.setState({ loading: false });
@@ -49,9 +51,12 @@ export default class PollShow extends React.Component{
     let responsesArr = [];
     let votesArr = [];
     this.state.choices.forEach(choice => {
+      
       responsesArr.push("-" + choice.response + "-");
       votesArr.push(this.state.votes[choice.response]);
     });
+
+    // console.log(this.state.votes);
     
     
 

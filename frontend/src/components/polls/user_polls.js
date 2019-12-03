@@ -8,20 +8,37 @@ class UserPolls extends React.Component {
     super(props)
     this.state = {
       choices: [],
-      votes: []
+      votes: [],
+      loading: true
     }
   }
   
   componentDidMount() {
-    let allUserPolls = this.props.polls;
-    if (allUserPolls.length > 7) {
-      let poll = allUserPolls[0];
-      this.props.removePoll(poll._id);
-      this.forceUpdate();
-    }
+    this.props.fetchPolls().then(() => {
+      let allUserPolls = this.props.polls;
+      if (allUserPolls.length > 7) {
+        let poll = allUserPolls[0];
+        
+        this.props.removePoll(poll._id);
+      }
+      // myVar = setTimeout(() => {
+        
+      // }), milliseconds);
+      this.setState({ loading: false });
+    }) 
   }
+
+  // componentWillUpdate() {
+  //   this.props.fetchPolls().then(() => {
+  //     this.setState({ loading: false });
+  //   })
+  // }
   
   render() {
+    if (this.state.loading) {
+      return <h1>Loading</h1>;
+    }
+    
     if (this.props.polls.length === 0) {
       return (
         <div className="no-user-polls">
