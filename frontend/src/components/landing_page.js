@@ -87,13 +87,13 @@ class LandingPage extends React.Component {
             <h3>Contact Us</h3>
             <div className="git-contact">
               <a target="_blank" href="https://github.com/asafmohammad5">
-                <i class="fab fa-github"></i>Asaf Mohammad
+                <i className="fab fa-github"></i>Asaf Mohammad
               </a>
               <a target="_blank" href="https://github.com/MikaEleFant">
-                <i class="fab fa-github"></i>Chang Ho Lee
+                <i className="fab fa-github"></i>Chang Ho Lee
               </a>
               <a target="_blank" href="https://github.com/aparcanapavel">
-                <i class="fab fa-github"></i>Pavel Aparcana
+                <i className="fab fa-github"></i>Pavel Aparcana
 
               </a>
             </div>
@@ -101,7 +101,7 @@ class LandingPage extends React.Component {
         </section>
 
         <div className="copyright">
-          <i class="far fa-copyright"></i>Pollidify {year}
+          <i className="far fa-copyright"></i>Pollidify {year}
         </div>
       </div>
     );
