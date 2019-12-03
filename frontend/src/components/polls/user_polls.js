@@ -2,6 +2,7 @@ import React from 'react';
 import PollShowContainer from './poll_show_container.js';
 import { Link } from 'react-router-dom';
 import './user_polls.css';
+import { FactsArr } from './random_poll_facts';
 
 class UserPolls extends React.Component {
   constructor(props){
@@ -35,6 +36,7 @@ class UserPolls extends React.Component {
       return (
         <div className="no-user-polls">
           <h2>You have no Polls</h2>
+          <h3>Create a poll and find out what the world has to say about your topic!</h3>
         </div>
       )
     } else {  
@@ -67,13 +69,15 @@ class UserPolls extends React.Component {
                 noGraph={true}
               />
             </Link>
-            );    
+          );    
         }
       });
       
       return (
         <div className="user-poll-main">
           <h2 className="user-poll-title">All of Your Polls</h2>
+          <h3 className="did-you-know">Did You Know?</h3>
+          <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
           <div className="user-poll-cont">
             <div className="active-polls">
               {activePolls}

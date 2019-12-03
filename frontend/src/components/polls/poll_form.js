@@ -144,7 +144,7 @@ class PollForm extends React.Component {
     } else if (!this.state.canCreate) {
       return (
         <div className="create-poll-form-div">
-          <h1>Sorry! You can't have more than two active polls at the same time!</h1>
+          <h1 className="active-poll-warning">Sorry! You can't have more than two active polls at the same time!</h1>
         </div>
       )
     } else {
