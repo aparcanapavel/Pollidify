@@ -37,10 +37,12 @@ class VotedPolls extends React.Component {
     } else {
       return (
         <div className="voted-polls">
-          <h2 className="voted-poll-h2">All of Your Voted Polls</h2>
-          <h3 className="poll-count">Total Voted Polls: {this.props.polls.length}</h3>
-          <h3 className="did-you-know">Did You Know?</h3> 
-          <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+          <div className="voted-polls-sidebar">
+            <h2 className="voted-poll-h2">Your Voted Polls</h2>
+            <h3 className="poll-count">Total Voted Polls: {this.props.polls.length}</h3>
+            <h3 className="did-you-know">Did You Know?</h3> 
+            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+          </div>
           <div className="voted-poll-cont">
             <ul className="voted-poll">
               {this.props.polls.map(poll => (
