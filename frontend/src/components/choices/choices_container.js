@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Choices from './choices';
 import { fetchChoices } from "../../actions/choice_actions";
 import { createVote } from '../../actions/votes_actions';
-import { selectPolls } from '../../reducers/selectors';
+
 
 const msp = (state, ownProps) => {
   return {
