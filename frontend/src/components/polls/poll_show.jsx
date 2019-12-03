@@ -65,7 +65,7 @@ export default class PollShow extends React.Component{
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
     let remaining =
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+     "Expires in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
     this.setState({ timeRemaining: remaining });
   }
   
@@ -88,7 +88,7 @@ export default class PollShow extends React.Component{
     if (new Date(this.props.poll.expiration_date) > new Date()) {
       expirationDate = (
         <h4 className="unexpired">
-          {"Expires in: " + `${this.state.timeRemaining}`}
+          {this.state.timeRemaining}
         </h4>
       );
     } else {
