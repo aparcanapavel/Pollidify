@@ -24,6 +24,30 @@
   box-sizing: border-box;
 }
 
+.did-you-know{
+  font-size: 30px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  height: 75px;
+  padding:0 20px;
+  top: 0px;
+  box-sizing: border-box;
+}
+
+.random-poll-fact{
+  font-size: 20px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  height: 75px;
+  padding:0 20px;
+  top: 0px;
+  box-sizing: border-box;
+}
+
 .user-poll-cont{
   position: relative;
   display: inline-block;
@@ -54,6 +78,48 @@
   box-sizing: border-box;
   font-size: 16px;
   /* background-color: burlywood; */
+}
+
+.no-user-polls {
+  padding-top: 100px;
+  display: block;
+  width: 100%;
+  position: absolute;
+  font-family: sans-serif;
+  height: 100%;
+  overflow-y: auto;
+  min-height: 100%;
+  z-index: -1;
+  box-sizing: border-box;
+  min-width: 926px;
+}
+
+.no-user-polls h2 {
+  font-size: 30px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  padding:0 10px;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.no-user-polls h3 {
+  font-size: 24px;
+  position: sticky;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  padding:0 10px;
+  top: 400px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .user-poll-links li:nth-child(2n+0){
