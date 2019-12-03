@@ -3,12 +3,12 @@
   position: relative;
   margin: 0 auto;
   margin-top: 100px;
-  /* background-color: red; */
-  /* width: 100%; */
   padding: 30px;
   border-radius: 5px;
   border: 1px solid rgba(71, 104, 91, 0.582);
   font-family: sans-serif;
+  background-color: whitesmoke;
+  width: 600px;
 }
 
 .poll-show-container > h3 {
@@ -16,6 +16,8 @@
   margin-bottom: 15px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.438);
+  text-align: center;
+
 } 
 
 .poll-choices div button{
@@ -32,7 +34,24 @@
   transition: background-color 0.2s;
 }
 
+.poll-choices div button:hover {
+  background-color: rgb(115, 153, 139);
+}
+
 .choice-responses li{
   text-align: center;
   cursor: pointer;
+}
+
+.poll-show-image {
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+    position: absolute;
+    opacity: 0.6;
+
+}
+
+.choice-response:hover  {
+   background-color: rgb(220, 233, 228);
 }

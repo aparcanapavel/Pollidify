@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { fetchPolls } from '../../actions/poll_actions';
 import VotedPolls from './voted_polls';
-import { selectPolls } from "../../reducers/selectors";
+import { selectVotedPolls } from "../../reducers/selectors";
 
 const mapStateToProps = (state) => {
-  let polls = selectPolls(state, state.session.user.voted);
+  let polls = selectVotedPolls(state, state.session.user.voted);
   
   return {
     currentUser: state.session.user,
