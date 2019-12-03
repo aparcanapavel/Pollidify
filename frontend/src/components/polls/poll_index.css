@@ -37,6 +37,7 @@
   top: 0px;
   box-sizing: border-box;
   text-align: center;
+  width: 100%;
 }
 
 .poll-count{
@@ -49,6 +50,7 @@
   height: 150px;
   top: 0px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .did-you-know{
