@@ -19,6 +19,7 @@ class App extends React.Component {
     this.showLogin = this.showLogin.bind(this);
     this.showSignup = this.showSignup.bind(this);
     this.toggleSlide = this.toggleSlide.bind(this);
+    this.removeSlide = this.removeSlide.bind(this);
     this.toggleTimer = null;
   }
 
@@ -103,7 +104,7 @@ class App extends React.Component {
           <ProtectedRoute exact path="/polls" component={PollIndex} />
           <AuthRoute
             path="/"
-            component={() => <LandingPage formType={this.state.form} />}
+            component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} />}
           />
         </Switch>
       </div>
