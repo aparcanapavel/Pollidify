@@ -75,9 +75,11 @@ class UserPolls extends React.Component {
       
       return (
         <div className="user-poll-main">
-          <h2 className="user-poll-title">All of Your Polls</h2>
-          <h3 className="did-you-know">Did You Know?</h3>
-          <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+          <div className="user-poll-sidebar">
+            <h2 className="user-poll-title">All of Your Polls</h2>
+            <h3 className="did-you-know">Did You Know?</h3>
+            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+          </div>
           <div className="user-poll-cont">
             <div className="active-polls">
               {activePolls}

@@ -101,6 +101,7 @@
   padding:0 20px;
   top: 0px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .no-voted-polls h3{
@@ -112,6 +113,7 @@
   padding:0 20px;
   top: 400px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .voted-poll li:nth-child(2n+0){
