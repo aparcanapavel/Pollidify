@@ -15,9 +15,6 @@ export const selectVotedPolls = (state, pollIds) => {
     pollIds.forEach(pollId => {
       if (!!state.entities.polls[pollId]) {
         polls.push(state.entities.polls[pollId]);
-      // } else {
-      //   continue;
-      // }
     }})
   }
   return polls;

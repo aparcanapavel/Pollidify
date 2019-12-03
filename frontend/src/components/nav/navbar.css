@@ -11,7 +11,6 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 10%;
-  /* margin-top: 5%; */
 }
 
 .nav-left {
@@ -22,13 +21,8 @@
   padding: 10px;
 }
 
-.nav-mid {
-  /* width: 10%; */
-  /* float: right; */
-}
 
 .nav-right {
-  /* width: 25%; */
   font-size: 23px;
   position: absolute;
   right: 0px;
@@ -43,7 +37,6 @@
 .signup-link,
 .login-link {
   padding: 18px 10px;
-  /* background-color: red; */
   cursor: pointer;
   color: white;
   box-sizing: border-box;
@@ -53,8 +46,6 @@
 
 .signup-link:hover,
 .login-link:hover{
-  /* background:linear-gradient(to bottom, #dbe6c4 5%, #405C51 100%); */
-  /* color:rgb(124, 172, 154); */
   color:#405C51;
 }
 
@@ -92,7 +83,6 @@
 }
 
 .nav-right-options li:hover{
-  /* background: rgb(136,194,160); */
   background: linear-gradient(180deg, rgba(136,194,160,0.7175245098039216) 0%, rgba(124,172,154,1) 51%, rgba(136,194,160,0.7063200280112045) 99%);
   transition: 0.3s;
 }
