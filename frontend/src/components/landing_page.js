@@ -24,7 +24,7 @@ class LandingPage extends React.Component {
     const year = date.getFullYear();
     
     return (
-      <div className="landing-page">
+      <div className="landing-page" id="landing-page">
         <main id="landing-main">
           <div className="landing-main-title" id="landing-main-div">
             <h1>Pollidify</h1>
@@ -44,13 +44,19 @@ class LandingPage extends React.Component {
           <nav className="sub-nav">
             <ul>
               <li>
-                <a href="#about-pollidify" onClick={this.props.removeSlide}>Pollidify?</a>
+                <a href="#about-pollidify" onClick={this.props.removeSlide}>
+                  Pollidify?
+                </a>
               </li>
               <li>
-                <a href="#developers-msg" onClick={this.props.removeSlide}>From the Developers</a>
+                <a href="#developers-msg" onClick={this.props.removeSlide}>
+                  From the Developers
+                </a>
               </li>
               <li>
-                <a href="#contact" onClick={this.props.removeSlide}>Contact Us</a>
+                <a href="#contact" onClick={this.props.removeSlide}>
+                  Contact Us
+                </a>
               </li>
             </ul>
           </nav>
@@ -81,13 +87,13 @@ class LandingPage extends React.Component {
             <h3>Contact Us</h3>
             <div className="git-contact">
               <a href="https://github.com/asafmohammad5">
-                <i class="fab fa-github"></i>Asaf Mohammad
+                <i className="fab fa-github"></i>Asaf Mohammad
               </a>
               <a href="https://github.com/MikaEleFant">
-                <i class="fab fa-github"></i>Chang Ho Lee
+                <i className="fab fa-github"></i>Chang Ho Lee
               </a>
               <a href="https://github.com/aparcanapavel">
-                <i class="fab fa-github"></i>Pavel Aparcana
+                <i className="fab fa-github"></i>Pavel Aparcana
               </a>
             </div>
           </article>

@@ -47,13 +47,15 @@
   cursor: pointer;
   color: white;
   box-sizing: border-box;
+  font-family: 'Assistant', sans-serif;
+  transition: color 0.3s;
 }
 
 .signup-link:hover,
 .login-link:hover{
   /* background:linear-gradient(to bottom, #dbe6c4 5%, #405C51 100%); */
-  background-color:rgb(124, 172, 154);
-  transition: 0.3s;
+  /* color:rgb(124, 172, 154); */
+  color:#405C51;
 }
 
 .signup-link {
@@ -70,7 +72,7 @@
   padding: 18px 5px;
   box-sizing: border-box;
   font-size: 17px;
-  font-family: sans-serif;
+  font-family: 'Assistant', sans-serif;
   border-right: 1px solid white;
   cursor: pointer;
   color: white;
