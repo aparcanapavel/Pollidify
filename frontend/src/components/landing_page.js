@@ -71,22 +71,22 @@ class LandingPage extends React.Component {
             <h3>Message from the developers</h3>
             <p>
               Thank you for visiting our project Pollidify. We hope that you
-              find our application userfull. If you wish to help us expand the
+              find our application useful. If you wish to help us expand the
               project, please reach out to us through github or through Linked
-              In
+              In!
             </p>
           </article>
 
           <article id="contact">
             <h3>Contact Us</h3>
             <div className="git-contact">
-              <a href="https://github.com/asafmohammad5">
+              <a target="_blank" href="https://github.com/asafmohammad5">
                 <i class="fab fa-github"></i>Asaf Mohammad
               </a>
-              <a href="https://github.com/MikaEleFant">
+              <a target="_blank" href="https://github.com/MikaEleFant">
                 <i class="fab fa-github"></i>Chang Ho Lee
               </a>
-              <a href="https://github.com/aparcanapavel">
+              <a target="_blank" href="https://github.com/aparcanapavel">
                 <i class="fab fa-github"></i>Pavel Aparcana
               </a>
             </div>

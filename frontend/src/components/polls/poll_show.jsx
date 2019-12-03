@@ -11,7 +11,8 @@ export default class PollShow extends React.Component{
     this.state = {
       choices: [],
       votes: [],
-      loading: true
+      loading: true,
+      timeLeft: null
     }
   }
 
@@ -46,7 +47,7 @@ export default class PollShow extends React.Component{
       return <h1>loading</h1>
     }
 
-    let choices = this.props.inherited ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
+    let choices = (this.props.inherited || (new Date(this.props.poll.expiration_date) < new Date())) ? null : <ChoicesContainer pollId={this.props.pollId} history={this.props.history} poll={this.props.poll} />;
     let pollQuestion = this.props.poll.question;
     let responsesArr = [];
     let votesArr = [];
@@ -56,16 +57,25 @@ export default class PollShow extends React.Component{
       votesArr.push(this.state.votes[choice.response]);
     });
 
-
-    
+    let expirationDate;
+    if (new Date(this.props.poll.expiration_date) > new Date()) {
+      expirationDate = <h4 className="unexpired">{"Expires at: " + `${(new Date(this.props.poll.expiration_date))}`}</h4>
+    } else {
+      expirationDate = <h4 className="expired">EXPIRED</h4>
+    }
 
     let graph = (this.props.noGraph || new Date(this.props.poll.expiration_date) > new Date()) ? null : (
-      <Plot
-        data={[{ type: "bar", x: responsesArr, y: votesArr }]}
-        className="poll-graph"
+      <div>
+        <Plot
+          data={[{ type: "bar", x: responsesArr, y: votesArr, text: votesArr.map(String), textposition: 'auto', hoverinfo: 'none', 
+            marker: {color: 'rgb(115, 153, 139)', opacity: 0.6, line: { color: 'rgb(8,48,107)', width: 1.5}}, base: 0
+          }]}
+          className="poll-graph"
 
-        layout={{ width: 320, height: 240, title: pollQuestion }}
-      />
+          layout={{ width: 500, height: 360, title: pollQuestion, yaxis: {range: [0, (Math.max(...votesArr) + 1)]}}}
+        />
+        <h1 className="total-votes">Total Votes: {votesArr.reduce((a,b) => a + b, 0)}</h1>
+      </div>
     );
 
     return (
@@ -74,8 +84,11 @@ export default class PollShow extends React.Component{
 
       <section className="poll-show-container">
         <h3>{pollQuestion}</h3>
+        {expirationDate}
         {choices}
-        {graph}
+        <div className="poll-show-graph">
+          {graph}
+        </div>
       </section>
       </div>
     );
