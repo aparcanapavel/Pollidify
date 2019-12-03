@@ -34,7 +34,7 @@
   min-height: 100%;
   border-left: 1px solid gray;
   box-sizing: border-box;
-  margin-top: 40px;
+  padding-top: 40px;
 }
 
 .voted-poll {
@@ -52,6 +52,7 @@
   font-size: 16px;
   height: 80px;
   margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .no-voted-polls {
@@ -134,6 +135,10 @@
   text-align: center;
   box-sizing: border-box;
   word-wrap: break-word;
+}
+
+.poll-voted .poll-show-image {
+  display: none;
 }
 
 .voted-poll li:nth-child(2n+0){

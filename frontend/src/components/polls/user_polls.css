@@ -60,7 +60,7 @@
   min-height: 100%;
   border-left: 1px solid gray;
   box-sizing: border-box;
-  margin-top: 40px;
+  padding-top: 40px;
 }
 
 .user-poll-sidebar {

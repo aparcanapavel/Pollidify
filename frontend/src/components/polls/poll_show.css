@@ -17,8 +17,21 @@
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.438);
   text-align: center;
+}
 
-} 
+.unexpired {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 15px;
+}
+
+.expired {
+  padding-bottom: 20px;
+  font-size: 18px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
 
 .poll-choices div button{
   background-color: #88C2AB;
@@ -36,6 +49,16 @@
 
 .poll-choices div button:hover {
   background-color: rgb(115, 153, 139);
+}
+
+.total-votes {
+  margin-top: 20px;
+}
+
+.poll-show-graph {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .choice-responses li{
