@@ -158,8 +158,6 @@ router.delete('/:poll_id', passport.authenticate('jwt', { session: false }),
     votedIndex = user.voted.indexOf(req.params.poll_id);
     user.voted.splice(votedIndex, 1);
 
-    console.log("USER=" + user)
-    
     user.save().then(user => {
       Choice.find({ poll_id: req.params.poll_id })
         .then(choices => {
@@ -179,15 +177,12 @@ router.delete('/:poll_id', passport.authenticate('jwt', { session: false }),
             if (err) {
               console.log(`[error] ${err}`);
             } else {
-              // console.log(user);
               const payload = {
                 id: user.id,
                 username: user.username,
                 voted: user.voted,
                 created: user.created
-              };
-              console.log(payload);
-              
+              };      
               jwt.sign(
                 payload,
                 keys.secretOrKey,

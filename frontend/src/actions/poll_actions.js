@@ -91,10 +91,8 @@ export const fetchVotedPolls = userId => dispatch => {
 }
 
 export const removePoll = pollId => dispatch => {
-  debugger
   return deletePoll(pollId)
     .then((payload) => {
-      debugger
       const { token } = payload.data;
       localStorage.setItem("jwtToken", token);
       APIUtil.setAuthToken(token);
