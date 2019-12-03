@@ -3,13 +3,11 @@ $darker: #6D9C89;
 $main: #88C2AB; 
 $lighter: #9ADBC1;
 $lightest: #B3FFE0; */
-
 .landing-page {
   display: block;
   min-width: 940px;
   margin-top: 60px;
   position: relative;
-
   overflow: hidden;
 }
 
@@ -186,6 +184,8 @@ $lightest: #B3FFE0; */
   display: block;
   margin: 10px 0px;
   color: black;
+  transition: transform 0.3s;
+  width: 200px;
 }
 
 .git-contact a i{
@@ -194,7 +194,11 @@ $lightest: #B3FFE0; */
 }
 
 #contact div a:hover i {
-  color: rgb(75, 106, 93);
+  color: rgb(88, 122, 108);
+}
+
+#contact div a:hover{
+  transform: translateX(5px);
 }
 
 .copyright{
@@ -203,6 +207,7 @@ $lightest: #B3FFE0; */
   text-align: center;
   background-color: rgba(136, 194, 171, 0.187);
   padding-bottom: 10px;
+  font-family: 'Assistant', sans-serif;
 }
 
 .copyright i{
