@@ -33,12 +33,7 @@ class Choices extends React.Component {
   }
 
   componentDidMount () {
-
-    // this.props.fetchChoices(this.props.pollId).then(() => {
-      this.props.fetchVotedPolls(this.props.currentUserId).then(votedPolls => {
-        this.setState({votedPolls: votedPolls.votedPolls.data});
-      })
-    // });
+    this.setState({ votedPolls: this.props.votedPollsIds });
   }
 
   componentWillUnmount(){
@@ -64,8 +59,8 @@ class Choices extends React.Component {
     if (exp_date < new Date()) {
       button = null;
     } else if (this.state.votedPolls.length > 0) {
-      this.state.votedPolls.forEach(votedPoll => {
-        if (votedPoll._id === this.props.pollId) {
+      this.state.votedPolls.forEach(votedPollId => {
+        if (votedPollId === this.props.pollId) {
           button = null;
         }
       })

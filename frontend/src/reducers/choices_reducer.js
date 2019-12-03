@@ -6,10 +6,10 @@ const ChoicesReducer = (state = { }, action) => {
   
   switch(action.type) {
     case RECEIVE_CHOICES:
-      return Object.assign({}, state, action.choices.data);
+      return Object.assign({}, action.choices.data);
       
     case RECEIVE_PAYLOAD:
-      return Object.assign({}, state, action.payload.data.choices);
+      return Object.assign({}, action.payload.data.choices);
 
     default:
       return state;

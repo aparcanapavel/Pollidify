@@ -6,7 +6,7 @@ import {
   getVotedPolls,
   deletePoll
 } from "../util/poll_api_util";
-
+import * as APIUtil from "../util/session_api_util";
 export const RECEIVE_POLLS = "RECEIVE_POLLS";
 export const RECEIVE_USER_POLLS = "RECEIVE_USER_POLL";
 export const RECEIVE_PAYLOAD = "RECEIVE_PAYLOAD";
@@ -25,6 +25,7 @@ export const receiveUserPolls = polls => ({
 });
 
 export const receivePoll = payload => {
+
   return {
     type: RECEIVE_PAYLOAD,
     payload
@@ -55,7 +56,7 @@ export const destroyPoll = pollId => {
 export const fetchPolls = () => dispatch => (
   getPolls()
     .then(polls => dispatch(receivePolls(polls)))
-    .catch(err => dispatch(receivePollErrors(err.response.data))) //may need to be err.responseJSON
+    .catch(err => dispatch(receivePollErrors(err.response.data))) 
 );
 
 export const fetchUserPolls = id => dispatch => {
@@ -68,11 +69,16 @@ export const createPoll = data => dispatch => {
 
   return writePoll(data)
     .then(payload => {
+ 
+      const { token } = payload.data;
+      localStorage.setItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
       dispatch(receivePoll(payload));
     }).catch(err => dispatch(receivePollErrors(err.response.data)))
   };
 
 export const fetchPoll = (id) => dispatch => {
+
   return getPoll(id)
     .then(poll => dispatch(receivePoll(poll)))
     .catch(err => dispatch(receivePollErrors(err.response.data)))
@@ -85,7 +91,14 @@ export const fetchVotedPolls = userId => dispatch => {
 }
 
 export const removePoll = pollId => dispatch => {
+  debugger
   return deletePoll(pollId)
-    .then(() => dispatch(destroyPoll(pollId)))
+    .then((payload) => {
+      debugger
+      const { token } = payload.data;
+      localStorage.setItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
+      dispatch(destroyPoll(pollId));
+    })
     .catch(err => console.log(err));
 }

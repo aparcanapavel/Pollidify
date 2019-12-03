@@ -13,7 +13,11 @@ class VotedPolls extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchVotedPolls(this.props.currentUser.id).then(() => this.setState({loading: false}));
+    this.props.fetchPolls().then(() => {
+      if (this.props.polls) {
+        this.setState({ loading: false });
+      }
+    })
   }
 
 
@@ -35,7 +39,7 @@ class VotedPolls extends React.Component {
           <div className="voted-poll-cont">
             <ul className="voted-poll">
               {this.props.polls.map(poll => (
-                <li className="poll-voted"><Link to={`/polls/${poll._id}`}><PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} noGraph={true} /> </Link> </li>
+                <li key={poll._id} className="poll-voted"><Link to={`/polls/${poll._id}`}><PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} noGraph={true} /> </Link> </li>
               ))}
             </ul>
           </div>

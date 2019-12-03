@@ -1,19 +1,30 @@
 import { connect } from 'react-redux';
-import { createPoll, fetchUserPolls } from '../../actions/poll_actions';
+import { createPoll, fetchPolls } from '../../actions/poll_actions';
 import PollForm from './poll_form';
+import { selectPolls } from "../../reducers/selectors";
 
 const mapStateToProps = (state) => {
+  let newCreated;
+  if (state.session.user.created.length > 7) {
+    let num;
+    num = (state.session.user.created.length - 7)
+    newCreated = state.session.user.created.slice(num)
+  } else {
+    newCreated = state.session.user.created
+  }
+
   return {
     currentUser: state.session.user,
     formErrors: Object.values(state.errors.poll),
-    choiceErrors: Object.values(state.errors.choices)
+    choiceErrors: Object.values(state.errors.choices),
+    userPolls: selectPolls(state, newCreated)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createPoll: payload => dispatch(createPoll(payload)),
-    fetchUserPolls: id => dispatch(fetchUserPolls(id))
+    fetchPolls: () => dispatch(fetchPolls())
   }
 }
 

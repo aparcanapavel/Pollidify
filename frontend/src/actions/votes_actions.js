@@ -1,5 +1,5 @@
 import * as VoteAPI from '../util/vote_api_util';
-
+import * as APIUtil from "../util/session_api_util";
 export const RECEIVE_VOTES = "RECEIVE_VOTES";
 export const RECEIVE_VOTE = "RECEIVE_VOTE";
 
@@ -25,6 +25,12 @@ export const fetchVotes = choiceId => dispatch => {
 
 export const createVote = choiceId => dispatch => {
   return VoteAPI.createVote(choiceId)
-    .then(vote => dispatch(receiveVote(vote)))
+    .then(vote => {
+
+      const { token } = vote.data;
+      localStorage.setItem("jwtToken", token);
+      APIUtil.setAuthToken(token);
+      dispatch(receiveVote(vote));
+    })
     .catch(err => console.log(err));
 }

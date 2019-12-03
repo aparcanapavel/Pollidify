@@ -6,6 +6,9 @@ const Choice = require('../../models/Choice');
 const validatePollInput = require('../../validation/create-poll');
 const validateChoiceInput = require('../../validation/create-choice');
 const Vote = require('../../models/Vote');
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
+const User = require("../../models/User");
 
 router.get('/', (req, res) => {
   Poll.find()
@@ -90,27 +93,51 @@ router.post('/new',
     if (req.body.choices.length >= 2) {
       newPoll.save().then(
         poll => {
-          const choicesObj = {};
-          const choices = req.body.choices;
-          for (let i = 0; i < choices.length; i++) {
-            let choice = choices[i];
-            const { choiceErrors, isChoiceValid } = validateChoiceInput(choice);
+          User.findOne({ _id: req.user.id }).then(user => {
+            user.created.push(poll._id);
+            user.save().then(user => {
+              const choicesObj = {};
+              const choices = req.body.choices;
+              for (let i = 0; i < choices.length; i++) {
+                let choice = choices[i];
+                const { choiceErrors, isChoiceValid } = validateChoiceInput(choice);
 
-            if (!isChoiceValid) {
-              res.status(400).json(choiceErrors);
-            }
-            
-            let newChoice = new Choice({
-              response: choice,
-              poll_id: poll.id
-            });
-            newChoice.save().then(choice => {
-              choicesObj[choice._id] = choice;
-              if (i === choices.length - 1) {
-                res.send({poll: poll, choices: choicesObj});
-              }
-            });
-          };
+                if (!isChoiceValid) {
+                  res.status(400).json(choiceErrors);
+                }
+                
+                let newChoice = new Choice({
+                  response: choice,
+                  poll_id: poll.id
+                });
+                newChoice.save().then(choice => {
+                  choicesObj[choice._id] = choice;
+                  if (i === choices.length - 1) {
+                    const payload = {
+                      id: user.id,
+                      username: user.username,
+                      voted: user.voted,
+                      created: user.created
+                    };
+                    jwt.sign(
+                      payload,
+                      keys.secretOrKey,
+                      { expiresIn: 21600 },
+                      (err, token) => {
+                        res.json({
+                          success: true,
+                          token: "Bearer " + token,
+                          poll: poll,
+                          choices: choices,
+                          user: user
+                        });
+                      }
+                    );
+                  }
+                });
+              };
+            })
+          })
         }
       );
     } else {
@@ -119,28 +146,65 @@ router.post('/new',
   }
 );
 
-router.delete('/:poll_id', (req, res) => {
-  Choice.find({ poll_id: req.params.poll_id }).then(choices => {
-    for (let i = 0; i < choices.length; i++) {
-      let choice = choices[i];
-      Choice.deleteOne({ _id: choice.id }, function (err) {
-        if (err) {
-          console.log(`[error] ${err}`);
-        } else {
-          console.log('success delete choice');
-        }
-      })
-    }
-  }).then(() => {
-    Poll.deleteOne({ _id: req.params.poll_id }, function (err) {
-      if (err) {
-        console.log(`[error] ${err}`);
-      } else {
-        console.log('success delete poll');
-        res.status(200).send({ delete: "Deletion successful"});
-      }
+router.delete('/:poll_id', passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+  User.findOne({ _id: req.user.id }).then(user => {
+
+    let pollIndex;
+    pollIndex = user.created.indexOf(req.params.poll_id);
+    user.created.splice(pollIndex, 1);
+
+    let votedIndex;
+    votedIndex = user.voted.indexOf(req.params.poll_id);
+    user.voted.splice(votedIndex, 1);
+
+    console.log("USER=" + user)
+    
+    user.save().then(user => {
+      Choice.find({ poll_id: req.params.poll_id })
+        .then(choices => {
+          for (let i = 0; i < choices.length; i++) {
+            let choice = choices[i];
+            Choice.deleteOne({ _id: choice.id }, function(err) {
+              if (err) {
+                console.log(`[error] ${err}`);
+              } else {
+                console.log("success delete choice");
+              }
+            });
+          }
+        })
+        .then(() => {
+          Poll.deleteOne({ _id: req.params.poll_id }, function(err) {
+            if (err) {
+              console.log(`[error] ${err}`);
+            } else {
+              // console.log(user);
+              const payload = {
+                id: user.id,
+                username: user.username,
+                voted: user.voted,
+                created: user.created
+              };
+              console.log(payload);
+              
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: 21600 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token,
+                    user: user
+                  });
+                }
+              );
+            }
+          });
+        });
     })
   })
-  })
+})
 
 module.exports = router;

@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Vote = require('../../models/Vote');
 const passport = require('passport');
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/keys");
 
 router.get('/:choice_id', (req, res) => {
   Vote.find({choice_id: req.params.choice_id})
@@ -23,7 +25,34 @@ router.post('/:choice_id',
       choice_id: req.params.choice_id
     });
     newVote.save().then(
-      res.json('Vote cast successfully')
+      User.findOne({ _id: req.user.id }).then(user => {
+        Choice.findOne({ _id: req.params.choice_id }).then(choice => {
+          Poll.findOne({ _id: choice.poll_id }).then(poll => {
+            user.voted.push(poll._id);
+            user.save().then(user => {
+              const payload = {
+                id: user.id,
+                username: user.username,
+                voted: user.voted,
+                created: user.created
+              };
+
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                { expiresIn: 21600 },
+                (err, token) => {
+                  res.json({
+                    success: true,
+                    token: "Bearer " + token,
+                    user: user
+                  });
+                }
+              );
+            })
+          })
+        })
+      })
     );
   })
 
