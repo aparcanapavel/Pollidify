@@ -57,10 +57,11 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const pollidify = this.props.loggedIn ? <h1 className="nav-logo" onClick={this.toHome}>Pollidify</h1> : null;
       return (
         <div className="nav-bar-main">
           <div className="nav-left">
-            <h1 className="nav-logo" onClick={this.toHome}>Pollidify</h1>
+            {pollidify}
           </div>
           <div className="nav-mid"></div>
           <div className="nav-right">{this.getLinks()} </div> 

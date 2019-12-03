@@ -4,6 +4,7 @@
   background-color: #88C2AB;
   height: 60px;
   width: 100vw;
+  z-index: 10;
 }
 
 .nav-bar-logged-out {
@@ -41,9 +42,11 @@
 
 .signup-link,
 .login-link {
-  padding: 20px 10px;
+  padding: 18px 10px;
   /* background-color: red; */
   cursor: pointer;
+  color: white;
+  box-sizing: border-box;
 }
 
 .signup-link:hover,
