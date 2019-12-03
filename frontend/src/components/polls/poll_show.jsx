@@ -13,7 +13,7 @@ export default class PollShow extends React.Component{
       votes: [],
       loading: true,
       time: new Date(),
-      timeRemaining: null,
+      timeRemaining: "",
       countDownDate: null
     };
 
