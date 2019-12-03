@@ -11,12 +11,17 @@ export default class PollShow extends React.Component{
       choices: [],
       votes: [],
       loading: true,
-      timeLeft: null
-    }
+      time: new Date(),
+      timeRemaining: "",
+      countDownDate: null
+    };
+
+    this.tick = this.tick.bind(this);
   }
 
   componentDidMount() {
     let votesHash = {};
+
     if (!this.props.inherited) {
       this.props.fetchPoll(this.props.pollId).then(() => {
         this.props.fetchChoices(this.props.pollId).then(choices => {
@@ -31,6 +36,10 @@ export default class PollShow extends React.Component{
 
                 if (Object.values(votesHash).length === this.state.choices.length) {
                   this.setState({votes: votesHash});
+                  this.setState({
+                    countDownDate: new Date(this.props.poll.expiration_date).getTime()
+                  });
+                  this.intervalId = setInterval(this.tick, 1000);
                   this.setState({ loading: false });
                 }
               })
@@ -39,6 +48,25 @@ export default class PollShow extends React.Component{
         })
       })
     };
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+  tick() {
+    
+    let rightNow = new Date().getTime();
+    let distance = this.state.countDownDate - rightNow;
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let remaining =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+    this.setState({ timeRemaining: remaining });
   }
   
   render() {
@@ -58,7 +86,11 @@ export default class PollShow extends React.Component{
 
     let expirationDate;
     if (new Date(this.props.poll.expiration_date) > new Date()) {
-      expirationDate = <h4 className="unexpired">{"Expires at: " + `${(new Date(this.props.poll.expiration_date))}`}</h4>
+      expirationDate = (
+        <h4 className="unexpired">
+          {"Expires in: " + `${this.state.timeRemaining}`}
+        </h4>
+      );
     } else {
       expirationDate = <h4 className="expired">EXPIRED</h4>
     }
