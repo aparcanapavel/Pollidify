@@ -94,8 +94,9 @@
 .user-poll-cont .expired-polls .poll-show-image {
   display: none;
 }
-.poll-show-container .unexpired, 
-.poll-show-container .expired  {
+
+.user-poll-cont .poll-show-container .unexpired, 
+.user-poll-cont .poll-show-container .expired  {
   display: none;
 }
 .user-poll-links a {
@@ -149,24 +150,11 @@
   word-wrap: break-word;
 }
 
-.user-poll-links li:nth-child(2n+0){
-  background: rgb(154,219,193);
-  background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.1) 10%, rgba(154,219,193,0.02) 100%);
-}
-
-.user-poll-links li:hover{
-  background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.3) 10%, rgba(154,219,193,0.02) 100%);
-}
-
 .user-poll-cont .poll-show-render:hover {
    background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.3) 10%, rgba(154,219,193,0.02) 100%);
 }
 
-.user-poll-cont > .active-polls > a:nth-child(2n+0) > .poll-show-render {
-  background: rgb(154,219,193);
-  background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.1) 10%, rgba(154,219,193,0.02) 100%);
-}
-
+.user-poll-cont > .active-polls > a:nth-child(2n+0) > .poll-show-render,
 .user-poll-cont > .expired-polls > a:nth-child(2n+0) > .poll-show-render {
   background: rgb(154,219,193);
   background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.1) 10%, rgba(154,219,193,0.02) 100%);
