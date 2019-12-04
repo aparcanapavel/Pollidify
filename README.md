@@ -102,3 +102,8 @@ Pollidify is a minimal application created in one week.
 * Create live `expires-in` timer for polls - **Pavel**
 * Styling - **All**
 * Debugging - **All**
+
+**Day 9**
+* Refactor global `state` for application - **All**
+* Styling - **All**
+* Debugging - **All**
