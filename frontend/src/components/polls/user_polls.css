@@ -94,10 +94,11 @@
 .user-poll-cont .expired-polls .poll-show-image {
   display: none;
 }
-/* .poll-show-container .unexpired, 
-.poll-show-container .expired  {
+
+.user-poll-cont .poll-show-container .unexpired, 
+.user-poll-cont .poll-show-container .expired  {
   display: none;
-} */
+}
 .user-poll-links a {
   display: block;
   padding: 15px 0px;
