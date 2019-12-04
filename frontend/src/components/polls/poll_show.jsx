@@ -110,7 +110,7 @@ export default class PollShow extends React.Component{
     );
 
     return (
-      <div>
+      <div className="poll-show-render">
         <img className="poll-show-image" src={"/bps.png"}/>
 
       <section className="poll-show-container">

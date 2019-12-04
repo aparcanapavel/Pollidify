@@ -80,7 +80,7 @@ class UserPolls extends React.Component {
             <h3 className="poll-count">Total Voted Polls: {this.props.polls.length}</h3>
             <h3 className="did-you-know">Did You Know?</h3>
             <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
-          </div>
+          </div> 
           <div className="user-poll-cont">
             <div className="active-polls">
               {activePolls}
