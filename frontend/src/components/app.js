@@ -58,6 +58,7 @@ class App extends React.Component {
 
   componentDidMount(){
     console.log(this.props.user);
+    console.log(this.isEmpty(this.props.user));
   }
   
   showSignup() {
@@ -76,10 +77,61 @@ class App extends React.Component {
     console.log("login clicked");
   }
 
+  isEmpty(obj) {
+    if (obj == null) return true;
+    if (obj.length > 0) return false;
+    if (obj.length === 0) return true;
+
+    if (typeof obj !== "object") return true;
+    for (var key in obj) {
+      if (hasOwnProperty.call(obj, key)) return false;
+    }
+
+    return true;
+  }
 
   render() {
     const { user } = this.props;
+    if (this.isEmpty(this.props.user)){
+      return (
+        <div className="app-div">
+          <NavBarContainer
+            showSignup={this.showSignup}
+            showLogin={this.showLogin}
+          />
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/polls/user/:id"
+              component={UserPollsContainer}
+            />
 
+            <ProtectedRoute
+              exact
+              path="/polls/voted/:id"
+              component={VotedPollsContainer}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/polls/new"
+              component={CreatePollContainer}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/polls/:id"
+              component={PollShowContainer}
+            />
+            <ProtectedRoute exact path="/polls" component={PollIndex} />
+            <AuthRoute
+              path="/"
+              component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} />}
+            />
+          </Switch>
+        </div>
+      );
+    } 
     return (
       <div className="app-div">
         <NavBarContainer
@@ -125,9 +177,9 @@ class App extends React.Component {
               <Link to={`/polls/voted/${user.id}`}>Voted Polls</Link>
               <Link to={`/polls/user/${user.id}`}>My Polls</Link>
             </div>
-            <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3>
+            {window.location.pathname === "/polls/" ? null : <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3> }
             <h3 className="did-you-know">Did You Know?</h3>
-            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+            <p className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</p>
           </div>
         </section>
       </div>

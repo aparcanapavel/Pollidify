@@ -110,18 +110,18 @@ export default class PollShow extends React.Component{
     );
 
     return (
-      <div className="poll-show-render">
-        <img className="poll-show-image" src={"/bps.png"}/>
+      // <div className="poll-show-render">
+      //   <img className="poll-show-image" src={"/bps.png"}/>
 
       <section className="poll-show-container">
         <h3>{pollQuestion}</h3>
-        {expirationDate}
-        {choices}
+        <p>{expirationDate}</p>
+        <div className="choices-list">{choices}</div>
         <div className="poll-show-graph">
           {graph}
         </div>
       </section>
-      </div>
+      // </div>
     );
   }
 }

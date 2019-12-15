@@ -30,26 +30,22 @@ class VotedPolls extends React.Component {
     if (this.props.polls.length === 0) {
       return (
         <div className="no-voted-polls">
-          <h2>You have no voted Polls</h2>
-          <h3>Vote for a poll to gain access to its statistics when it finishes!</h3>
+          <h3>Voted Polls (0)</h3>
+          <p>You have no voted Polls</p>
+          <p>Vote for a poll to gain access to its statistics when it finishes!</p>
         </div>
       )
     } else {
       return (
-        <div className="voted-polls">
-          <div className="voted-polls-sidebar">
-            <h2 className="voted-poll-h2">Your Voted Polls</h2>
-            <h3 className="poll-count">Total Voted Polls: {this.props.polls.length}</h3>
-            <h3 className="did-you-know">Did You Know?</h3> 
-            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
-          </div>
-          <div className="voted-poll-cont">
-            <ul className="voted-poll">
-              {this.props.polls.map(poll => (
-                <li key={poll._id} className="poll-voted"><Link to={`/polls/${poll._id}`}><PollShowContainer key={poll._id} question={poll.question} poll={poll} inherited={true} noGraph={true} /> </Link> </li>
-              ))}
-            </ul>
-          </div>
+        <div className="voted-polls-container">
+          <h3>Voted Polls ({this.props.polls.length})</h3>
+          <ul className="voted-poll">
+            {this.props.polls.map(poll => (
+              <li key={poll._id} className="poll-voted">
+                <Link to={`/polls/${poll._id}`}>{poll.question}</Link> 
+              </li>
+            ))}
+          </ul>
         </div>
       );
     }

@@ -49,12 +49,13 @@
 
 #polls{
   width: 65%;
+  height: auto;
 }
 
 #user-info{
+  height: auto;
   max-height: 400px;
   width: 35%;
-  /* padding: 10px; */
   box-sizing: border-box;
 }
 
@@ -99,5 +100,16 @@
   text-align: center;
   height: auto;
   padding: 20px 0px;
+  padding-bottom: 5px;
   font-size: 23px;
+}
+
+#user-info .random-poll-fact{
+  height: auto;
+  padding: 15px;
+  word-wrap: break-word;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 100;
+  color: rgb(116, 116, 116);
 }

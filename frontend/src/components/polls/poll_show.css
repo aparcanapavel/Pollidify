@@ -1,4 +1,4 @@
-.poll-show-container{
+/* .poll-show-container{
   display: block;
   position: relative;
   margin: 0 auto;
@@ -77,4 +77,76 @@
 
 .choice-response:hover  {
    background-color: rgb(220, 233, 228);
+} */
+
+.poll-show-container {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.poll-show-container > h3 {
+  padding: 20px 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  color: #405C51;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.poll-show-container > p {
+  position: relative;
+  display: block;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  background-color:  rgb(244, 244, 244);
+  box-sizing: border-box;
+}
+
+.poll-show-container > p .expired {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.choices-list {
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.choice-responses li{
+  text-align: center;
+  cursor: pointer;
+}
+
+.choice-response:hover  {
+   background-color: rgb(220, 233, 228);
+} 
+
+.poll-choices div button{
+  background-color: #88C2AB;
+  color: white;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 15px;
+  cursor: pointer;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  transition: background-color 0.2s;
+}
+
+.poll-choices div button:hover {
+  background-color:  rgb(125, 179, 158);
+}
+
+.total-votes {
+  margin: 20px 0px;
+}
+
+.poll-show-graph {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
