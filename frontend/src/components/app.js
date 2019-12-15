@@ -55,18 +55,12 @@ class App extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.toggleTimer);
   }
-
-  componentDidMount(){
-    console.log(this.props.user);
-    console.log(this.isEmpty(this.props.user));
-  }
   
   showSignup() {
     setTimeout(() => {
       this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
     }, 100);
     this.removeSlide();
-    console.log("signup clicked");
   }
 
   showLogin() {
@@ -74,7 +68,6 @@ class App extends React.Component {
       this.setState({ ...this.state, form: "login" }, this.toggleSlide);
     }, 100);
     this.removeSlide();
-    console.log("login clicked");
   }
 
   isEmpty(obj) {
