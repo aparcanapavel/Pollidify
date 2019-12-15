@@ -1,4 +1,12 @@
 .app-div {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  display: block;
+  background-color: rgba(136,194,171,.187);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  box-sizing: border-box;
+  overflow: auto;
 }

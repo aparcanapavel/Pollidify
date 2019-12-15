@@ -1,99 +1,53 @@
-.poll-index-main {
+.poll-index-main{
+  display: flex;
+  flex-direction: row;
   padding-top: 60px;
-  display: block;
-  width: 100%;
-  position: absolute;
-  font-family: sans-serif;
-  height: 100%;
-  overflow-y: auto;
-  min-height: 100%;
+  /* background-color: rgba(136,194,171,.187); */
   z-index: -1;
-  box-sizing: border-box;
-  min-width: 926px;
-}
-
-.poll-index-left{
-  position: sticky;
-  display: inline-block;
-  height: 100%;
-  vertical-align: top;
-  padding:0 20px;
-  min-height: 100%;
-  top: 0px;
-  box-sizing: border-box;
-  width: 25%;
-  background: rgb(154,219,193);
-  background: linear-gradient(90deg, rgba(154,219,193,1) 0%, rgba(0,212,255,0) 100%);
-}
-
-.poll-index-title{
-  font-size: 36px;
-  font-weight: 1000;
-  position: sticky;
-  display: inline-block;
-  vertical-align: top;
-  padding:20px 20px;
-  height: 150px;
-  top: 0px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 100%;
-}
-
-.poll-count{
-  font-size: 30px;
-  position: sticky;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  padding:0 20px;
-  height: 150px;
-  top: 0px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.did-you-know{
-  font-size: 30px;
-  position: sticky;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  height: 75px;
-  padding:0 20px;
-  top: 0px;
-  box-sizing: border-box;
-}
-
-.random-poll-fact{
-  font-size: 20px;
-  position: sticky;
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
-  height: 75px;
-  padding:0 20px;
-  top: 0px;
-  box-sizing: border-box;
-}
-
-.poll-index-cont{
+  box-sizing: border-box; 
   position: relative;
-  display: inline-block;
-  width: 75%;
-  padding-left: 20px;
-  min-height: 100%;
-  margin-top: 40px;
-  border-left: 1px solid gray;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Assistant', sans-serif;
+  color: rgba(28, 28, 28, 0.9);
+}
+
+.poll-index-cont,
+.poll-index-right{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: white;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 3px;
+}
+.poll-index-cont{
+  width: 65%;
+}
+
+.poll-index-right{
+  max-height: 400px;
+  width: 35%;
+  /* padding: 10px; */
   box-sizing: border-box;
 }
 
-.poll-index-links{
+.poll-index-cont h3,
+.poll-index-right h2{
+  padding: 20px 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  color: #405C51;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.poll-index-cont .poll-index-links{
   position: relative;
   display: block;
   width: 100%;
 }
-
 .poll-index-links a {
   display: block;
   padding: 15px 0px;
@@ -103,6 +57,10 @@
   font-size: 16px;
 }
 
+.poll-index-links li:first-child a{
+  border-top: 0px;
+}
+
 .poll-index-links li:nth-child(2n+0){
   background: rgb(154,219,193);
   background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.1) 10%, rgba(154,219,193,0.02) 100%);
@@ -110,4 +68,45 @@
 
 .poll-index-links li:hover{
   background: linear-gradient(90deg, rgba(154,219,193,0.024) 0%, rgba(154,219,193,0.3) 10%, rgba(154,219,193,0.02) 100%);
+}
+
+.poll-index-right h2{
+  text-align: center;
+  padding: 21px 10px;
+  display: block;
+  font-size: 18px;
+}
+
+.poll-index-right .side-user-links{
+  display: block;
+  position: relative;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.poll-index-right .side-user-links a {
+  border: 1px solid rgba(136, 194, 171, 0.61);
+  padding: 5px 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  color: rgba(19, 19, 19, 0.865);
+  /* color: rgb(116, 168, 147); */
+}
+
+.poll-index-right .side-user-links a:hover{
+  background-color: rgba(136, 194, 171, 0.61);
+  /* color: white; */
+}
+
+.poll-index-right .poll-count{
+  text-align: center;
+}
+
+.poll-index-right .did-you-know{
+  text-align: center;
+  height: auto;
+  padding: 20px 0px;
+  font-size: 23px;
 }
