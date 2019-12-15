@@ -20,25 +20,13 @@ class PollIndex extends React.Component {
     }
     const { user } = this.props;
     return (
-      <div className="poll-index-main">
-        <div className="poll-index-cont"> 
-          <h3>World Polls</h3>
-          <ul className="poll-index-links"> 
-          {this.props.polls.map(poll => (
-            <li key={poll._id}><Link to={`/polls/${poll._id}`}>{poll.question}</Link></li>
-          ))}
-          </ul>
-        </div>
-        <div className="poll-index-right">
-          <h2 className="poll-index-title">{user.username}</h2>
-          <div className="side-user-links">
-            <Link to={`/polls/voted/${user.id}`}>Voted Polls</Link>
-            <Link to={`/polls/user/${user.id}`}>My Polls</Link>
-          </div>
-          <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3>
-          <h3 className="did-you-know">Did You Know?</h3> 
-          <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
-        </div>
+      <div className="poll-index-cont"> 
+        <h3>World Polls</h3>
+        <ul className="poll-index-links"> 
+        {this.props.polls.map(poll => (
+          <li key={poll._id}><Link to={`/polls/${poll._id}`}>{poll.question}</Link></li>
+        ))}
+        </ul>
       </div>
     );
   }

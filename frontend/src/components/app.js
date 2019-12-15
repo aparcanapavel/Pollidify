@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
@@ -9,6 +10,8 @@ import PollShowContainer from './polls/poll_show_container';
 import UserPollsContainer from './polls/user_polls_container';
 import CreatePollContainer from './polls/poll_form_container';
 import VotedPollsContainer from './polls/voted_polls_container';
+import { FactsArr } from './polls/random_poll_facts';
+import { Link } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -53,6 +56,10 @@ class App extends React.Component {
     clearTimeout(this.toggleTimer);
   }
 
+  componentDidMount(){
+    console.log(this.props.user);
+  }
+  
   showSignup() {
     setTimeout(() => {
       this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
@@ -71,45 +78,68 @@ class App extends React.Component {
 
 
   render() {
+    const { user } = this.props;
+
     return (
       <div className="app-div">
         <NavBarContainer
           showSignup={this.showSignup}
           showLogin={this.showLogin}
         />
-        <Switch>
-          <ProtectedRoute
-            exact
-            path="/polls/user/:id"
-            component={UserPollsContainer}
-          />
+        <section id="main-container">
+          <div id="polls">
+            <Switch>
+              <ProtectedRoute
+                exact
+                path="/polls/user/:id"
+                component={UserPollsContainer}
+              />
 
-          <ProtectedRoute 
-            exact
-            path="/polls/voted/:id"
-            component={VotedPollsContainer}
-          />
+              <ProtectedRoute 
+                exact
+                path="/polls/voted/:id"
+                component={VotedPollsContainer}
+              />
 
-          <ProtectedRoute
-            exact
-            path="/polls/new"
-            component={CreatePollContainer}
-          />
+              <ProtectedRoute
+                exact
+                path="/polls/new"
+                component={CreatePollContainer}
+              />
 
-          <ProtectedRoute
-            exact
-            path="/polls/:id"
-            component={PollShowContainer}
-          />
-          <ProtectedRoute exact path="/polls" component={PollIndex} />
-          <AuthRoute
-            path="/"
-            component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} />}
-          />
-        </Switch>
+              <ProtectedRoute
+                exact
+                path="/polls/:id"
+                component={PollShowContainer}
+              />
+              <ProtectedRoute exact path="/polls" component={PollIndex} />
+              <AuthRoute
+                path="/"
+                component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} />}
+              />
+            </Switch>
+          </div>
+          <div id="user-info">
+            <h2 className="poll-index-title">{user.username}</h2>
+            <div className="side-user-links">
+              <Link to={`/polls/voted/${user.id}`}>Voted Polls</Link>
+              <Link to={`/polls/user/${user.id}`}>My Polls</Link>
+            </div>
+            <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3>
+            <h3 className="did-you-know">Did You Know?</h3>
+            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
+          </div>
+        </section>
       </div>
     );
   }
 }
 
-export default App;
+const mstp = state => {
+  return {
+    polls: Object.values(state.entities.polls),
+    user: state.session.user
+  }
+}
+
+export default connect(mstp, null)(App);
