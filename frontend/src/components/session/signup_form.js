@@ -13,6 +13,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.demoUser = this.demoUser.bind(this);
   }
 
   componentDidMount () {
@@ -35,7 +36,9 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history);
+    this.props.signup(user, this.props.history).then(() => {
+      this.props.removeForm();
+    });
   }
 
   renderErrors() {
@@ -46,6 +49,17 @@ class SignupForm extends React.Component {
         ))}
       </ul>
     );
+  }
+
+  demoUser(e) {
+    let user = {
+      username: "demoUser",
+      password: "password"
+    };
+
+    this.props.login(user).then(() => {
+      this.props.removeForm();
+    });
   }
 
   render() {
@@ -76,6 +90,8 @@ class SignupForm extends React.Component {
             />
             <br />
             <input type="submit" value="Sign up" />
+            <p>or</p>
+            <p onClick={this.demoUser}>Login as Demo User</p>
             {this.renderErrors()}
         </form>
       </section>

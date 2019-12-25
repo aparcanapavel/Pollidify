@@ -12,13 +12,12 @@ class LandingPage extends React.Component {
   
   render() {
     const { formType } = this.props;
-    
     let form;
 
     if(formType === "signup"){
-      form = <AuthRoute path="/" component={SignupFormContainer} />;
+      form = <AuthRoute path="/" component={() => <SignupFormContainer removeForm={this.props.removeForm} />} />;
     } else if (formType === "login"){
-      form = <AuthRoute path="/" component={LoginFormContainer} />;
+      form = <AuthRoute path="/" component={() => <LoginFormContainer removeForm={this.props.removeForm} />} />;
     }
     const date = new Date();
     const year = date.getFullYear();

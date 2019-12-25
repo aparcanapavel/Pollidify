@@ -24,6 +24,7 @@ class App extends React.Component {
     this.toggleSlide = this.toggleSlide.bind(this);
     this.removeSlide = this.removeSlide.bind(this);
     this.toggleTimer = null;
+    this.removeForm = this.removeForm.bind(this);
   }
 
   toggleSlide() {
@@ -55,7 +56,21 @@ class App extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.toggleTimer);
   }
-  
+
+  shouldComponentUpdate(_, nextState) {
+    if(this.state.form === "login" && nextState.form === "login"){
+      return false
+    } else if (this.state.form === "signup" && nextState.form === "signup"){
+      return false
+    } else {
+      return true
+    }
+  }
+
+  removeForm() {
+    this.setState({ form: "" });
+  }
+
   showSignup() {
     setTimeout(() => {
       this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
@@ -93,33 +108,9 @@ class App extends React.Component {
             showLogin={this.showLogin}
           />
           <Switch>
-            <ProtectedRoute
-              exact
-              path="/polls/user/:id"
-              component={UserPollsContainer}
-            />
-
-            <ProtectedRoute
-              exact
-              path="/polls/voted/:id"
-              component={VotedPollsContainer}
-            />
-
-            <ProtectedRoute
-              exact
-              path="/polls/new"
-              component={CreatePollContainer}
-            />
-
-            <ProtectedRoute
-              exact
-              path="/polls/:id"
-              component={PollShowContainer}
-            />
-            <ProtectedRoute exact path="/polls" component={PollIndex} />
             <AuthRoute
               path="/"
-              component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} />}
+              component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} removeForm={this.removeForm} />}
             />
           </Switch>
         </div>
