@@ -27,6 +27,19 @@ class LoginForm extends React.Component {
     });
   }
 
+  isEmpty(obj) {
+    if (obj == null) return true;
+    if (obj.length > 0) return false;
+    if (obj.length === 0) return true;
+
+    if (typeof obj !== "object") return true;
+    for (var key in obj) {
+      if (hasOwnProperty.call(obj, key)) return false;
+    }
+
+    return true;
+  }
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -37,7 +50,9 @@ class LoginForm extends React.Component {
 
     e.persist();
     this.props.login(user).then(() => {
-      this.props.removeForm();
+      if(!this.isEmpty(this.props.user)){
+        this.props.removeForm();
+      }
     })
   }
 
@@ -49,7 +64,9 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user).then(() => {
-      this.props.removeForm();
+      if (!this.isEmpty(user)) {
+        this.props.removeForm();
+      }
     });
   }
 
