@@ -1,4 +1,115 @@
+#root{
+  background-color: rgba(136,194,171,.187);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
 .app-div {
+  display: block;
+  background-color: rgba(136,194,171,.187);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  box-sizing: border-box;
+  overflow: auto;
+  /* edits */
+  font-family: 'Assistant', sans-serif;
+}
+
+#main-container{
+  display: flex;
+  flex-direction: row;
+  padding-top: 60px;
+  /* background-color: rgba(136,194,171,.187); */
+  z-index: 0;
+  box-sizing: border-box; 
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Assistant', sans-serif;
+  color: rgba(28, 28, 28, 0.9);
+}
+
+#polls,
+#user-info{
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: white;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 3px;
+}
+
+#polls{
+  width: 65%;
+  height: auto;
+}
+
+#user-info{
+  height: auto;
+  max-height: 400px;
+  width: 35%;
+  box-sizing: border-box;
+}
+
+#user-info h2{
+  border-bottom: 1px solid rgb(218, 218, 218);
+  color: #405C51;
+  font-weight: 700;
+  text-align: center;
+  padding: 21px 10px;
+  display: block;
+  font-size: 18px;
+}
+
+#user-info .side-user-links{
+  display: block;
+  position: relative;
+  text-align: center;
+  padding: 20px 0px;
+}
+
+#user-info .side-user-links a {
+  border: 1px solid rgba(136, 194, 171, 0.61);
+  padding: 5px 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+  color: rgba(19, 19, 19, 0.865);
+  /* color: rgb(116, 168, 147); */
+}
+
+#user-info .side-user-links a:hover{
+  background-color: rgba(136, 194, 171, 0.61);
+  /* color: white; */
+}
+
+#user-info .poll-count{
+  text-align: center;
+}
+
+#user-info .did-you-know{
+  text-align: center;
+  height: auto;
+  padding: 20px 0px;
+  padding-bottom: 5px;
+  font-size: 23px;
+}
+
+#user-info .random-poll-fact{
+  height: auto;
+  padding: 15px;
+  word-wrap: break-word;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 100;
+  color: rgb(116, 116, 116);
 }

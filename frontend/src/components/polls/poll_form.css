@@ -1,17 +1,16 @@
 .create-poll-form-div {
   display: block;
   margin: 0 auto;
-  margin-top: 105px;
   position: relative;
-  width: 70%;
-  font-family: sans-serif;
+  width: 100%;
 }
 
 .create-poll-form-div h3{
-  text-align: center;
-  font-size: 25px;
-  color: #6D9C89;
-  margin-bottom: 25px;
+  padding: 20px 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  color: #405C51;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .active-poll-warning {
@@ -22,9 +21,7 @@
 }
 
 .create-poll-form-div form{
-  border: 1px solid #405C51;
   padding: 50px;
-  border-radius: 7px;
 }
 
 .create-poll-form-div form input[type="number"]{

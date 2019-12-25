@@ -86,15 +86,26 @@ class LandingPage extends React.Component {
           <article id="contact">
             <h3>Contact Us</h3>
             <div className="git-contact">
-              <a target="_blank" href="https://github.com/asafmohammad5">
+              <a
+                target="_blank"
+                href="https://github.com/asafmohammad5"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-github"></i>Asaf Mohammad
               </a>
-              <a target="_blank" href="https://github.com/MikaEleFant">
+              <a
+                target="_blank"
+                href="https://github.com/MikaEleFant"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-github"></i>Chang Ho Lee
               </a>
-              <a target="_blank" href="https://github.com/aparcanapavel">
+              <a
+                target="_blank"
+                href="https://github.com/aparcanapavel"
+                rel="noopener noreferrer"
+              >
                 <i className="fab fa-github"></i>Pavel Aparcana
-
               </a>
             </div>
           </article>

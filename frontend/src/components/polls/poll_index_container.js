@@ -3,8 +3,10 @@ import { fetchPolls } from '../../actions/poll_actions';
 import PollIndex from './poll_index';
 
 const msp = (state) => {
+  
   return {
-    polls: Object.values(state.entities.polls)
+    polls: Object.values(state.entities.polls),
+    user: state.session.user
   };
 };
 

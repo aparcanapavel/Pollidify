@@ -64,6 +64,7 @@
   top: 0px;
   right: -40%;
   z-index: 0;
+  max-height: 303px;
 }
 
 #landing-main-div.show-form{

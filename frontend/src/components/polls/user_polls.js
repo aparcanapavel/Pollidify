@@ -34,9 +34,10 @@ class UserPolls extends React.Component {
     
     if (this.props.polls.length === 0) {
       return (
-        <div className="no-user-polls">
-          <h2>You have no Polls</h2>
-          <h3>Create a poll and find out what the world has to say about your topic!</h3>
+        <div className="zero-user-polls">
+          <h3>My Polls ({this.props.polls.length})</h3>
+          <p>You have no Polls</p>
+          <p>Create a poll and find out what the world has to say about your topic!</p>
         </div>
       )
     } else {  
@@ -48,47 +49,34 @@ class UserPolls extends React.Component {
 
         if (expDate >= newDate) {
           activePolls.push(
-            <Link to={`/polls/${poll._id}`}>
-              <PollShowContainer
-              key={poll._id}
-              question={poll.question}
-              poll={poll}
-              inherited={true}
-              noGraph={true}
-            /> 
-            </Link>  
+            <li key={poll._id}>
+              <Link to={`/polls/${poll._id}`} key={poll._id}>
+                {poll.question}
+              </Link>  
+            </li>
           );
         } else if (expDate < newDate) {
           expiredPolls.push(
-            <Link to={`/polls/${poll._id}`}>
-              <PollShowContainer
-                key={poll._id}
-                question={poll.question}
-                poll={poll}
-                inherited={true}
-                noGraph={true}
-              />
-            </Link>
+            <li key={poll._id}>
+              <Link to={`/polls/${poll._id}`}>
+                {poll.question}
+              </Link>
+            </li>
           );    
         }
       });
       
       return (
-        <div className="user-poll-main">
-          <div className="user-poll-sidebar">
-            <h2 className="user-poll-title">Your Created Polls</h2>
-            <h3 className="poll-count">Total Voted Polls: {this.props.polls.length}</h3>
-            <h3 className="did-you-know">Did You Know?</h3>
-            <h4 className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</h4>
-          </div> 
-          <div className="user-poll-cont">
-            <div className="active-polls">
-              {activePolls}
-            </div>
-            <div className="expired-polls">
-              {expiredPolls}
-            </div>
-          </div>
+        <div className="user-poll-container">
+          <h3>My Polls ({this.props.polls.length})</h3>
+          <ul className="active-polls">
+            {activePolls.length > 0 ? <h3>Active Polls</h3> : null}
+            {activePolls}
+          </ul>
+          <ul className="expired-polls">
+            {expiredPolls.length > 0 ? <h3>Expired Polls</h3> : null}
+            {expiredPolls}
+          </ul>
         </div>
       );
     }
