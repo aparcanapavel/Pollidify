@@ -84,6 +84,7 @@ class App extends React.Component {
   }
 
   render() {
+    const pollidified = window.location.hash === "#/polls" ? <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3> : null;
     const { user } = this.props;
     if (this.isEmpty(this.props.user)){
       return (
@@ -170,7 +171,7 @@ class App extends React.Component {
               <Link to={`/polls/voted/${user.id}`}>Voted Polls</Link>
               <Link to={`/polls/user/${user.id}`}>My Polls</Link>
             </div>
-            {window.location.pathname === "/polls/" ? null : <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3> }
+            {pollidified}
             <h3 className="did-you-know">Did You Know?</h3>
             <p className="random-poll-fact">{FactsArr[Math.floor(Math.random() * FactsArr.length)]}</p>
           </div>

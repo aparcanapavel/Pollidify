@@ -92,7 +92,7 @@ export default class PollShow extends React.Component{
         </h4>
       );
     } else {
-      expirationDate = <h4 className="expired">EXPIRED</h4>
+      expirationDate = <h4 className="expired">HERE ARE THE RESULTS</h4>
     }
 
     let graph = (this.props.noGraph || new Date(this.props.poll.expiration_date) > new Date()) ? null : (
