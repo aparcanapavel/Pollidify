@@ -12,9 +12,11 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.demoUser = this.demoUser.bind(this);
   }
 
   componentDidMount() {
+    // debugger
     this.props.clearErrors();
   }
 
@@ -33,7 +35,22 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
+    e.persist();
+    this.props.login(user).then(() => {
+      this.props.removeForm();
+    })
+  }
+
+  demoUser(e){
+    e.preventDefault();
+    let user = {
+      username: "demoUser",
+      password: "password"
+    };
+
+    this.props.login(user).then(() => {
+      this.props.removeForm();
+    });
   }
 
   renderErrors() {
@@ -72,6 +89,8 @@ class LoginForm extends React.Component {
           <br />
 
           <input className="login-form-submit" type="submit" value="Log in" />
+          <p>or</p>
+          <p onClick={this.demoUser}>Login as Demo User</p>
           {this.renderErrors()}
         </form>
       </section>
