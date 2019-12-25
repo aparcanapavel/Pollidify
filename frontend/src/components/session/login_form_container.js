@@ -4,7 +4,8 @@ import LoginForm from './login_form';
 
 const mapStateToProps = (state) => {
   return {
-    errors: Object.values(state.errors.session)
+    errors: Object.values(state.errors.session),
+    user: state.session.user
   };
 };
 

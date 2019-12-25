@@ -37,7 +37,9 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user, this.props.history).then(() => {
-      this.props.removeForm();
+      if (!this.isEmpty(this.props.user)) {
+        this.props.removeForm();
+      }
     });
   }
 
@@ -51,6 +53,19 @@ class SignupForm extends React.Component {
     );
   }
 
+  isEmpty(obj) {
+    if (obj == null) return true;
+    if (obj.length > 0) return false;
+    if (obj.length === 0) return true;
+
+    if (typeof obj !== "object") return true;
+    for (var key in obj) {
+      if (hasOwnProperty.call(obj, key)) return false;
+    }
+
+    return true;
+  }
+
   demoUser(e) {
     let user = {
       username: "demoUser",
@@ -58,7 +73,9 @@ class SignupForm extends React.Component {
     };
 
     this.props.login(user).then(() => {
-      this.props.removeForm();
+      if (!this.isEmpty(this.props.user)) {
+        this.props.removeForm();
+      }
     });
   }
 
