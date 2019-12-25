@@ -64,10 +64,10 @@ class LandingPage extends React.Component {
             <p>
               As developers, we wanted to continue making tools that would help
               connect people around the world, so we came up with{" "}
-              <i>Pollidify.</i>As we worked on the application, we, as a group,
-              made decisions as to how the application would look like, what
-              features it should have,and how the application should behave.
-              Today, Pollidify is an application that aims to poll participants
+              <i>Pollidify.</i> While working on the application we
+              made decisions as to how the application should look like, what
+              features it would have, and how the application should behave.
+              Pollidify is an application that aims to poll participants
               at a world wide scale, and allow users to express their polls.
             </p>
           </article>
@@ -77,8 +77,7 @@ class LandingPage extends React.Component {
             <p>
               Thank you for visiting our project Pollidify. We hope that you
               find our application useful. If you wish to help us expand the
-              project, please reach out to us through github or through Linked
-              In!
+              project, please reach out to us through Github or LinkedIn.
             </p>
           </article>
 
