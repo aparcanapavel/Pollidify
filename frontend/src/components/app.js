@@ -101,8 +101,7 @@ class App extends React.Component {
   render() {
     const pollidified = window.location.hash === "#/polls" ? <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3> : null;
     const { user } = this.props;
-    console.log(this.props.loggedIn);
-    console.log(this.state.form);
+
     if (!this.props.loggedIn){
       return (
         <div className="app-div">
