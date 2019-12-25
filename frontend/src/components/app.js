@@ -101,7 +101,9 @@ class App extends React.Component {
   render() {
     const pollidified = window.location.hash === "#/polls" ? <h3 className="poll-count">Total Pollidified Polls: {this.props.polls.length}</h3> : null;
     const { user } = this.props;
-    if (this.isEmpty(this.props.user)){
+    console.log(this.props.loggedIn);
+    console.log(this.state.form);
+    if (!this.props.loggedIn){
       return (
         <div className="app-div">
           <NavBarContainer
@@ -116,7 +118,7 @@ class App extends React.Component {
           </Switch>
         </div>
       );
-    } 
+    } else {
     return (
       <div className="app-div">
         <NavBarContainer
@@ -169,12 +171,14 @@ class App extends React.Component {
         </section>
       </div>
     );
+    }
   }
 }
 
 const mstp = state => {
   return {
     polls: Object.values(state.entities.polls),
+    loggedIn: state.session.isAuthenticated,
     user: state.session.user
   }
 }

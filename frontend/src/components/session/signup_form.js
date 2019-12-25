@@ -36,8 +36,8 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history).then(() => {
-      if (!this.isEmpty(this.props.user)) {
+    this.props.signup(user, this.props.history).then((res) => {
+      if (!this.isEmpty(res.currentUser)){
         this.props.removeForm();
       }
     });
@@ -47,10 +47,10 @@ class SignupForm extends React.Component {
     return (
       <ul>
         {(this.props.errors).map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li key={i}>{ error }</li>
         ))}
       </ul>
-    );
+    )
   }
 
   isEmpty(obj) {
@@ -67,16 +67,15 @@ class SignupForm extends React.Component {
   }
 
   demoUser(e) {
+    e.preventDefault();
+
     let user = {
       username: "demoUser",
       password: "password"
     };
 
-    this.props.login(user).then(() => {
-      if (!this.isEmpty(this.props.user)) {
-        this.props.removeForm();
-      }
-    });
+    this.props.login(user)
+      this.props.removeForm();
   }
 
   render() {
