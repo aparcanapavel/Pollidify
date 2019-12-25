@@ -100,8 +100,7 @@ class App extends React.Component {
 
   render() {
     const { user } = this.props;
-    console.log(this.props.loggedIn);
-    console.log(this.state.form);
+
     if (!this.props.loggedIn){
       return (
         <div className="app-div">

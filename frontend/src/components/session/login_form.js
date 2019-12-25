@@ -16,7 +16,6 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    // debugger
     this.props.clearErrors();
   }
 
@@ -48,9 +47,8 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    e.persist();
-    this.props.login(user).then(() => {
-      if(!this.isEmpty(this.props.user)){
+    this.props.login(user).then(res => {
+      if(!this.isEmpty(res.currentUser)){
         this.props.removeForm();
       }
     })
