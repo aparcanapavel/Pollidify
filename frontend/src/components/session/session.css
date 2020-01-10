@@ -40,3 +40,38 @@
   margin-top: 6px;
   margin-bottom: 6px;
 }
+
+.session-form .demo-user{
+  border-top: 1px solid gray;
+  cursor: pointer;
+  padding-top: 10px;
+  margin-top: 5px;
+  color: #405C51;
+}
+
+.session-form .session-errors{
+  color: rgb(120, 1, 1);
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+.session-form .session-errors-cont {
+  /* border-top: 1px solid gray; */
+  margin-top: 5px;
+}
+
+#signup-form{
+  margin-top: -20px;
+}
+
+#signup-form .session-errors-cont{
+  margin-top: 0px;
+}
+
+#signup-form .session-errors-cont .session-errors{
+  padding-top: 0px;
+}
+
+#signup-form .demo-user{
+  padding-top: 5px;
+}
