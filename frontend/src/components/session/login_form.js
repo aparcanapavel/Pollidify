@@ -75,9 +75,9 @@ class LoginForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="session-errors-cont">
         {(this.props.errors).map((error, i) => (
-          <li key={`error-${i}`}>{error}</li>
+          <li key={`error-${i}`} className="session-errors">{error}</li>
         ))}
       </ul>
     );
@@ -110,7 +110,7 @@ class LoginForm extends React.Component {
 
           <input className="login-form-submit" type="submit" value="Log in" />
           <p>or</p>
-          <p onClick={this.demoUser}>Login as Demo User</p>
+          <p onClick={this.demoUser} className="demo-user">Login as Demo User</p>
           {this.renderErrors()}
         </form>
       </section>

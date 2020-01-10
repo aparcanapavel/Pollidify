@@ -45,9 +45,9 @@ class SignupForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="session-errors-cont">
         {(this.props.errors).map((error, i) => (
-          <li key={i}>{ error }</li>
+          <li key={i} className="session-errors">{ error }</li>
         ))}
       </ul>
     )
@@ -80,7 +80,7 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <section className="session-form-container">
+      <section className="session-form-container" id="signup-form">
         <form onSubmit={this.handleSubmit} className="session-form">
           <h3 className="session-title">Sign up</h3>
             <br />
@@ -107,7 +107,7 @@ class SignupForm extends React.Component {
             <br />
             <input type="submit" value="Sign up" />
             <p>or</p>
-            <p onClick={this.demoUser}>Login as Demo User</p>
+            <p onClick={this.demoUser} className="demo-user">Login as Demo User</p>
             {this.renderErrors()}
         </form>
       </section>
