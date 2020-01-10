@@ -48,8 +48,13 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user).then(res => {
-      if(!this.isEmpty(res.currentUser)){
-        this.props.removeForm();
+      try{
+        if(!this.isEmpty(res.currentUser)){
+          this.props.removeForm();
+        }
+      }
+      catch(err){
+        this.props.errors.push(err);
       }
     })
   }
