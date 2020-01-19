@@ -40,6 +40,77 @@ Pollidify is a minimal application created in one week.
 * subscriptions via notifications
 
 # Wireframes
-![splash]()
+![splash](https://github.com/aparcanapavel/Pollidify/blob/master/readmeImgs/pollidify.png?raw=true)
+- Upon visiting the page, users are greeted with a spash page having more information about the app and its contributors.
+- Users can Sign Up or login
+- Based off my experience with Angular, I knew getting different components to render with animation was possible, and I wanted our app to have it. I was able to achieve this by using React's references between parent and children components. Further I also had to use asynchronous functions to achieve the smooth transitions. 
+```js
+// #frontend/src/components/app.js
+class App extends React.Component {
 
+  //...
+
+  removeForm() {
+    this.setState({ form: "" });
+  }
+
+  showSignup() {
+    setTimeout(() => {
+      this.setState({ ...this.state, form: "signup" }, this.toggleSlide);
+    }, 100);
+    this.removeSlide();
+  }
+
+  showLogin() {
+    setTimeout(() => {
+      this.setState({ ...this.state, form: "login" }, this.toggleSlide);
+    }, 100);
+    this.removeSlide();
+  }
+
+  //...
+  Render(){
+    //...
+    return(
+      //...
+      <AuthRoute
+        path="/"
+        component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} removeForm={this.removeForm} />}
+      />
+      //...
+      <NavBarContainer
+            showSignup={this.showSignup}
+            showLogin={this.showLogin}
+      />
+      //..
+    );
+  }
+}
+```
+- The nav bar is what triggers the swap between components
+```js
+// #frontend/src/comoinents/landing_page.js
+
+class LandingPage extends React.Component {
+  // ...
+
+  render() {
+    if(formType === "signup"){
+      form = <AuthRoute 
+        path="/" 
+        component={() => <SignupFormContainer removeForm={this.props.removeForm} />}
+      />;
+    } else if (formType === "login"){
+      form = <AuthRoute 
+        path="/" 
+        component={() => <LoginFormContainer removeForm={this.props.removeForm} />} 
+      />;
+    }
+
+    // ...
+  }
+}
+```
+
+- The landing page is what had the conditional as to which component to render based on the trigger event.
 
