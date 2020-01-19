@@ -75,7 +75,11 @@ class App extends React.Component {
       //...
       <AuthRoute
         path="/"
-        component={() => <LandingPage removeSlide={this.removeSlide} formType={this.state.form} removeForm={this.removeForm} />}
+        component={() => <LandingPage 
+          removeSlide={this.removeSlide} 
+          formType={this.state.form} 
+          removeForm={this.removeForm} 
+        />}
       />
       //...
       <NavBarContainer
