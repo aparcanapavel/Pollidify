@@ -112,5 +112,11 @@ class LandingPage extends React.Component {
 }
 ```
 
-- The landing page is what had the conditional as to which component to render based on the trigger event.
+- The landing page is what had the conditional as to which component to render based on the trigger event resulting in: 
+  ![End-Result](https://github.com/aparcanapavel/Pollidify/blob/master/readmeImgs/pollidify2.png?raw=true)
 
+![home-page](https://github.com/aparcanapavel/Pollidify/blob/master/readmeImgs/pollidify3.png?raw=true)
+- Welcome screen upon loggin in or signing up successfully.
+
+![new-poll](https://github.com/aparcanapavel/Pollidify/blob/master/readmeImgs/pollidify4.png?raw=true)
+- Creating a new poll form.
