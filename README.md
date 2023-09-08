@@ -1,6 +1,3 @@
-# Pollidify
-[Live Link to Pollidify](https://warm-crag-62563.herokuapp.com)
-
 Pollidify is a global web application that allows users to create and respond to polls.
 
 # Technologies & Technical Challenges
